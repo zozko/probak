@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>elotte es utanna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        a::after {
+            content: ' a link ahova mutat: ' attr(href);
+            font-style: italic;
+
+            color: red;
+        }
+
+        .kep {
+            margin: 30px auto;
+            width: 300px;
+            height: 300px;
+            border: 5px solid brown;
+            background-image: url(images/lg.jpg);
+            background-size: cover;
+        }
+
+        .kep::after {
+            position: relative;
+            left: 70%;
+            top: 92%;
+            content: 'zoli irja::after';
+            color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+    <p>itt a link mellet lathato szoveg egy after pszeudoosztallyal lett kiiratva</p>
+    <br/>
+    <a href="magyarazok.html">visza</a>
+    <p>a kepre a szoveg szinten ::after pszeudoosztallyal van kiiratva</p>
+    <div class="kep"></div>
+</body>
+
+</html>

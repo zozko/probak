@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>transition in work</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* ### mobil ### */
+
+        @media (min-width: 220px) and (max-width: 480px) {
+            #tablet {
+                display: none;
+            }
+            #pc {
+                display: none;
+            }
+            #mobil {
+                width: 100%;
+                text-align: center;
+            }
+            .kep {
+                display: block;
+                width: 200px;
+                margin: 0 auto;
+                transition: width 1s;
+            }
+        }
+
+        /* ### tablet ### */
+
+        @media (min-width: 479px) and (max-width: 1024px) {
+            #mobil {
+                display: none;
+            }
+            #pc {
+                display: none;
+            }
+            #tablet {
+                width: 100%;
+                text-align: center;
+            }
+            .kep {
+                display: block;
+                width: 400px;
+                margin: 0 auto;
+                transition: width 1s;
+            }
+        }
+
+        /* ### pc ### */
+
+        @media (min-width: 1025px) and (max-width: 1480px) {
+            #mobil {
+                display: none;
+            }
+            #tablet {
+                display: none;
+            }
+            #pc {
+                width: 100%;
+                text-align: center;
+            }
+            .kep {
+                display: block;
+                width: 800px;
+                margin: 0 auto;
+                transition: width 1s;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="mobil">mobil verzio</h1>
+    <h1 id="tablet">tablet verzio</h1>
+    <h1 id="pc">PC verzio</h1>
+    <p>az oldal atmeretezesekor lep mukodesbe a TRANSITION az alabbi kepen</p>
+    <img class="kep" src="prestel.jpg" alt="logo">
+    <a href="magyarazok.html">vissza</a>
+</body>
+
+</html>

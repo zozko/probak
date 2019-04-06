@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document Object Model</title>
+    <style>
+        button {
+            background-color: rgb(40, 170, 40);
+            border-radius: 5px;
+            text-decoration: none;
+            width: 75px;
+            height: 25px;
+            border: none;
+        }
+
+        button>a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <span id="name"></span>
+        <span>´s score is</span>
+        <span id="score"></span>
+        <span>point</span>
+    </h1>
+
+    <p>blabala bala bal bal</p>
+    <p>blabala bala bal bal</p>
+    <p>blabala bala bal bal</p>
+    <p>blabala bala bal bal</p>
+    <button>
+        <a href="magyarazok.html">vissza</a>
+    </button>
+    <br>
+
+    <script>
+        let ezt = document.getElementsByTagName("p");
+        ezt[1].innerHTML = "ezt felulirtam JavasScriptnol.... HE HE HE";
+        var sc = 8;
+        var nev = "Zozko";
+        document.getElementById("name").innerText = nev;
+        document.getElementById("score").innerHTML = sc;
+
+        // a teljesNev-ben szereplo valtozobol helyesen leirt nevet kell csinalnia
+        var teljesNev = "kIs zolTaN";
+        document.write("<br> " + teljesNev + "<br>");
+        teljesNev = teljesNev.toLowerCase();
+        var szetvagva = teljesNev.split(" ");
+        document.write(szetvagva[0]);
+        document.write(" " + szetvagva[1]);
+        var elsoNev = szetvagva[0].charAt(0).toLocaleUpperCase();
+        elsoNev = elsoNev + szetvagva[0].slice(1);
+        var utoNev = szetvagva[1].slice(0, 1).toUpperCase();
+        utoNev = utoNev + szetvagva[1].slice(1);
+        document.write("<br>  " + elsoNev + " " + utoNev);
+    </script>
+</body>
+
+</html>

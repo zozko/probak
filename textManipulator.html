@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>manipulator</title>
+    <style>
+        #szoveg {
+            text-align: center;
+        }
+
+        .gomb_Kontener {
+            position: relative;
+            top: 150px;
+            width: 50%;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .gomb_Kontener button {
+            display: inline-block;
+            width: 100px;
+            background-color: aquamarine;
+            margin: 0 auto;
+        }
+
+        .btn {
+            position: relative;
+            top: 50vh;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="szoveg">Zozi</h1>
+    <div class="gomb_Kontener">
+        <button onclick="document.getElementById('szoveg').style.color = 'green'">new color</button>
+        <button onclick="document.getElementById('szoveg').style.fontSize = '66px'">font increase</button>
+        <button onclick="document.getElementById('szoveg').style.fontSize = '24px'">font decrease</button>
+        <button onclick="document.getElementById('szoveg').style.visibility = 'hidden'; document.getElementById('szoveg').style.backgroundColor = 'white'">hide</button>
+        <button onclick="document.getElementById('szoveg').style.visibility = 'visible'">show</button>
+        <button onclick="document.getElementById('szoveg').style.backgroundColor = 'yellow'; document.getElementById('szoveg').style.color = 'black'">background</button>
+    </div>
+    <button class="btn">
+        <a href="magyarazok.html ">vissza</a>
+    </button>
+</body>
+
+</html>

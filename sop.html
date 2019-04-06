@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>sum of positive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> 
+    <script src="main.js"></script> -->
+    <style>
+        body {
+            color: dimgray;
+        }
+
+        h1 {
+            background-color: darkslategrey;
+            height: 50px;
+            color: azure;
+            padding: 0 0 0 20px;
+        }
+
+        div {
+            width: 49%;
+            float: left;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+            color: darkgreen;
+            font-size: 24px;
+            background-color: gold;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>példa leírása</h1>
+    <p> van egy tombunk, melyben szerepelnek pozitiv es negativ szanok (es nulla is). a feladat, hogy osszadjuk a tombben szereplo
+        pozitiv szamokat!</p>
+    <div id="lista1"></div>
+    <div id="eredmeny1"></div>
+    <div id="lista2"></div>
+    <div id="eredmeny2"></div>
+    <div id="lista3"></div>
+    <div id="eredmeny3"></div>
+    <div id="lista4"></div>
+    <div id="eredmeny4"></div>
+    <div id="lista5"></div>
+    <div id="eredmeny5"></div>
+    <br/>
+    <a href="magyarazok.html">vissza</a>
+    <br>
+
+    <script>
+        let o = 1;
+        let kiir = "eredmeny";
+        let list = "lista";
+        function positiveSum(arr) {
+            document.getElementById(list).innerHTML = o + ". tomb: " + arr;
+
+            var e = 0;
+            var newArr = arr.filter(function (x) {
+                return x >= 0;
+            });
+
+            for (i = 0; i < newArr.length; i++) {
+                e = e + newArr[i];
+            }
+            document.getElementById(kiir).innerHTML = "eredmeny = " + e;
+            kiir = "eredmeny";
+            list = "lista";
+            o++;
+        };
+        kiir = kiir + o;
+        list = list + o;
+        positiveSum([1, 2, -3, 4, 0, 5], 15);
+
+        kiir = kiir + o
+        list = list + o
+        positiveSum([1, -2, 3, 4, 5]);
+
+        kiir = kiir + o;
+        list = list + o;
+        positiveSum([-2, -8, 0, 1]);
+
+        var ujTomb = ["auto", "motor", "bicaj", "hajo", "repulo"]
+        document.write("egy tomb igy nez ki: " + ujTomb);
+        var kivagok = ujTomb.slice(1, 2);
+        document.write("<p>kivagtam egy elemet:</p><h2>" + kivagok + "</h2>");
+
+    </script>
+</body>
+
+</html>

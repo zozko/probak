@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>tombok. . .</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <ul id="ide"></ul>
+    <br />
+    <script>
+      let tomb = ['menj', 'irj', 'fuss', 'olvass', 'vasarolj', 'szeress!'];
+      let feladat = tomb.length;
+      let kiir = document.getElementById('ide');
+      kiir.innerHTML = `mara ${feladat} feladatod van`;
+      for (i = 0; i < tomb.length; i++) {
+        let uj = document.createElement('li');
+        uj.innerText = `${i + 1}. feladatod: ${tomb[i]}`;
+        kiir.appendChild(uj);
+      }
+    </script>
+  </body>
+</html>

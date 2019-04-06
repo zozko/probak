@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>floating-olok</title>
+    <style>
+        .alap {
+            width: 300px;
+            height: 100px;
+            background: #444;
+            /* float: left;  */
+            color: #EEE;
+            margin: 5px;
+        }
+
+        .alap:nth-child(odd) {
+            background: #999;
+        }
+
+        .klir {
+            clear: both;
+        }
+
+        .alap2 {
+            width: 300px;
+            height: 300px;
+            background: #444;
+            color: #EEE;
+            margin: 5px;
+            float: right;
+        }
+
+        .alap3 {
+            width: 35px;
+            height: 35px;
+            background: #1CA;
+            color: #EEE;
+            margin: 5px;
+            float: right;
+        }
+
+        .alap0 {
+            width: 500px;
+            height: 100px;
+            background: red;
+            color: #eee;
+            margin: 5px auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alap">A
+        <div class="alap3">B</div>
+    </div>
+    <div class="alap0">C</div>
+    <div class="klir alap2">D</div>
+    <div class="alap2">E</div>
+</body>
+<div class="klir"> </div>
+<button>
+    <a href="magyarazok.html">vissza</a>
+</button>
+
+</html>

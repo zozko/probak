@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EVENT LISTENER</title>
+    <style>
+       
+        button {
+            background-color: green;
+            color: white;
+            font-weight: 800;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <p>az eventlistener mukodesenek a demonstracioja</p>
+    <p>csak nyomd meg a gombot</p>
+    <button id="fogomb">click</button>
+    <hr>
+    <p id="write"></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="magyarazok.html">vissza</a>
+    <script>
+    let gomb = document.getElementById('fogomb');
+    let a=0;
+    let sz = -1;
+    let z = ['red', 'blue', 'orange', 'cyan', 'gray', 'black']
+    let szoveg;
+    // az eventlistener ket attributumot var 1. az esemeny amire figyel, 2. a funkcio, ami leirja mit csinaljon!
+    gomb.addEventListener('click', function() {
+        a++;
+        console.log('megnyomta wazze', a,'x');
+        szoveg = 'megnyomtal wazze '+a+'x';
+        document.getElementById('write').innerHTML = szoveg; 
+        document.getElementsByTagName('button')[0].style.backgroundColor = z[sz];
+        sz == z.length-1? sz=0: sz++;      
+    })
+    </script>    
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paralax | proba</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+
+      a {
+        position: relative;
+        top: 40px;
+        left: 50px;
+        text-decoration: none;
+        margin: 25px 30px;
+        padding: 15px 30px;
+        color: white;
+        border: 1px solid white;
+        border-radius: 10px;
+        background-color: gray;
+        opacity: 0.7;
+
+      }
+      #a,
+      #b,
+      #c,
+      #d {
+        min-height: 100vh;
+      }
+      #a {
+        background-image: url('images/gep1.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      #b {
+        background-image: url('images/gep2.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      #c {
+        background-image: url('images/gep5.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      #d {
+        background-image: url('images/gep4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      .cim {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 40%;
+        margin: 0 auto;
+
+        text-align: center;
+        color: white;
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="a">
+      <h1 class="cim">HELLO PARALAX</h1>
+          <a href="#b">b oldal</a>
+          <a href="#c">c oldal</a>
+          <a href="#d">d oldal</a>
+          <a href="magyarazok.html">vissza</a>
+    </div>
+    <div id="b">      
+          <a href="#a">a oldal</a>
+          <a href="#c">c oldal</a>
+          <a href="#d">d oldal</a>
+    </div>
+    <div id="c">       
+          <a href="#a">a oldal</a>
+          <a href="#b">b oldal</a>
+          <a href="#d">d oldal</a>
+    </div>
+    <div id="d">
+      <a href="#a">a oldal</a>
+      <a href="#b">b oldal</a>
+      <a href="#c">c oldal</a></div>
+  </body>
+</html>

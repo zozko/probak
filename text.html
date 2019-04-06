@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>responsive text</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        body,
+        html {
+            font-size: 10px;
+        }
+
+        .szovegdoboz {
+            display: block;
+            width: 50%;
+            height: 10%;
+            margin: 100px auto;
+            background-color: lightsteelblue;
+            border: 2px solid black;
+            text-align: center;
+            /*font-size: 100%; */
+        }
+
+        .szovegdoboz p {
+            font-size: 2vmin;
+        }
+
+        .tarto {
+            width: 80%;
+            margin: 10 auto;
+            font-size: 16px;
+            background-color: aqua;
+        }
+
+        .remTarto {
+            font-size: 24px;
+            background-color: aquamarine;
+        }
+
+        .emeret {
+            font-size: 1.8em;
+        }
+
+        .rMeret {
+            font-size: 1.8rem;
+        }
+
+        a {
+            font-size: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <p>az alap szoveg nagysaga 8 pixel</p>
+    <div class="szovegdoboz">
+        <p>ez egy reszponziv szoveg nagysaga 2vmin</p>
+    </div>
+    <div class="tarto">
+        <h2 class="emeret">ez egy szoveg amely merete em-ben van megadva</h2>
+        <div class="remTarto">
+            <p class="rMeret">ez egy szoveg amely merete rem-ben van megadva (1.8rem)</p>
+        </div>
+    </div>
+    <a href="magyarazok.html">vissza (3rem nagysagu)</a>
+</body>
+
+</html>

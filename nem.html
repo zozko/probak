@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>just :not</title>
+    <style>
+      ul:hover > li:not(:hover) {
+        opacity: 0.2;
+      }
+
+      .masik li:not(:hover) {
+        background-color: #e6dfdf;
+        color: hotpink;
+      }
+      .masik li:hover {
+        color: orangered;
+        background-color: #e6dfdf;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>first item</li>
+      <li>second item</li>
+      <li>third item</li>
+    </ul>
+
+    <ul class="masik">
+      <li>first item</li>
+      <li>second item</li>
+      <li>third item</li>
+    </ul>
+
+    <button><a href="magyarazok.html">vissza</a></button>
+  </body>
+</html>

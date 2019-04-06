@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>side menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 32px;
+            padding-left: 45px;
+            color: dimgray;
+            text-align: left;
+            transition: padding 0.6s;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+            width: 99%;
+            height: 32px;
+            background-color: white;
+
+        }
+
+        a:hover {
+            color: black;
+            border-left: 4px solid black;
+            width: 100%;
+            padding-left: 15px;
+        }
+
+        .menutarto {
+            position: relative;
+            border-right: 2px dotted black;
+            left: -290px;
+            width: 300px;
+            transition: transform 0.5s ease-in;
+        }
+
+        li:first-child {
+            transition: transform 0.4s ease-out;
+            transition-delay: 0s;
+        }
+
+        li:nth-child(2) {
+            transition: transform 0.4s ease-out;
+            transition-delay: 0.05s;
+        }
+
+        li:nth-child(3) {
+            transition: transform 0.4s ease-out;
+            transition-delay: 0.1s;
+        }
+
+        li:nth-child(4) {
+            transition: transform 0.4s ease-out;
+            transition-delay: 0.15s;
+        }
+
+        .menutarto:hover li:first-child {
+            transform: translateX(290px);
+            transition-delay: 0s;
+            transition-duration: 0.5s;
+        }
+
+        .menutarto:hover li:nth-child(2) {
+            transform: translateX(290px);
+            transition-delay: 0.1s;
+            transition-duration: 0.5s;
+        }
+
+        .menutarto:hover li:nth-child(3) {
+            transform: translateX(290px);
+            transition-delay: 0.2s;
+            transition-duration: 0.5s;
+        }
+
+        .menutarto:hover li:nth-child(4) {
+            transform: translateX(290px);
+            transition-delay: 0.3s;
+            transition-duration: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>side menu</h1>
+
+    <nav class="menutarto">
+        <ul>
+            <li class="elso">
+                <a href="magyarazok.html">home</a>
+            </li>
+            <li class="masodik">
+                <a href="">service</a>
+            </li>
+            <li class="harmadik">
+                <a href="">references</a>
+            </li>
+            <li class="negyedik">
+                <a href="#">contact</a>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+
+</html>

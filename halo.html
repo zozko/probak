@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GRID izek</title>
+    <style>
+        #elsokontener {
+            display: grid;
+            grid-template-columns: repeat(3, 50px);
+            grid-template-rows: 100px;
+            grid-gap: 20px;
+            place-items: start end;
+        }
+
+        #masodik_kontener {
+            display: grid;
+            grid-template-rows: 1fr 2fr 3fr;
+            grid-gap: 2.5px;
+            grid-auto-flow: column;
+
+        }
+
+        .elem {
+            text-align: center;
+            background-color: aquamarine;
+            border: 1px solid blue;
+            padding: 15px;
+        }
+
+        .belem {
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="elsokontener">
+        <div class="elem">1</div>
+        <div class="elem">2</div>
+        <div class="elem">3</div>
+        <div class="elem">4</div>
+        <div class="elem">5</div>
+        <div id="masodik_kontener" class="elem">
+            <div class="belem">A</div>
+            <div class="belem">B</div>
+            <div class="belem">C</div>
+            <div class="belem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, ratione!</div>
+        </div>
+        <div class="elem">6</div>
+        <div class="elem">9</div>
+        <div class="elem">7</div>
+        <div class="elem">10</div>
+        <div class="elem">11</div>
+        <div class="elem">12</div>
+        <div class="elem">13</div>
+        <div class="elem">14</div>
+        <div class="elem">15</div>
+    </div>
+</body>
+
+</html>

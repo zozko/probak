@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.typekit.net/tet0uig.css">
+    <title>elotuno szoveg</title>
+    <style>
+        /*a letoltott .otf filet igy lehet importalni    */
+        @font-face {
+            font-family: BabesNeue;
+            src: url('fontos/BebasNeue.otf');
+        }
+
+        .szoveg {
+            position: relative;
+            font-size: 8em;
+            text-align: center;
+            letter-spacing: 25px;
+            font-family: BabesNeue, sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: rgba(10, 70, 10, 0);
+            animation: elore 1.5s linear 3s;
+            /* az animation-fill-mode  szabalyozza melyik allasba maradjon az animacio utan az elem */
+            animation-fill-mode: forwards;
+
+        }
+
+        /* .szoveg::after {
+            content: "";
+            opacity: 1;
+            bottom: 0;
+            bottom: 0;
+        }
+
+        */
+        body {
+            padding: 0;
+            margin: 0;
+            background-image: url(images/nschw.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        a {
+            position: absolute;
+            top: 90%;
+            left: 90%;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+
+        @keyframes elore {
+            0% {
+                display: block;
+                bottom: -50px;
+            }
+            10% {
+                bottom: -45px;
+                color: #98a21d;
+            }
+            20% {
+
+                bottom: -40px;
+            }
+            30% {
+
+                bottom: -35px;
+            }
+            40% {
+
+                bottom: -30px;
+            }
+            50% {
+
+                bottom: -25px;
+            }
+            60% {
+
+                bottom: -20px;
+            }
+            70% {
+
+                bottom: -15px;
+            }
+            80% {
+
+                bottom: -10px;
+            }
+            90% {
+
+                bottom: -5px;
+            }
+            100% {
+                color: rgba(10, 70, 10, 1);
+                bottom: 0px;
+                opacity: 1;
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="szoveg">hello zoli</h1>
+    <a href="magyarazok.html">vissza</a>
+</body>
+
+</html>

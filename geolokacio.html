@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>geolokacio engedelyzese</title>
+  </head>
+  <body>
+    <p>
+      ezen ez oldalon egy promises script felugyeli a geolokacio engedelyezeset
+    </p>
+    <p id="uzi"></p>
+    <script>
+      var lalo;
+      var getPosition = function(options) {
+        return new Promise(function(resolve, reject) {
+          navigator.geolocation.getCurrentPosition(resolve, reject, options);
+        });
+      };
+
+      getPosition()
+        .then(pos => {
+          console.log(pos);
+          latitude = pos.coords.latitude;
+          longitude = pos.coords.longitude;
+          lalo = { lat: this.latitude, lng: this.longitude };
+          console.log(lalo);
+
+          /*
+          document.getElementById('uzi').innerHTML =
+            latitude + ' | ' + longitude; */
+        })
+        .catch(err => {
+          console.error(err.message);
+          document.getElementById('uzi').innerHTML = err.message;
+        });
+
+      function wait(ms) {
+        return new Promise(function(resolve) {
+          console.log('a promisben vagyok, alattam kiirva a THIS:');
+          console.log(this);
+          window.setTimeout(function() {
+            resolve();
+          }, ms);
+        });
+      }
+
+      var miliseconds = 2000;
+      wait(miliseconds).then(finish);
+
+      function finish() {
+        console.log('THE END');
+      }
+    </script>
+  </body>
+</html>

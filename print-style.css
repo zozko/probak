@@ -1,0 +1,28 @@
+@page {
+  margin: 0cm;
+}
+.szoveg img {
+  display: block;
+  width: 200px;
+  height: 70px;
+  margin: 0 auto;
+}
+
+h1,
+h3,
+p {
+  margin: 30px 10px;
+}
+
+.lab {
+  position: absolute;
+  bottom: 1cm;
+  width: 100%;
+  text-align: center;
+}
+.lab p {
+  position: relative;
+  width: 40%;
+  margin: 0 auto;
+  color: gray;
+}

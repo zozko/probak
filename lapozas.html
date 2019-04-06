@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>gorgetes</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style>
+        #aaa {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background-color: aquamarine;
+        }
+
+        #bbb {
+            position: relative;
+            top: 80vh;
+            width: 90%;
+            margin: 0 auto;
+            height: 80vh;
+            background-color: blue;
+            opacity: 0.7;
+        }
+
+        #aGomb {
+            position: sticky;
+            margin: 10px;
+            top: 10px;
+        }
+
+        #bGomb {
+            position: sticky;
+            top: 40vh;
+        }
+
+        .benne {
+            position: relative;
+            width: 50%;
+            height: 10vh;
+            background-color: crimson;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="aaa">
+        <button id="aGomb">le</button>
+    </div>
+    <div id="bbb">
+
+        <h1>marad</h1>
+        <button id="bGomb">fel</button>
+        <div class="benne">
+
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#bGomb").click(function () {
+                // alert("megnyomtad fel gombot");
+                $path = $("#bbb").offset().top;
+                $("body").animate({ scrollTop: $path }, 1000);
+
+            });
+            $("#aGomb").click(function () {
+                // alert("megnyomtad a le gombot");
+                $path = $("#aaa").offset().top;
+                $("body").animate({ scrollTop: $path }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>

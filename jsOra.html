@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>classic clock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Monofett');
+        body {
+            margin: 0;
+
+            background-image: url(images/nschw.jpg);
+            background-size: 100vw 100vh;
+            background-repeat: no-repeat;
+
+        }
+
+        .tok {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 10px solid silver;
+            border-radius: 50%;
+            background-color: antiquewhite;
+            box-shadow: 3px 3px 5px black;
+        }
+
+        .mutato {
+            position: absolute;
+            transform: rotate(-90deg);
+            top: 50%;
+            left: 50%;
+            /*transform: translate(-50%, -50%);*/
+            transform-origin: 0%;
+
+            transition-timing-function: ease-out;
+            box-shadow: 0px 2.5px 7.5px gray;
+        }
+
+        .kis {
+            width: 30%;
+            border: 6px solid black;
+            border-bottom-right-radius: 60%;
+            border-top-right-radius: 60%;
+            z-index: 1;
+        }
+
+        .nagy {
+            width: 40%;
+            border: 3px solid black;
+            border-bottom-right-radius: 60%;
+            border-top-right-radius: 60%;
+            z-index: 10;
+        }
+
+        .mp {
+            width: 45%;
+            border: 1px solid rgb(10, 99, 216);
+            z-index: 100;
+        }
+
+        .oralap {
+            position: relative;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            text-align: center;
+            font-family: 'Monofett', cursive;
+            color: black;
+            font-size: 1.35em;
+        }
+
+        .digital {
+            position: relative;
+            top: 100%;
+            left: 50%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="tok">
+            <div class="kis mutato"></div>
+            <div class="nagy mutato"></div>
+            <div class="mp mutato"></div>
+            <p class="oralap">zozclock</p>
+            <div class="digital">12:00:00</div>
+        </div>
+    </div>
+    <button>
+        <a href="magyarazok.html">vissza</a>
+    </button>
+    <script>
+        const mp_mutato = document.querySelector('.mp');
+        const kis_mutato = document.querySelector('.kis');
+        const nagy_mutato = document.querySelector('.nagy');
+        function idoAllito() {
+            let ido = new Date();
+            let sec = ido.getSeconds();
+            let perc = ido.getMinutes();
+            let ora = ido.getHours();
+
+            let secDeg = (sec / 60) * 360;
+            let percDeg = (perc / 60) * 360;
+
+            let oraDeg = (((ora / 12) * 360) - 360) + (percDeg / 12);
+            /*console.log(oraDeg); */
+            //oramutatok beallitas
+            mp_mutato.style.transform = `rotate(${secDeg - 90}deg)`;
+            nagy_mutato.style.transform = `rotate(${percDeg - 90}deg)`;
+            kis_mutato.style.transform = `rotate(${oraDeg - 90}deg)`;
+            /*   kismutato beallitasa
+                        if (perc >= 0 && perc < 15) {
+                            kis_mutato.style.transform = `rotate(${oraDeg - 90}deg)`;
+                        } else if (perc >= 15 && perc < 30) {
+                            kis_mutato.style.transform = `rotate(${oraDeg - (90 - 7.5)}deg)`;
+                        } else if (perc >= 30 && perc < 45) {
+                            kis_mutato.style.transform = `rotate(${oraDeg - (90 - (2 * 7.5))}deg)`;
+                        } else if (perc >= 45 && perc < 60) {
+                            kis_mutato.style.transform = `rotate(${oraDeg - (90 - (3 * 7.5))}deg)`;
+                        }
+            */
+            document.getElementsByClassName('digital')[0].innerHTML = `<b>${ora} : ${perc} : ${sec}</b>`;
+        };
+        setInterval(idoAllito, 1000);
+    </script>
+</body>
+
+</html>

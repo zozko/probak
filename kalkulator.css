@@ -1,0 +1,64 @@
+body {
+  background-color: burlywood;
+  min-width: 550px;
+}
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#kijelzo_tarto {
+  width: 90%;
+  height: 140px;
+  margin: 0 auto;
+  background-color: black;
+  border: 3px solid silver;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#kijelzo {
+  width: 90%;
+  height: 100px;
+  background-color: darkgray;
+  margin: 15px auto;
+  text-align: end;
+  padding: 7.5px 20px;
+  line-height: 80px;
+  font-size: 90px;
+  font-family: 'VT323', monospace;
+  border: 2.5px inset silver;
+}
+
+#gombok {
+  width: 90%;
+  height: 450px;
+  background-color: #1e1e1e;
+  margin: 2.5px auto;
+  border: 3px solid silver;
+  border-radius: 8px;
+  display: grid;
+  padding: 35px;
+  grid-template-columns: repeat(5, minmax(30px, 1fr));
+  grid-gap: 15px;
+}
+.gomb {
+  font-size: 1.8em;
+  border-radius: 5px;
+}
+.szam_gomb {
+  background-color: #f7f79d;
+  background: radial-gradient(#f6f6d7, #f7f79d);
+}
+.jel_gomb {
+  color: white;
+  background-color: #402894;
+  font-size: 2.5em;
+}
+.off {
+  background-color: red;
+}
+
+.egyenlo {
+  grid-column: span 2;
+}

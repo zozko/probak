@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>kocka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :target {
+            transition-duration: 0.3s;
+            transform: rotateX(90deg);
+        }
+
+        /* X menugomb */
+
+
+        #nyilt {
+            position: absolute;
+            width: 25px;
+            height: 26px;
+            display: block;
+            top: 50px;
+            left: 50px;
+            text-decoration: none;
+            transition-duration: 0.3s;
+        }
+
+        #nyilt i:first-child {
+            position: relative;
+            top: 11.6px;
+            left: 2px;
+            display: block;
+            width: 90%;
+            height: 2px;
+            background-color: black;
+            transform: rotate(45deg);
+        }
+
+        #nyilt i:last-child {
+            position: relative;
+            top: 10.4px;
+            left: 1.5px;
+            display: block;
+            width: 90%;
+            height: 2px;
+            background-color: black;
+            transform: rotate(-45deg);
+        }
+
+
+
+        /* burger menugomb */
+
+
+        #alap {
+            display: block;
+            position: absolute;
+            width: 25px;
+            height: 26px;
+            top: 50px;
+            left: 50px;
+            transition-duration: 0.3s;
+            z-index: 10;
+
+        }
+
+        #alap i {
+            position: relative;
+            display: block;
+            width: 80%;
+            height: 2px;
+            margin: 5px auto;
+            background-color: black;
+        }
+
+        ul {
+            list-style-type: none;
+            text-transform: uppercase;
+            line-height: 2em;
+        }
+
+        .menu_elem {
+            position: relative;
+            top: 50px;
+        }
+
+        /* #nyilt:target+ul .menu_elem {
+            background-color: aquamarine;
+            transform: translateY(-400px);
+        }
+        */
+    </style>
+</head>
+
+<body>
+    <nav>
+
+        <!-- X menu -->
+        <a href="#nyilt">
+            <div id="nyilt">
+                <i></i>
+                <i></i>
+                <ul class="menu_elem">
+                    <li><a href="magyarazok.html">home</a></li>
+                    <li><a href="bmAnim.html">references</a></li>
+                    <li>contact</li>
+                </ul>
+            </div>
+        </a>
+
+        <!-- alap menu -->
+        <a href="#alap" target="">
+            <div id="alap">
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+        </a>
+    </nav>
+
+    <p>a terget elem igy nem mukodik, mert a :target, csak az elso kattintas utan aktivalodik, igy amig nincs target
+        addig mind a ket elem aktiv</p>
+
+
+</body>
+
+</html>

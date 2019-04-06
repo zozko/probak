@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<style type="text/css">
+		body {
+			background-color: black;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+
+		.felsokontener {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100px;
+			background-color: gray;
+			z-index: 1;
+		}
+
+		.egy {
+			position: fixed;
+			background-color: white;
+			width: 90vw;
+			height: 10vh;
+			margin-left: 5%;
+			border: 2px solid yellow;
+		}
+
+		.fentketto {
+			position: sticky;
+			display: block;
+			background-color: brown;
+			top: 15px;
+			width: 60%;
+			height: 40px;
+			margin: 0 5%;
+			outline: 1px solid lightblue;
+			font-variant: small-caps;
+		}
+
+		.fentketto img {
+			float: left;
+		}
+
+		.fentketto a {
+			position: relative;
+			display: inline-block;
+			top: 10px;
+			left: 55%;
+			text-decoration: none;
+			color: whitesmoke;
+			width: 100px;
+			height: 20px;
+			margin: 0;
+			text-align: center;
+		}
+
+		.koztes {
+			position: relative;
+			height: 140px;
+			text-align: center;
+			background-image: linear-gradient(transparent 10%, silver 70%);
+
+			color: yellow;
+		}
+
+		#cimMutato {
+			transition: 3s;
+			color: black;
+		}
+
+		.dumatarto {
+			position: relative;
+			display: flow-root;
+			background-color: silver;
+			width: 100%;
+			height: 100%;
+		}
+
+		.ketto {
+			position: relative;
+			margin-left: 5%;
+			background-color: red;
+			width: 29.2%;
+			height: 600px;
+			border: 2px solid yellow;
+			float: left;
+			z-index: 0;
+		}
+
+		.harom {
+			position: sticky;
+			background-color: blue;
+			width: 60%;
+			height: auto;
+			margin-right: 5%;
+			border: 2px solid yellow;
+			float: right;
+			letter-spacing: 1em;
+			z-index: 0;
+		}
+
+		.benti_kep {
+			width: 150px;
+			position: relative;
+			left: 200px;
+		}
+
+		.negy {
+			position: relative;
+			width: 100%;
+			height: 100px;
+			float: right;
+			background-color: green;
+			border: 2px solid yellow;
+
+		}
+
+		.kip img {
+			width: 20%;
+			position: relative;
+			top: 90%;
+			left: 50%;
+			transform: translate(-50%, 0);
+			-webkit-transform: translate(-50%, 0);
+		}
+
+		a {
+			display: flex;
+		}
+
+
+		#telefon {
+			position: fixed;
+			display: inline;
+			top: 300px;
+			max-height: 40px;
+			right: -120px;
+			z-index: 100;
+			transition: 0.5s;
+		}
+
+		#telefon a {
+			text-decoration: none;
+			float: left;
+			color: black;
+		}
+
+		#telefon span {
+			position: relative;
+			bottom: 8px;
+		}
+
+		#telefon:hover {
+			right: 1px;
+			background-color: cyan;
+			/* width: 145px; */
+		}
+
+		.ragados {
+			width: 200px;
+			height: auto;
+			position: sticky;
+			top: 30px;
+		}
+
+		.listaForma {
+			list-style-type: square;
+		}
+
+		#popUpBT {
+			width: 200px;
+			height: 70px;
+			padding: 0;
+			margin: 0;
+			border-style: unset;
+		}
+
+		#popUpBT img {
+			height: 100%;
+			cursor: pointer;
+		}
+
+
+		/*     #################################     POPUP     #########################     */
+
+		#maxPopUp {
+			display: none;
+			overflow: hidden;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 2;
+		}
+
+		#nagyLogo {
+			position: fixed;
+			margin: 150px 15%;
+			width: 75%;
+			opacity: 1.0;
+			z-index: 4;
+			cursor: pointer;
+		}
+
+		header,
+		footer {
+			background-color: white;
+			background: linear-gradient(to top, white, green);
+
+		}
+
+		/*     ================================     POPUP END     =========================     */
+	</style>
+</head>
+
+<body>
+	<header class="felsokontener">
+		<div class="egy">
+			<button id="popUpBT" onclick="hopp()">
+				<img src="img/20.jpg" width="100%">
+			</button>
+		</div>
+	</header>
+
+	<nav class="fentketto">
+		<img src="img/20.jpg" width="15%">
+		<a href="http://www.prestel.sk/">PRES-TEL</a>
+		<a href="http://webtest.nhely.hu">Ria´s Rent</a>
+	</nav>
+
+	<div id="telefon">
+
+		<a href="tel: 0905607083">
+			<img src="img/icons8-call-32.png" width="30px" height="30px" value="+421905607083">
+			<span>+421 905 607083</span>
+		</a>
+		<a href="viber://pa?chatURI<public account URI>" context="abcdefg" text="hello">VIBER</a>
+
+	</div>
+
+
+	<div class="koztes">
+		<br>
+		<h1 id="cim" onclick="showAdress ()" style="cursor: help;">A CIM</h1>
+		<h3 id="cimMutato"></h3>
+	</div>
+
+		<img class="ragados" src="img/kep1.jpg">
+	<div class="dumatarto">
+		<div class="ketto kip">
+		</div>
+
+		<div class="harom">
+			<h1>duma duma duma cim..</h1>
+			<hr>
+			<p>1 - egy</p>
+			<p>2 - ketto</p>
+			<p>3 - harom</p>
+			<p>4 - negy</p>
+			<p>5 - ot</p>
+			<p>6 - hat</p>
+			<p>7 - het</p>
+			<p>8 - nyooc</p>
+			<hr>
+			<img class="benti_kep" src="img/kep1.jpg">
+			<hr>
+			<hr>
+		</div>
+		<hr>
+
+		<h5>ide jon a ceg mottoja</h5>
+	</div>
+
+	<footer class="negy">
+		<ul class="listaForma">
+			<li>a</li>
+			<li>b</li>
+			<li>c</li>
+		</ul>
+	</footer>
+
+
+
+	<!--   ################################      POPUP WINDOW     ######################     -->
+	<div id="maxPopUp">
+		<img id="nagyLogo" src="img/20.jpg" onclick="popUpOff()">
+	</div>
+	<!--    ==============================     POPUP END     =================================     -->
+
+	<script type="text/javascript">
+		var show = true;
+		function showAdress() {
+			if (show) {
+				document.getElementById("cimMutato").style.fontSize = document.getElementById("cimMutato").style.fontSize + "1.5em";
+				document.getElementById("cimMutato").innerHTML = "Bartokova 36, 943 01  Šturovo";
+				show = !show;
+			} else {
+				document.getElementById("cimMutato").style.fontSize = null;
+				document.getElementById("cimMutato").innerHTML = " ";
+				show = !show;
+			}
+		}
+
+
+
+		/*      ########################### POPUPSCRIPT     ##########################     */
+		function hopp() {
+			document.getElementById("maxPopUp").style.display = "block";
+		}
+		function popUpOff() {
+			document.getElementById("maxPopUp").style.display = "none";
+		}
+/*     ========================  POPUPSCRIPT END     ======================     */
+	</script>
+
+</body>
+
+</html>

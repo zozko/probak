@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>:target</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        #a:target {
+            background-color: aquamarine;
+            border: 5px solid black;
+        }
+
+        #b:target {
+            background-color: burlywood;
+            border: 5px solid black;
+        }
+
+        #a {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+
+        #b {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+
+        .tartalom {
+            padding: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="a">
+        <p class="tartalom">A</p>
+    </div>
+    <div id="b">
+        <p class="tartalom">B</p>
+    </div>
+    <div class="elso">
+        <p>
+            <a href="#a">aktivalom az A-t</a>
+        </p>
+    </div>
+    <div class="masoidk">
+        <p>
+            <a href="#b">aktivalom az B-t</a>
+        </p>
+    </div>
+
+    <a href="magyarazok.html">vissza</a>
+
+
+</body>
+
+</html>

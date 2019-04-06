@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flexbox magyarazat</title>
+    <style>
+        .tarto {
+            display: flex;
+        }
+
+        .kocka {
+            display: flex;
+            width: 25%;
+            height: 60px;
+            background-color: aquamarine;
+            margin: 5px 5px;
+            justify-content: center;
+            /*ez helyezi el a gyermek elemet vertikalisan a <h1> es a <p> elemeket */
+            align-items: center;
+            /*
+            text-align: center;
+            line-height: 60px; */
+        }
+
+        .kocka p {
+            width: 100%;
+            text-align: center;
+        }
+
+        .kocka h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .kocka:last-child a {
+            font-size: 46px;
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- a flexbox tartoja-->
+    <div class="tarto">
+        <!-- a flexbox elemei-->
+        <div class="kocka">
+            <h1>hahoy</h1>
+        </div>
+        <div class="kocka">
+            <p>hello</p>
+        </div>
+        <div class="kocka">
+            <p>vilag</p>
+        </div>
+        <div class="kocka">
+            <a href="magyarazok.html">&#8801</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

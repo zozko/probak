@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>osztalyozo pontok alapjan</title>
+  </head>
+  <body>
+    <p>
+      ez a program osztalyoz a megszerzett pontok alapjan, amerikai stilusban
+    </p>
+    <div>
+      <label> Hany pontot szereztel a teszten? </label><br />
+      <input id="pont" type="number" value="0" required placeholder="0" />
+    </div>
+    <div>
+      <label> Mennyi volt a max. elerheto pontszam? </label><br />
+      <input id="max" type="number" value="0" required placeholder="0" />
+    </div>
+    <input type="submit" value="kuld" onclick="szamit()" />
+    <p id="osztalyzat"></p>
+    <a href="magyarazok.html">vissza</a>
+    <script>
+      function szamit() {
+        let pont = document.getElementById('pont').value;
+        let maxPont = document.getElementById('max').value;
+        let eredmeny = (pont / maxPont) * 100;
+        let ertek = '';
+        if (eredmeny > 100) {
+          ertek = 'HIBA';
+          eredmeny = 'rosszul megadott ertek';
+        } else if (eredmeny >= 90) {
+          ertek = 'A';
+        } else if (eredmeny >= 80) {
+          ertek = 'B';
+        } else if (eredmeny >= 70) {
+          ertek = 'C';
+        } else if (eredmeny >= 60) {
+          ertek = 'D';
+        } else {
+          ertek = 'F';
+        }
+        document.getElementById(
+          'osztalyzat'
+        ).innerText = `Az osztalyzatod: ${ertek}, az elert eredmenyed ${eredmeny}%`;
+      }
+    </script>
+  </body>
+</html>

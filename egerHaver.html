@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>eger haver funkciok</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        #valtozz {
+            width: 100px;
+            height: 100px;
+        }
+
+        .mutato:hover~#valtozz {
+            border: 1px solid black;
+            background: gray;
+        }
+
+        #nevaltozz {
+            position: relative;
+            top: 300;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="mutato">gyere ide</h1>
+    <div id="nevaltozz"></div>
+    <div id="valtozz"></div>
+
+
+    <a href="magyarazok.html">vissza</a>
+</body>
+
+</html>

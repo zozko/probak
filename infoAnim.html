@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>infoablak animacio</title>
+    <style>
+    body {
+        background-color:darkgrey;
+        margin: 0;
+        padding: 0;
+    } 
+    input {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+    .tarto {
+        position: relative;
+        width: 90%;
+        padding: 25px;
+        margin: 0;
+    }   
+    .a {
+        transition: all linear 3s;           
+        position: relative;
+        top: 0px;
+        padding: 10px;
+        width: 100%;
+        height: 3vh;
+        background-color: darkslateblue;
+        color: white;
+        overflow: hidden;
+    }
+    .b {
+        transition: all linear 3s;  
+        position: absolute;
+        top: 0px;
+        width: 0;
+        height: 0;
+        color: transparent;
+        z-index: -100;
+    }
+
+    button {
+        margin: 100px;
+
+    }
+    button  a {
+        color:blue;
+    }
+    .b ul li a {
+        text-decoration: none;
+        color: transparent;
+    }
+    input:checked + .a {    
+           
+        animation: el linear .1s;
+        animation-fill-mode: forwards;
+    }
+    input:checked ~ .b {        
+        animation: elore linear .3s;
+        animation-fill-mode: forwards;
+    }
+    
+    @keyframes el {
+        50% {
+            position: relative;
+            padding: 0;
+            top: 15px;
+        }
+        100% {
+            position: relative;
+            top: 30px;
+            color: transparent;
+            z-index: -10;
+        }    
+    }
+    @keyframes elore {
+        50% {
+            position: relative;
+            top: 0px;
+            width: 100%;
+            background-color: darkslateblue;
+            color: white;
+            padding: 0;
+            height: auto;
+            z-index: 999;
+
+        }
+        100% {
+            position: relative;
+            top: -30px;
+            width: 100%;
+            background-color: darkslateblue;
+            color: white;
+            padding: 10px;
+            height: auto;
+            z-index: 999;
+        }
+    }
+    input:checked ~ .b  .menu li a {        
+        color: white;
+    }
+    .menu {
+        margin: 0;
+    }    
+    </style>
+</head>
+<body>
+    <nav class="tarto">
+        <input type="checkbox" id="navi">
+            <label for="navi">
+                <div class="a">elso</div>
+            </label>
+            <div class="b">
+                <label for="navi">
+                    <ul class="menu">
+                        <li><a href="magyarazok.html">magyarazok</a></li>
+                        <li><a href="kockaMgomb.html">kocka gomb</a></li>
+                        <li><a href="paralaxSite.html">paralax oldal</a></li>
+                        <li><a href="okey.html">okey</a></li>
+                    </ul>
+                </label>
+            </div>
+    
+        </nav>
+        <p>
+            ezen az oldalon egy megnyilo menu van, ha rakattitntasz az elso savra, kinyilik egy uj menu. Ha rakattintasz az uj menure becsukodik.
+        </p>
+        <button>
+            <a href="magyarazok.html">vissza</a>
+        </button>
+    
+    
+</body>
+</html>

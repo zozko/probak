@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NEW TAG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #ujTarto {
+            position: relative;
+            width: 100%;
+            height: 310px;
+            background-color: black;
+            padding: 10px;
+        }
+
+        .uj {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            background-color: aliceblue;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>ezen az oldalon uj &lt; ATG-ok &gt; vannak elhelyzeve amit a Javasript generalt a 10 kicsi kocka</p>
+    <button>
+        <a href="magyarazok.html">vissza</a>
+    </button>
+    <div id="ujTarto"></div>
+    <script>
+        for (i = 0; i < 10; i++) {
+            var newTag = document.createElement("div");
+            var lap = document.getElementById("ujTarto");
+            lap.appendChild(newTag);
+            newTag.setAttribute("class", "uj");
+        }
+    </script>
+</body>
+
+</html>

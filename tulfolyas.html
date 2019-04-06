@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin:0;
+            padding: 0;
+            background-color: lightblue;
+        }
+        .tarto {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            margin: 7.5px;
+            color: white;
+            width: 90%;
+            height:  28px;
+            background-color: blue;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all ease-in-out 0.5s;
+        }
+        .alap {
+            position: absolute;
+            width: inherit;
+            top: 0;
+            text-align: center;
+        }
+        .alap h2 {
+            margin: 0;
+            padding: 0;
+        }
+        .tarto i {
+            position: absolute;
+            display: block;
+            top: 2%;
+            right: 2%;
+            width: 10px;
+            height: 10px;
+            border-right: 3px solid white;
+            border-bottom: 3px solid white;
+            transition: all linear .45s;
+            transform: rotate(45deg);
+        }
+        #tel {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .telefon_kiterjesztes {
+            position: relative;
+            width: 100%;
+            margin: 60px 40px;
+        }
+        .infotarto {
+            position: relative;
+            width: 80%;
+            margin: 5px;
+        }
+        .infotarto h3 {
+            width: 50%;
+            margin: 0;
+            text-align: right;
+        }
+        .infotarto p {
+            position: absolute;
+            top: 0;        
+            right: 10%;
+            width: 30%;
+            margin: 0;
+            line-height: 20.72px;
+            font-size: 18.72px;
+        }
+        .info_blokk {
+            margin: 7.5px;
+        }
+        #tel:checked ~ .tarto {
+            height: 178px;
+        }
+        #tel:checked ~ .tarto i {
+            transform: rotate(-135deg);
+        }
+        #tel_2:checked ~ .tarto {
+            height: 178px;
+        }
+        #tel_2:checked ~ .tarto i {
+            transform: rotate(-135deg);
+        }
+        input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="info_blokk">
+        <input type="checkbox" id="tel">           
+        <nav class="tarto">    
+                <label  class="ny" for="tel">
+                        <i class="nyil"></i>
+                    </label>        
+            <div class="alap">
+                <h2>hivjon fel minket</h2>
+            </div>
+            <div class="telefon_kiterjesztes">
+                <div class="infotarto">
+                    <h3>Zoltán Kiš, konateľ: </h3>
+                    <p>0905 607083</p>
+                </div>
+                <div class="infotarto">
+                    <h3>Peter Laczkó, konateľ: </h3>
+                    <p>0905 315703</p>
+                </div>
+            </div>
+        </nav>
+        <input type="checkbox" id="tel_2">           
+        <nav class="tarto">    
+                <label  class="ny" for="tel_2">
+                        <i class="nyil"></i>
+                    </label>        
+            <div class="alap">
+                <h2>írjon nekunk e-mailt</h2>
+            </div>
+            <div class="telefon_kiterjesztes">
+                <div class="infotarto">
+                    <h3>Zoltán Kiš, konateľ: </h3>
+                    <p>zoltan.kis@prestel.sk</p>
+                </div>
+                <div class="infotarto">
+                    <h3>Peter Laczkó, konateľ: </h3>
+                    <p>peter.laczko@prestel.skd</p>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <button>
+            <a href="magyarazok.html">vissza</a>
+        </button>
+</body>
+</html>

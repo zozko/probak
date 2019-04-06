@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>on key</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .bevitel {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+
+        h1 {
+            position: relative;
+            font-size: 16px;
+            background: #ddd;
+            text-align: center;
+        }
+
+        a {
+            position: absolute;
+            top: 90%;
+            left: 90%;
+            font-size: 24px;
+            color: blue;
+            text-decoration: none;
+        }
+
+        input[type="button"] {
+            display: inline-block;
+            width: 10%;
+        }
+
+        p {
+            color: #999;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bevitel">
+        <label for="szoveg">
+            <b>szovegbevitel: </b>
+            <input type="text" name="duma" id="szoveg" placeholder="irj ide valamit" onkeyup="szovegBe ()" value="">
+            <input type="button" value="up" onclick="nagyobb ()" id="nagy">
+            <input type="button" value="down" onclick="kisebb ()" id="kicsi">
+        </label>
+    </div>
+    <h1 id="szovegkijelzo">hello</h1>
+    <p id="fSize"></p>
+    <a href="magyarazok.html">vissza</a>
+    <script>
+        function szovegBe() {
+            var ujSzoveg = document.getElementById("szoveg").value;
+            document.getElementById("szovegkijelzo").innerText = ujSzoveg;
+        }
+        function nagyobb() {
+            var computedFontSize = window.getComputedStyle(document.getElementById("szovegkijelzo")).fontSize;
+            console.log(computedFontSize);
+            cFontSize = parseFloat(computedFontSize) + 1;
+            document.getElementById("szovegkijelzo").style.fontSize = cFontSize + 'px';
+            document.getElementById("fSize").innerHTML = 'The font-size is: ' + cFontSize + 'px';
+        }
+
+        function kisebb() {
+            var computedFontSize = window.getComputedStyle(document.getElementById("szovegkijelzo")).fontSize;
+            console.log(computedFontSize);
+            cFontSize = parseFloat(computedFontSize) - 1;
+            document.getElementById("szovegkijelzo").style.fontSize = cFontSize + 'px';
+            document.getElementById("fSize").innerHTML = 'The font-size is: ' + cFontSize + 'px';
+        }
+    </script>
+</body>
+
+</html>

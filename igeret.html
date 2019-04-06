@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>promises</title>
+
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .gps-info-box {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        text-align: center;
+
+        transition: all 1s linear;
+      }
+
+      .gps-info-box p {
+        margin: 5px 0;
+        display: block;
+        width: 100%;
+      }
+
+      #info_wrapper {
+        position: absolute;
+        width: 100%;
+        height: 55vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+      }
+      .info-box {
+        position: relative;
+        display: inline-block;
+
+        width: 100%;
+        height: 55vh;
+
+        overflow: hidden;
+      }
+      #hatralevo-ido {
+        position: relative;
+        width: 100%;
+
+        text-align: center;
+
+        transition: all 1s linear;
+      }
+
+      #sunSet {
+        position: absolute;
+        top: 50%;
+        margin: 0 auto;
+
+        width: 20%;
+
+        text-align: center;
+      }
+
+      #sunRise {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin: 0 auto;
+
+        width: 20%;
+
+        text-align: center;
+      }
+
+      #map {
+        width: 60%;
+        height: 100%;
+        margin: 10px auto;
+        border: 5px solid silver;
+      }
+
+      #mapText {
+        display: block;
+        width: 40%;
+        position: relative;
+        margin: 0 auto;
+        text-align: center;
+        top: 50%;
+        transform: translate(0, -50%);
+        font-weight: 600;
+        font-size: 1.5em;
+        animation: forgat 1s linear infinite;
+        transform-origin: 50% 50%;
+      }
+      
+      #mapText::after {
+        content: ' ';
+        position: relative;        
+      }
+      
+      @keyframes forgat {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        50% {
+          transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      #forgo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 15%;
+        height: 50px;
+
+        transform: translate(0, -50%);
+        transform: rotate(-90deg);
+        transform-origin: 0%;
+      }
+
+      #forgo > img {
+        position: absolute;
+        right: 25%;
+
+        width: 50px;
+        height: 50px;
+
+        /* filter: drop-shadow(16px 16px 20px gray); */
+        z-index: 111;
+      }
+
+      #also-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        text-align: center;
+      }
+      #also_wrapper {
+        position: relative;
+        top: 60vh;
+      }
+      /* ### mobil screen ### */
+      @media only screen and (max-width: 600px) {
+        .info-box {
+          display: block;
+          margin: 0;
+          padding: 0;
+        }
+        #map {
+          width: 100%;
+          height: 60vh;
+          border: none;
+          border-top: 3px solid silver;
+          border-bottom: 3px solid silver;
+        }
+        #sunSet {
+          position: absolute;
+          width: 100%;
+          top: 65vh;
+        }
+        #sunRise {
+          position: relative;
+          width: 100%;
+          top: 8vh;
+        }
+        #forgo {
+          width: 40%;
+        }
+        #also-info {
+          display: none;
+        }
+        #hatralevo-ido {
+          margin: 10px 0;
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="gps-info-box">
+      <p>your GPS coords:</p>
+      <p><span class="a"></span> <span class="b"></span> <br /></p>
+    </div>
+    <h1 id="hatralevo-ido">00:00</h1>
+
+    <div id=info_wrapper>
+      <div class="info-box">
+        <!-- ebben van a terkep es a kijelzett informaciok -->
+        <p id="sunSet"></p>
+        <div id="map"><p id="mapText">&#x231B</p></div>
+        <p id="sunRise"></p>
+        <!-- az alabbi divbe van a Napocska -->
+        <div id="forgo"></div>
+      </div>
+    </div> <!--info wrapper end-->
+
+    <div id="also_wrapper">
+      <div id="also-info"><p id="napsutes"></p></div>
+    </div>
+    <a href="magyarazok.html">vissza</a>
+
+    <script></script>
+    <script async>
+      // ez a script olvassa be a koordinatakat...
+      var latitude;
+      var longitude;
+      var lalo;
+      var terkep;
+
+      var getPosition = function(options) {
+        return new Promise(function(resolve, reject) {
+          navigator.geolocation.getCurrentPosition(resolve, reject, options); //ellenorzi, hogy van-e geolokacio lehetoseg
+        });
+      };
+
+      getPosition()
+        .then(pos => {
+          console.log(pos);
+          latitude = pos.coords.latitude;
+          longitude = pos.coords.longitude;
+          lalo = { lat: this.latitude, lng: this.longitude };
+          document.getElementById('mapText').style.animation = 'none';
+          document.getElementsByClassName('a')[0].innerHTML = latitude + ' | ';
+          document.getElementsByClassName('b')[0].innerHTML = longitude;
+          initMap();
+          kalkulal();
+          /*
+             document.getElementById('uzi').innerHTML =
+               latitude + ' | ' + longitude; */
+        })
+        .catch(err => {
+          console.error(err.message);
+          document.getElementById('mapText').style.animation = 'none';
+          document.getElementById('mapText').innerHTML = err.message;
+        });
+      /*
+       if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(showPosition);
+       } else {
+         document.getElementsByClassName('uzi')[0].innerHTML =
+           'Geolocation is not supported by this browser.';
+       }
+
+       function showPosition(position) {
+         latitude = position.coords.latitude;
+         longitude = position.coords.longitude;
+         lalo = { lat: this.latitude, lng: this.longitude };
+         document.getElementsByClassName('a')[0].innerHTML = latitude + ' | ';
+         document.getElementsByClassName('b')[0].innerHTML = longitude;
+         terkep = true;
+       } */
+    </script>
+    <script>
+      // ez a script hozza letre a tekepet... csak azutan futhat, hogy vannak koordinatak!
+      var map;
+      function initMap() {
+        // console.log('the map api is running');
+        map = new google.maps.Map(document.getElementById('map'), {
+          gestureHandling: 'none', //---> nem engedi athelyezni a terkepet
+          fullscreenControl: false, //---> nem engedi teljes kepernyore valtani a terkepet
+          streetViewControl: false,
+          center: lalo, // a terkep kozeppontjanak koordinataja
+          zoom: 12 // 0 vagy 1 az egesz vilag; 2 a kontinens; 10 a varos; 15 az utca; 20 az epulet
+        });
+        var marker = new google.maps.Marker({
+          position: lalo,
+          map: map,
+          title: 'YOU!'
+        });
+      }
+    </script>
+    <!-- ez a script hivja mega a terkep letrehozasat -->
+    <script>
+      let ejfel = 1000 * 60 * 60 * 24; //---> ebben a valtozoban van az ido ejfelig = 24:00
+      let napVanFent = true;
+      var kep = 'images/Moon.png';
+      let countS = 0;
+      /*
+            var promise = new Promise(function(resolve, reject) {
+              setTimeout(() => {
+                console.log('waiting for coords');
+                if (terkep) {
+                  resolve('i have coords');
+                } else {
+                  reject(Error('no coordinates'));
+                }
+              }, 3600);
+            });
+
+            promise.then(
+              function(result, err) {
+                console.log(result);
+                console.log(latitude + ' & ' + longitude);
+                initMap();
+                kalkulal();
+              },
+              function(err) {
+                console.log(err);
+                document.getElementById('mapText').innerHTML =
+                  err.message +
+                  'Please check your internet connection or reload the page with https:// ! (press: fn + F5)';
+              }
+
+            );
+            */
+      var ma = new Date();
+      var elsonap = new Date(ma.getFullYear(), 0, 1);
+      var N = Math.round((ma - elsonap) / 1000 / 60 / 60 / 24 + 0.5);
+      console.log('ma az év ' + N + '. napja van!');
+      var d = new Date();
+      var localOffset = d.getTimezoneOffset();
+      // console.log(localOffset + ' az UTC-hez kepest');
+      localOffset = localOffset / 60;
+      // console.log('UTC hez kepest a helyi ido oraban: ' + localOffset);
+
+      function computeSunrise(day, sunrise) {
+        /*Sunrise/Sunset Algorithm taken from
+                          http://williams.best.vwh.net/sunrise_sunset_algorithm.htm
+                          inputs:
+                              day = day of the year
+                              sunrise = true for sunrise, false for sunset
+                          output:
+                              time of sunrise/sunset in hours */
+
+        var zenith = 90.83333333333333;
+        var D2R = Math.PI / 180;
+        var R2D = 180 / Math.PI;
+        // convert the longitude to hour value and calculate an approximate time
+        var lnHour = longitude / 15;
+        var t;
+        if (sunrise) {
+          t = day + (6 - lnHour) / 24;
+        } else {
+          t = day + (18 - lnHour) / 24;
+        }
+        //calculate the Sun's mean anomaly
+        M = 0.9856 * t - 3.289;
+        //calculate the Sun's true longitude
+        L =
+          M +
+          1.916 * Math.sin(M * D2R) +
+          0.02 * Math.sin(2 * M * D2R) +
+          282.634;
+        if (L > 360) {
+          L = L - 360;
+        } else if (L < 0) {
+          L = L + 360;
+        }
+        //calculate the Sun's right ascension
+        RA = R2D * Math.atan(0.91764 * Math.tan(L * D2R));
+        if (RA > 360) {
+          RA = RA - 360;
+        } else if (RA < 0) {
+          RA = RA + 360;
+        }
+        //right ascension value needs to be in the same qua
+        Lquadrant = Math.floor(L / 90) * 90;
+        RAquadrant = Math.floor(RA / 90) * 90;
+        RA = RA + (Lquadrant - RAquadrant);
+
+        //right ascension value needs to be converted into hours
+        RA = RA / 15;
+
+        //calculate the Sun's declination
+        sinDec = 0.39782 * Math.sin(L * D2R);
+        cosDec = Math.cos(Math.asin(sinDec));
+
+        //calculate the Sun's local hour angle
+        cosH =
+          (Math.cos(zenith * D2R) - sinDec * Math.sin(latitude * D2R)) /
+          (cosDec * Math.cos(latitude * D2R));
+        var H;
+        if (sunrise) {
+          H = 360 - R2D * Math.acos(cosH);
+        } else {
+          H = R2D * Math.acos(cosH);
+        }
+        H = H / 15;
+
+        //calculate local mean time of rising/setting
+        T = H + RA - 0.06571 * t - 6.622;
+
+        //adjust back to UTC
+        UT = T - lnHour; // lnHour = localoffset?
+        if (UT > 24) {
+          UT = UT - 24;
+        } else if (UT < 0) {
+          UT = UT + 24;
+        }
+
+        //convert UT value to local time zone of latitude/longitude
+        localT = UT - localOffset; // localOffsetnek a timezonet kell beallitania!
+
+        //convert to Milliseconds
+        return localT * 3600 * 1000;
+      }
+
+      //---> ez a funkcio inditja a napkelte es napnyugta kiszamitasat
+      function kalkulal() {
+        var sunrise = computeSunrise(N, true);
+        var sunset = computeSunrise(N, false);
+        var napAzEgen = sunset - sunrise;
+        // console.log('Nap az Egen milisecben: ' + napAzEgen);
+        var napF = convertMS(sunrise);
+        var napL = convertMS(sunset);
+        //console.log('a napkelete: ' + napF + ' a napnyugta: ' + napL);
+
+        document.getElementById('sunSet').innerHTML = 'sunset at ' + napL;
+        document.getElementById('sunRise').innerHTML = 'sunrise at ' + napF;
+
+        idoHasonlito(sunrise, sunset, localOffset);
+
+        napF = parseFloat(napF);
+        napL = parseFloat(napL);
+        var sunOnSky = convertMS(napAzEgen);
+
+        document.getElementById('napsutes').innerHTML =
+          'Today the Sun is ' + sunOnSky + 'h in the sky!';
+      }
+
+      function convertMS(ms) {
+        var d, h, m, s;
+        s = Math.floor(ms / 1000);
+        m = Math.floor(s / 60);
+        s = s % 60;
+        h = Math.floor(m / 60);
+        m = m % 60;
+        d = Math.floor(h / 24);
+        h = h % 24;
+        if (h > 30) {
+          m += 1;
+        }
+        if (h < 10) h = '0' + h;
+        if (m < 10) m = '0' + m;
+        return h + ':' + m;
+        //return { d: d, h: h, m: m, s: s };
+      }
+
+      // ez a funkcio teszi ra a Napot/Holdat a terkepre:
+      function napAterkepre(nVF) {
+        console.log('napVanFent valtozo erteke a terkeprajzolasban : ' + nVF);
+        if (nVF) {
+          kep = 'images/NAP.png';
+          document.getElementById('forgo').style.display = 'none';
+          document.body.style.backgroundColor = 'wheat';
+          document.body.style.color = 'midnightblue';
+          document.getElementById('forgo').style.display = 'block';
+        } else {
+          kep = 'images/Moon.png';
+          document.getElementById('forgo').style.display = 'nonen';
+          document.body.style.backgroundColor = 'midnightblue';
+          document.body.style.color = 'wheat';
+          document.getElementById('forgo').style.display = 'block';
+        }
+        setTimeout(() => {
+          let NapHely = document.getElementById('forgo');
+          let ujNapElem = document.createElement('img');
+          ujNapElem.setAttribute('src', kep);
+          ujNapElem.setAttribute('alt', 'sun on the map');
+          ujNapElem.setAttribute('onclick', 'mozog()');
+          NapHely.appendChild(ujNapElem);
+        }, 100);
+      }
+
+      function idoHasonlito(fent, lent, helyiido) {
+        //---> fent = sunrise, lent = sunset, helyiido = localoffset
+        let hatraLevoIdo;
+        // console.log(localOffset + 'az UTChez kepest ennyi ora kulonbseg');
+        if (localOffset < 0) {
+          localOffset = localOffset * -1;
+        } else {
+          localOffset = localOffset * -1;
+        }
+
+        // console.log(localOffset + ' atszamitva');
+        let merek = setInterval(() => {
+          countS += 1;
+          console.log('a szamlalo :' + countS);
+          if (countS == 30) {
+            document.getElementsByClassName('gps-info-box')[0].style.opacity =
+              '0';
+            document.getElementById('hatralevo-ido').style.margin = '0';
+            document.getElementById('hatralevo-ido').style.top = '-30px';
+            document.getElementById('hatralevo-ido').style.fontSize = '4.5em';
+          }
+
+          //########manualis isdobeallitas ##################################
+          var t = new Date();
+          //let levonni = t.getFullYear() / t.getMonth() / t.getDay();
+
+          var pontosIdo = t.getTime(); //---> a pontos ido ms-ben 1970 tol
+          pontosIdo = t.setHours(7);
+          pontosIdo = t.setMinutes(0);
+          pontosNap = Math.floor(pontosIdo / 1000 / 60 / 60 / 24);
+          pontosNap = pontosNap * 1000 * 60 * 60 * 24;
+          maiIdo = pontosIdo - pontosNap;
+          maiIdo = 1000 * 60 * 60 * localOffset + maiIdo;
+
+          console.log('ido amit en allitottam be: ' + maiIdo);
+
+          console.log('a pontos ido beallitva:' + maiIdo);
+          console.log('idok fent es lent: ' + fent + ' ---- ' + lent);
+
+          //mai ido manualis beallitasana a    ----VEGE! */
+          /*
+                var t = new Date();
+                var pontosIdo = t.getTime(); //---> a pontos ido ms-ben 1970 tol
+                pontosNap = Math.floor(pontosIdo / 1000 / 60 / 60 / 24);
+                pontosNap = pontosNap * 1000 * 60 * 60 * 24;
+                maiIdo = pontosIdo - pontosNap;
+                maiIdo = 1000 * 60 * 60 * localOffset + maiIdo; //---> ebben a valtozoban van a pontos ido ms-ban
+                console.log('a pontos ido NEM beallitva:' + maiIdo);
+      */
+          if (maiIdo >= fent && maiIdo < lent) {
+            //---> ha a pontos ido a napfelkelte utan van de a napnyugta elott
+            hatraLevoIdo = lent - maiIdo;
+            napVanFent = true;
+            napAterkepre(napVanFent);
+            // console.info('amig lemegy a nap =' + hatraLevoIdo + napVanFent);
+          } else if (maiIdo => lent) {
+            //---> ha a pontos ido a napnyugta utan van, akkor a napfelkelteig
+            hatraLevoIdo = ejfel - maiIdo + fent;
+            napVanFent = false;
+            // console.info('amig felkel a nap = ' + hatraLevoIdo + napVanFent);
+            napAterkepre(napVanFent);
+          }
+          var idoFokokhoz = Math.floor(maiIdo / 1000 / 60);
+          var napFok = -90 + (360 / 1440) * idoFokokhoz;
+          //console.log('ennyi fokonn all / pill. a Nap :' + napFok);
+
+          mozog(napFok); //---> ez a funkcio mozgatja a napot a terkepen
+          /*
+                console.log(
+                  'a napfelkelte: ' +
+                    fent +
+                    ' es a napnyugta itt : ' +
+                    lent +
+                    ' es a pontosi ido most: ' +
+                    maiIdo
+                );
+                */
+          var hanyOra = convertMS(hatraLevoIdo); //---> ebben a valtozoban van a pontos helyi ido mar ora formatumban!
+          document.getElementById('hatralevo-ido').innerHTML = hanyOra;
+        }, 1000);
+      }
+
+      function mozog(nF) {
+        var napForgo = document.getElementById('forgo');
+        napForgo.style.transform = 'rotate(' + nF + 'deg)';
+      }
+    </script>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhu0hhanRczprulEWaG1776phvDkaAbQ4&v=3.34&callback=promise"
+      defer
+    ></script>
+  </body>
+</html>
