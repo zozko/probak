@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>szamarful</title>
+</head>
+<style type="text/css">
+
+    p {
+    	position: relative;
+    	width: 300px;
+    	padding: 2em;
+    	text-align: center;
+    	background-color: gray;
+    }
+	
+	p::after {
+		content:"";
+		position: absolute;		
+		bottom: 0;
+		right: 0;
+		border: 20px solid transparent;
+        background-color: white;
+        border-color: blue transparent transparent blue;
+	}
+
+	.svgTest {
+		position: relative;
+		background-color: yellow;
+		stroke-dasharray: 10, 5;
+	}
+</style>
+<body>
+	<p>szamarfules paaaaaaapir uzlet</p>
+<div class="svgTest">
+	<svg width="500px" height="100px" stroke="black" >
+
+		<text x="440" y="8" writing-mode="tb" glyph-orientation-vertical="0" >Hellooo KZ!</text>
+		<path d="M10 60 L600 60" />
+	</svg>
+</div>
+</body>
+</html>

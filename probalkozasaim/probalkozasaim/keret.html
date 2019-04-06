@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .keret {
+        position: absolute;
+        top: 30%;
+        left: 30%;
+        width: 100px;
+        height: 100px;
+        /* a keret radiusa ket elebol all valojaban egy Horizontalis es egy vertikalis mutatobol */
+        border-radius: 255px 30px 225px 15px/30px 225px 15px 255px;
+        border: 2px solid black;
+        background-color: blueviolet;
+    }
+
+    .keret2 {
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        width: 150px;
+        height: 100px;
+        background-color: chartreuse;
+        border: 3px solid blue;
+        border-radius: 10% 20% 40% 70% / 80% 60% 25% 5%;
+    }
+
+    .a {
+        background-color: hotpink;
+    }
+
+    .b {
+        background-color: wheat;
+    }
+
+    .ketto {
+        position: absolute;
+        top: 45%;
+        left: 45%;
+
+    }
+</style>
+
+<body>
+    <div class="keret">
+    </div>
+    <p>egy keret radiusa ket osszetevobol adodik. Egy horizontalis es egy vertikalis mutatobol. Amennyiben csak egy szam
+        van megadva, akkor az a szam jeloli mind a horizontalis, mint a vertikalis sugarat. viszont, ha egy / jellel megadjuk
+        mind a ket szamot, akkor a ket tengely menten mas gorbuletet kapunk</p>
+    <p>ebben a kodban ezeket a sugarakat hasznaltuk: border-radius:
+        <mark class="a">Horizontalisan
+            <i>255px 30px 225px 15px</i>
+        </mark> /
+        <mark class="b">Vertikalisan
+            <i>30px 225px 15px 255px</i>
+        </mark>
+    </p>
+    <div class="keret2"></div>
+    <p class="ketto"> A masodik keret sugara: <b>border-radius:</b><i> 10% 20% 40% 70% / 80% 60% 25% 5%</i></p>
+    <button>
+        <a href="magyarazok.html">vissza</a>
+    </button>
+
+</body>
+
+</html>

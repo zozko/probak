@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>svg test</title>
+	<script type="text/javascript"></script>
+	<style>
+	
+	#doboz {
+		position: relative;
+		top: 10px;
+		left: 100px;
+	}
+
+	#mozog {
+		transition-duration: 0.8s;
+	}
+
+	#mozog:hover {
+		position: relative;
+		transition-duration: 0.8s;
+		transform: scale(2.5, 2.0) skew(15deg);
+	}
+
+	#banner {
+		width:800px;
+		position: relative;
+		 height: 250px;
+		 margin: 0 auto;
+		background-image: linear-gradient(  90deg, red 0%, transparent 30%, white 40%, white 60%, blue 100%);
+	}
+
+	div {
+		margin: 10px 10px;
+	}
+
+	/*     #################################     FLEX BOX PROBA     ##################################     */
+
+	#fKontener {
+		position: relative;
+		top: 100px;
+		height: 33%;
+		text-align: center;
+		border: 6px solid green;
+		justify-content: flex-end;
+		display: flex;
+	}
+
+	.ott {
+		align-self: flex-start;
+	}
+    
+	#fKontener > div {
+				
+	}
+	.kontakt {
+		background-color: aquamarine;
+		align-self: flex-end;
+		flex-grow: 2;
+	}
+
+	.aU {
+		flex-grow: 3;
+		align-self: center;
+		background-color: aqua;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="doboz">
+		<img id="mozog" src="003-like.svg" width="10%" height="10%" onerror="this.onerror=null; this.src='003-like.png'">
+	</div>
+	
+	
+	
+	<!--     ###########################     FLEX BOX MODEL     ########################     -->
+	<header id="banner">
+
+		<div id="fKontener">
+			<div class="ott">homossappiens</div>
+			<div>hahoo36367o</div>
+			<div class="kontakt">contact</div>
+			<div class="aU">about us</div>
+			
+		</div>
+	</header>
+	<!--     ==========================     FLEX MODEL END      ========================      -->    
+<!--<script type="text/javascript">
+	let a = "hahoo";
+	alert(a);
+</script>-->
+
+</body>
+</html>
