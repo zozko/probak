@@ -83,7 +83,14 @@
       border-radius: 50px;
       background: #FF4589;
       cursor: pointer;
-    }    
+    } 
+    #szin {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translate(-50%);
+    }   
+
     </style>
 </head>
 <body>
@@ -108,19 +115,24 @@
         <span id="zText">0px</span>
         </label>
     </div>
+    <div id="szin">
+        <input type="color" id="szinvalto" value="#808080" onchange="valtozik()">
+    </div>
     <a href="magyarazok.html">vissza</a>
 
     <script>
         function valtozik() {
             let text_elem = document.getElementById('text');
+            let sz = document.getElementById("szinvalto").value;
             let a = document.getElementById("x").value;
             let b = document.getElementById("y").value;
             let c = document.getElementById("z").value;
-            text_elem.style.textShadow = `${a}px ${b}px ${c}px gray`;
+            text_elem.style.textShadow = `${a}px ${b}px ${c}px ${sz}`;
             document.getElementById("xText").innerHTML = a+'px';
             document.getElementById("yText").innerHTML = b+'px';
             document.getElementById("zText").innerHTML = c+'px';
         }
+        
     </script>    
 </body>
 </html>
