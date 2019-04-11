@@ -94,32 +94,36 @@
     </style>
 </head>
 <body>
-    <div class="tarto">
-        <span id="text">A</span>
-    </div>
+    <form> 
+
+        <div class="tarto">
+            <span id="text">A</span>
+        </div>
         <div class="x">
         <label  for="x">X koord
             <input type="range"  id="x" min="-35" max="35" value="0" onchange="valtozik()" >
-        <span id="xText">0px</span>
+            <span id="xText">0px</span>
         </label>        
     </div>
     <div class="y">
         <label for="y">Y koord
             <input type="range"  id="y" min="-35" max="35" value="0" onchange="valtozik()">
-        <span id="yText">0px</span>
+            <span id="yText">0px</span>
         </label>
     </div>
     <div class="z">
         <label  for="z">Z koord
             <input type="range"  id="z" min="0" max="20" value="0" onchange="valtozik()">
-        <span id="zText">0px</span>
+            <span id="zText">0px</span>
         </label>
     </div>
     <div id="szin">
         <input type="color" id="szinvalto" value="#808080" onchange="valtozik()">
+        <input type="reset" onclick="alap()">       
     </div>
-    <a href="magyarazok.html">vissza</a>
-
+</form>
+        <a href="magyarazok.html">vissza</a>
+        
     <script>
         function valtozik() {
             let text_elem = document.getElementById('text');
@@ -132,7 +136,9 @@
             document.getElementById("yText").innerHTML = b+'px';
             document.getElementById("zText").innerHTML = c+'px';
         }
-        
+        function alap() {
+            document.getElementById("text").style.textShadow = "none";
+        }        
     </script>    
 </body>
 </html>
