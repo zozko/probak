@@ -1,144 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>text shadow moover</title>
     <style>
-    .tarto {
+      .tarto {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50% -50%);
-    }
-    #text {
+      }
+      #text {
         font-size: 70px;
-    }
-    label {
+      }
+      label {
         margin: 0 100px;
-    }
-    
-    .x {
+      }
+
+      .x {
         position: absolute;
         top: 50px;
         left: 50%;
         transform: translate(-50%);
-    }
-    .y {
+      }
+      .y {
         position: absolute;
         top: 50%;
         left: 50px;
-        transform: translate(0, -50%); 
+        transform: translate(0, -50%);
         transform: rotate(90deg);
-    }
-    .z {
+      }
+      .z {
         position: absolute;
         top: 50%;
         right: 50px;
         transform: translate(-50% 0%);
         transform: rotate(-45deg);
-    }
-    .x, .y, .z {
+      }
+      .x,
+      .y,
+      .z {
         height: 20px;
-    }
+      }
 
-    .y #yText {
+      .y #yText {
         position: relative;
-        display: inline-block;        
+        display: inline-block;
         /* -webkit-transform: rotate(45deg);  Chrome & Safari 
          -moz-transform: rotate(45deg); 
          -ms-transform: rotate(45deg); 
          -o-transform: rotate(45deg);  */
         transform: rotate(-90deg); /* CSS3 */
-    }
-    input {
+      }
+      input {
         position: relative;
         display: inline-block;
         top: 6px;
-    }
-    input[type=range]::-webkit-slider-thumb {
-       position: relative;
-       top:-7px;
-       height: 5px;
-       width: 5px;
-       background-color: red;
-    }
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        position: relative;
+        top: -7px;
+        height: 5px;
+        width: 5px;
+        background-color: red;
+      }
 
-    input[type=range]::-webkit-slider-runnable-track {
+      input[type="range"]::-webkit-slider-runnable-track {
         background-color: blue;
         height: 25%;
-    }
-    input[type=range]:focus::-webkit-slider-runnable-track {
+      }
+      input[type="range"]:focus::-webkit-slider-runnable-track {
         background: rgb(1, 253, 114);
-    }
-    input[type=range]::-moz-range-track {
+      }
+      input[type="range"]::-moz-range-track {
         background-color: gold;
-    }
-    input[type=range]::-moz-range-thumb {
-      box-shadow: 1px 1px 1px #000000;
-      border: 1px solid #000000;
-      height: 15px;
-      width: 15px;
-      border-radius: 50px;
-      background: #FF4589;
-      cursor: pointer;
-    } 
-    #szin {
+      }
+      input[type="range"]::-moz-range-thumb {
+        box-shadow: 1px 1px 1px #000000;
+        border: 1px solid #000000;
+        height: 15px;
+        width: 15px;
+        border-radius: 50px;
+        background: #ff4589;
+        cursor: pointer;
+      }
+      #szin {
         position: absolute;
         bottom: 50px;
         left: 50%;
         transform: translate(-50%);
-    }   
-
+      }
     </style>
-</head>
-<body>
-    <form> 
-
-        <div class="tarto">
-            <span id="text">A</span>
-        </div>
-        <div class="x">
-        <label  for="x">X koord
-            <input type="range"  id="x" min="-35" max="35" value="0" onchange="valtozik()" >
-            <span id="xText">0px</span>
-        </label>        
-    </div>
-    <div class="y">
-        <label for="y">Y koord
-            <input type="range"  id="y" min="-35" max="35" value="0" onchange="valtozik()">
-            <span id="yText">0px</span>
+  </head>
+  <body>
+    <form>
+      <div class="tarto">
+        <span id="text">A</span>
+      </div>
+      <div class="x">
+        <label for="x"
+          >X koord
+          <input
+            type="range"
+            id="x"
+            min="-35"
+            max="35"
+            value="0"
+            onchange="valtozik()"
+          />
+          <span id="xText">0px</span>
         </label>
-    </div>
-    <div class="z">
-        <label  for="z">Z koord
-            <input type="range"  id="z" min="0" max="20" value="0" onchange="valtozik()">
-            <span id="zText">0px</span>
+      </div>
+      <div class="y">
+        <label for="y"
+          >Y koord
+          <input
+            type="range"
+            id="y"
+            min="-35"
+            max="35"
+            value="0"
+            onchange="valtozik()"
+          />
+          <span id="yText">0px</span>
         </label>
-    </div>
-    <div id="szin">
-        <input type="color" id="szinvalto" value="#808080" onchange="valtozik()">
-        <input type="reset" onclick="alap()">       
-    </div>
-</form>
-        <a href="magyarazok.html">vissza</a>
+      </div>
+      <div class="z">
+        <label for="z"
+          >Z koord
+          <input
+            type="range"
+            id="z"
+            min="0"
+            max="20"
+            value="0"
+            onchange="valtozik()"
+          />
+          <span id="zText">0px</span>
+        </label>
+      </div>
+          <div id="szin">
+            <input
+              type="color"
+              id="szinvalto"
+              value="#808080"
+              onchange="valtozik()"
+            />
         
+        <input type="reset" onclick="alap()" />
+      </div>
+    </form>
+    <a href="magyarazok.html">vissza</a>
+
     <script>
-        function valtozik() {
-            let text_elem = document.getElementById('text');
-            let sz = document.getElementById("szinvalto").value;
-            let a = document.getElementById("x").value;
-            let b = document.getElementById("y").value;
-            let c = document.getElementById("z").value;
-            text_elem.style.textShadow = `${a}px ${b}px ${c}px ${sz}`;
-            document.getElementById("xText").innerHTML = a+'px';
-            document.getElementById("yText").innerHTML = b+'px';
-            document.getElementById("zText").innerHTML = c+'px';
-        }
-        function alap() {
-            document.getElementById("text").style.textShadow = "none";
-        }        
-    </script>    
-</body>
+      function valtozik() {
+        let text_elem = document.getElementById("text");
+        let sz = document.getElementById("szinvalto").value;
+        let a = document.getElementById("x").value;
+        let b = document.getElementById("y").value;
+        let c = document.getElementById("z").value;
+        text_elem.style.textShadow = `${a}px ${b}px ${c}px ${sz}`;
+        document.getElementById("xText").innerHTML = a + "px";
+        document.getElementById("yText").innerHTML = b + "px";
+        document.getElementById("zText").innerHTML = c + "px";
+      }
+      function alap() {
+        document.getElementById("text").style.textShadow = "none";
+      }
+    </script>
+  </body>
 </html>

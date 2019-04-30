@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>form style challenge</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #344a72;
+}
+a {
+  text-decoration: none;
+}
+.wrapper {
+  position: relative;
+  max-width: 100vw;
+  padding: 30px;  
+}
+.form-wrap {
+  position: relative;
+  display: block;
+  background-color: white;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 5px 0;  
+}
+.form-wrap h1,
+.form-wrap p {
+  position: relative;
+  text-align: center;
+  margin: 5px 0;
+  line-height: 1.2em;
+}
+.form-group {
+  position: relative;  
+  margin: 0 20px;
+}
+.form-group label {
+  display: block;
+  margin: 6px 0;
+}
+.form-group input {        
+  width: 100%;  
+  margin-bottom: 20px;
+  padding: 2.5px 20px;
+}
+.form-group button {
+  background-color: #49c1a2;
+  width: 100%;
+  padding: 2.5px 20px;
+  margin-bottom: 20px;
+}
+.form-group button:hover {
+  background-color: #37a08e;
+}
+.bottom-text {
+  font-size: 0.75rem;
+  text-align: justify;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+footer {
+  text-align: center;
+  padding: 5px 0;
+  color: white;
+}
+footer a {
+  color: #49c1a2;
+}
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="form-wrap">
+      <h1>Sign Up</h1>
+      <p>it is free and only takes a minute</p>
+      <form>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName">
+        </div>
+        <div class="form-group">
+          <label for="LastName">Last Name</label>
+      <input type="text" id="lastName">
+    </div>
+    <div class="form-group">
+      <label for="mail">e-mail</label>
+      <input type="email" id="mail">
+    </div>
+    <div class="form-group">
+      <label for="password">password</label>
+      <input type="password" id="password">
+    </div>
+    <div class="form-group">
+      <label for="passConf">confirm password</label>
+      <input type="password" id="passConf">
+    </div> 
+    <div class="form-group">
+        <button type="submit" class="btn" value="" >submit</button>
+    </div>       
+    <p class="bottom-text">
+      by clicking the sign up button, you agree to our <a href="#">terms & conditions</a> and <a href="#">privacy policy</a>
+    </p> 
+  </form>
+    </div>
+    <footer>
+      <p>
+        already have an account? <a href="magyarazok.html">login here</a>
+      </p>
+    </footer>   
+  </div>
+</body>
+</html>
