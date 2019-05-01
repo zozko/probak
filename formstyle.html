@@ -23,6 +23,7 @@ a {
   position: relative;
   max-width: 100vw;
   padding: 30px;  
+
 }
 .form-wrap {
   position: relative;
@@ -36,12 +37,13 @@ a {
 .form-wrap p {
   position: relative;
   text-align: center;
-  margin: 5px 0;
+  margin: 8px 0;
   line-height: 1.2em;
 }
 .form-group {
   position: relative;  
   margin: 0 20px;
+  color: gray;
 }
 .form-group label {
   display: block;
@@ -50,7 +52,14 @@ a {
 .form-group input {        
   width: 100%;  
   margin-bottom: 20px;
-  padding: 2.5px 20px;
+  padding: 2.5px 5px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+.form-group input:focus {
+  background-color:lightgray ;
+  border: none;
+  outline: none;
 }
 .form-group button {
   background-color: #49c1a2;
