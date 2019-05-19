@@ -11,11 +11,13 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      background-color: lightblue;
     }
-  ul {
+    .fo-navi ul {
     display: flex;
+    justify-content:flex-end;
   }
-  li {
+  .fo-navi li {
     list-style: none;
     display: block;
     width: 140px;
@@ -24,21 +26,75 @@
     padding: 0 0 3px 0;
     
   }
-  a {
+  .fo-navi a {
     margin: 0;
     display: inline-block;
     text-align: center;   
     width: 100px; 
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 3px 20px;
     text-transform: uppercase;
   }
 
-  a:hover {
-    border-bottom: 2px solid red;
+  .fo-navi a:hover {
+    border-bottom: 3px solid red;
   }
-  li:hover {
-    border-bottom: 2px solid red;
+  .fo-navi li:hover {
+    border-bottom: 3px solid red;
+  }
+
+  /* uj-navi */
+
+  .uj-navi ul {
+    display: flex;
+    justify-content:space-around;
+  }
+
+  .uj-navi li {
+    position: relative;
+    width: 150px;
+    list-style: none;
+    text-align: center;
+    padding: 5px;
+  }
+  .uj-navi li > a {
+    position: relative;
+    display: block;
+    background-color: inherit;
+    width: 55%;
+    margin: 0 auto;
+    padding: 0 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    z-index: 10;
+  }
+
+  .uj-navi .egy {
+    position: absolute;
+    display: block;
+    width: 90%;
+    top: 35%;
+    border: 1px solid red;
+    visibility: hidden; 
+  }
+  .uj-navi .ketto {
+    position: absolute;
+    display: block;
+    margin:0 auto;
+    width: 90%;
+    top: 60%;
+    border: 1px solid red;
+    visibility: hidden;
+  }
+  
+  .uj-navi li:hover > i
+   {
+    visibility: visible;
+  }
+  .uj-navi li:hover {
+    border:1px solid gray;
+    border-radius: 5px;  
+    background-color: white;    
   }
   </style>
 </head>
@@ -55,6 +111,28 @@
             <a href="">office</a>
           </li>
           <li>
+              <a href="">products</a>
+            </li>
+    </ul>
+  </nav>
+
+<!-- uj-navi -->
+  <nav class="uj-navi">
+    <ul>
+      <li>
+        <i class="egy"></i><i class="ketto"></i>
+        <a href="magyarazok.html">home</a>
+      </li>
+      <li>
+          <i class="egy"></i><i class="ketto"></i>
+          <a href="">contact</a>
+        </li>
+        <li>
+            <i class="egy"></i><i class="ketto"></i>
+            <a href="">office</a>
+          </li>
+          <li>
+              <i class="egy"></i><i class="ketto"></i>
               <a href="">products</a>
             </li>
     </ul>
