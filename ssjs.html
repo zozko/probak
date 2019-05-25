@@ -34,14 +34,15 @@
   }
   </style>
 </head>
-<body>
-  <nav id="navi">
+<body onscroll="tuntet()">
+  <nav id="navi" >
     <a href="#elem1" class="scroll">elem #1</a>
     <a href="#elem2" class="scroll">elem #2</a>
     <a href="#elem3" class="scroll">elem #3</a>
     <a href="#elem4" class="scroll">elem #4</a>
     <a href="#elem5" class="scroll">elem #5</a>
   </nav>
+  
   <div id="elem1">
     <h1>elso elem</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores minus veniam non, nisi aperiam dicta illum vel totam numquam ad, inventore soluta ex ipsa voluptatibus iure eius quibusdam excepturi magnam.
@@ -165,8 +166,8 @@
       Dolores, magni quas cum natus totam qui modi libero ullam animi nam magnam vero reprehenderit enim ipsa cupiditate doloribus quasi excepturi inventore veniam illo. Similique et quasi beatae minima nemo?</p>
     </div>
     <hr>
-  
-  <script>
+    
+    <script>
     // elkapjuk a .scroll osztaly elemeit es betesszuk a scrollElements valtozoba
     const scrollElements = document.querySelectorAll('.scroll');
     // adunk hozzajuk egy esemenyfigyelot eventListener
@@ -195,6 +196,10 @@
     const scrollToElem = (startTime, currentTime, duration, scrollEndElemTop, startScrollOffset) => {
     const runtime = currentTime - startTime;
     console.info('runtime =' + runtime);
+
+    
+
+
     let progress = runtime / duration;
     console.info('progress valtozo a runtime / duration =' + progress);
    
@@ -213,19 +218,44 @@
  }
   //  cikk olvashato itt ---> https://medium.com/@gurjitmehta/smooth-scroll-with-javascript-571283e9a3cd
   
-  // a navigacio eltuntetese, scrollozas kozbe
-  window.addEventListener('scroll', function () {   
+  // a navigacio eltuntetese, scrollozas kozben
+    
    
-  
-    if (window.scrollY>30) {
-      document.querySelector('#navi').style.opacity = 0.5;
-         
-    } else {
-      document.querySelector('#navi').style.opacity = 1;
-     
+  // window.addEventListener('scroll', function () {    
+  //    console.log(window.scrollY);
+  //    console.log(window.pageYOffset);
+  //    const i = window.scroll( function () {
+  //      console.log("bekaphatod");
+  //    });
+  //    console.log(i);
+  //    if (i) {      
       
-    }
-  })
+  //       document.querySelector('#navi').style.opacity = 0.1;
+     
+  //    } else {
+       
+  //        document.querySelector('#navi').style.opacity = 1; 
+      
+  //    }
+  //    }
+  //   );
+
+    
+
+  
+  //   if (window.onscroll) {
+  //     document.querySelector('#navi').style.opacity = 0.1;
+         
+  //   } else {
+  //     document.querySelector('#navi').style.opacity = 1;          
+  //   }
+  // })
+  
+  let ize = window.pageYOffset;
+  function tuntet(event) {  
+    
+      document.getElementById("navi").style.backgroundColor = "red";   
+      }
   
   </script>
 </body>
