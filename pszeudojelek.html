@@ -1,62 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>pszeudo szelektorok</title>
-  <style>
-    
-    div p {
-      color: green;
-    }
-     div > p {
-       color: red;
-     }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>pszeudo szelektorok</title>
+    <style>
+      div p {
+        color: green;
+      }
+      div > p {
+        color: red;
+      }
 
-     div + p {
-       color: blue;
-     }
-     p {
-      color:yellowgreen;
-    }
+      div + p {
+        color: blue;
+      }
+      p {
+        color: yellowgreen;
+      }
 
-    a[target] {
-      background-color: orange;
-    }
-    ol li:nth-child(2n+0) {
-      background-color: aqua;
-    }
-  </style>
-</head>
-<body>
-  <div>
-    <p>ez a > kozvetlen gyermek szelektorrel van stilizalva, provident voluptatem totam nisi aspernatur sed quaerat? Iste necessitatibus ea sed.
+      a[target] {
+        background-color: orange;
+      }
+      ol li:nth-child(2n + 0) {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>
+        ez a > kozvetlen gyermek szelektorrel van stilizalva, provident
+        voluptatem totam nisi aspernatur sed quaerat? Iste necessitatibus ea
+        sed.
+      </p>
+      <ul>
+        <li>1</li>
+        <li><p>ez siman a div p szelektorral van stilizalva</p></li>
+        <li>3</li>
+      </ul>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <ol>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+      </ol>
+      <p>
+        ez a > kozvetlen gyermek szelektorrel van stilizalva! asperiores,
+        doloribus cupiditate inventore officia qui minus.
+      </p>
+    </div>
+    <p>
+      ez a + szelektorrla - ami a testver osztalyszelektor van stilizalva,
+      <u>de csak a legelso testverre vonatkozik!!!</u> officiis mollitia
+      nesciunt?
     </p>
-    <ul>
-      <li>1</li>
-      <li><p>ez siman a div p szelektorral van stilizalva</p></li>
-      <li>3</li>
-    </ul>
-
-    <ol>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-    </ol>
-    <p>ez a > kozvetlen gyermek szelektorrel van stilizalva! asperiores, doloribus cupiditate inventore officia qui minus.</p>
-  </div>
-    <p>ez a + szelektorrla - ami a testver osztalyszelektor van stilizalva, <u>de csak a legelso testverre vonatkozik!!!</u>   officiis mollitia nesciunt?</p>
-    <p>EZEK A SIMA p szelektor alatal vannak stilizalva. icabo officiis mollitia nesciunt?</p>
-    <p>EZEK A SIMA p szelektor alatal vannak stilizalva. icabo officiis mollitia nesciunt?</p>
+    <p>
+      EZEK A SIMA p szelektor alatal vannak stilizalva. icabo officiis mollitia
+      nesciunt?
+    </p>
+    <p>
+      EZEK A SIMA p szelektor alatal vannak stilizalva. icabo officiis mollitia
+      nesciunt?
+    </p>
     <a href="#" target="_self">attributum szelektorral stilizalva</a>
     <a href="magyarazok.html">vissza</a>
-</body>
+  </body>
 </html>
