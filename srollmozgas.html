@@ -28,6 +28,7 @@
           src="img/kep1.JPG"
           alt="csaladi foto"
           title="vissza a fo oldalra"
+          id="foto"
         />
       </a>
     </div>
@@ -140,24 +141,28 @@
       let helyem;
       let oldal = window.scrollY;
       function mozgato() {
-        let targy = document.getElementById("mozogj");
-        console.error(
-          "oldal koordinataja =" +
+        let targy = document.getElementById('mozogj');
+        let kep = document.getElementById('foto');
+        console.log(
+          'oldal koordinataja =' +
             oldal +
-            "  window=" +
+            '  window=' +
             window.scrollY +
-            " helyem=" +
+            ' helyem=' +
             helyem
         );
         if (oldal !== window.scrollY) {
-          helyem = oldal + window.scrollY;
-          targy.style.left = 300 + helyem + "px";
-          targy.style.top = 100 + helyem + "px";
-        } else {
-          helyem = oldal - window.scrollY;
-          targy.style.left = 300 + helyem + "px";
-          targy.style.top = 100 + helyem + "px";
+          helyem = oldal + window.scrollY - 1;
+          console.log('TRUE' + ' - helyem erteke most: ' + helyem);
+
+          // targy.style.left = 300 + helyem + 'px';
+          // targy.style.top = 100 + helyem + 'px';
+          // kep.style.width = 150 + helyem + 'px';¸
         }
+
+        targy.style.left = 300 + helyem + 'px';
+        targy.style.top = 100 + helyem + 'px';
+        kep.style.width = 150 + helyem + 'px';
       }
     </script>
   </body>
