@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>manipulating DOM with checkbox</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin:0;
+      }
+      .container {
+        position: relative;
+        border: 1px dotted red;
+        overflow: hidden;
+        text-align: center;;
+
+      }
+
+      .felso,
+      .also {
+        position: relative;
+        height: 50vh;
+        width: 90%;
+        margin: 0 auto;
+        border: 1px solid green;
+        overflow: hidden;
+      }
+      .tarto {
+        position: relative;
+        background-color: black;
+        color: whitesmoke;
+        height: 60px;
+        overflow: hidden;
+        /* transition: all 1.1s ease-in; */
+        margin: 30px;
+        border-radius: 15px;
+      }
+      .tarto h1 {
+        margin: 10px;
+      }
+      
+
+      #uj:checked + label .tarto,
+      #kapcs:checked + label .tarto      
+       {
+        position: absolute;        
+        top: -30px;    
+        left: -30px;    
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        overflow: hidden;
+        margin: 30px;
+        background-color: green;
+        z-index: 3;
+        }
+
+       
+
+      #uj:checked + label .tarto {
+        background-color: brown;
+      }
+       
+     
+      #kapcs:checked + label h1,
+      #uj:checked + label  h1 {
+        display: none;
+      }
+
+      /* az input checkbox elhelyezese */
+      #kapcs {
+        position: absolute;
+
+      }
+      #uj {
+        position: absolute;              
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <label for="kapcs">
+        <div class="felso">
+          <h1>haly!</h1>
+        </label>
+      </div>
+
+      <!-- also kontener -->
+      <div class="also">
+        <input type="checkbox" name="kapcs" id="kapcs" />
+        <label id="egy" for="kapcs" >
+          <div class="tarto">
+            <h1># 1 gomb</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+              voluptates.
+            </p>
+            <div>
+              <h2><a href="mailto:zozko@haj.com">ZOLI</a></h2>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt
+              quis, dolorum ipsum impedit, voluptates nostrum facilis, cum
+              officia minima voluptatibus ea velit architecto similique
+              consequuntur facere modi inventore ratione. Suscipit voluptatum
+              quas aut minus saepe debitis aliquam eveniet explicabo aperiam?
+              Delectus animi harum nesciunt officiis eos doloremque illo
+              expedita! Quae ab aliquam accusamus sapiente aperiam error
+              delectus, expedita minima. Eos cumque similique quisquam deleniti
+              quas culpa quasi assumenda ut cupiditate voluptatem accusantium,
+              iste consequuntur provident alias delectus nobis harum laudantium
+              nam tempora ratione dolor maxime. Sapiente necessitatibus
+              temporibus dolore? Numquam vel modi cum quod eligendi, corporis,
+              dolorem temporibus animi, perspiciatis officiis doloremque.
+              Temporibus ducimus, ut doloremque consequuntur optio, eaque
+              nostrum ullam neque beatae quod earum blanditiis architecto
+              commodi odit. Similique, cumque libero? Tenetur amet similique
+              dolor, nostrum ullam nulla adipisci alias. Inventore dolorem
+              laboriosam vel. Dolorum rerum culpa corporis nam ad et beatae
+              molestiae eaque, sed aut saepe tempore!
+            </p>
+          </div>
+        </label>
+
+        <input type="checkbox" name="uj" id="uj" />
+        <label id="ketto" for="uj">
+          <div class="tarto">
+            <h1># 2 gomb</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+              voluptates.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt
+              quis, dolorum ipsum impedit, voluptates nostrum facilis, cum
+              officia minima voluptatibus ea velit architecto similique
+              consequuntur facere modi inventore ratione. Suscipit voluptatum
+              quas aut minus saepe debitis aliquam eveniet explicabo aperiam?
+              Delectus animi harum nesciunt officiis eos doloremque illo
+              expedita! Quae ab aliquam accusamus sapiente aperiam error
+              delectus, expedita minima. Eos cumque similique quisquam deleniti
+              quas culpa quasi assumenda ut cupiditate voluptatem accusantium,
+              iste consequuntur provident alias delectus nobis harum laudantium
+              nam tempora ratione dolor maxime. Sapiente necessitatibus
+              temporibus dolore? Numquam vel modi cum quod eligendi, corporis,
+              dolorem temporibus animi, perspiciatis officiis doloremque.
+              Temporibus ducimus, ut doloremque consequuntur optio, eaque
+              nostrum ullam neque beatae quod earum blanditiis architecto
+              commodi odit. Similique, cumque libero? Tenetur amet similique
+              dolor, nostrum ullam nulla adipisci alias. Inventore dolorem
+              laboriosam vel. Dolorum rerum culpa corporis nam ad et beatae
+              molestiae eaque, sed aut saepe tempore!
+            </p>
+          </div>
+        </label>
+
+      </div>
+    </div>
+  </body>
+</html>
