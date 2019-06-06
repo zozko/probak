@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DOM rendezes JS-el</title>
+    <style>
+      .tarto {
+        height: 60px;
+        overflow: hidden;
+      }
+      button {
+        margin: 40px;
+        padding: 5px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="felso">
+        <h1>haly!</h1>
+      </div>
+
+      <!-- also kontener -->
+      <div class="also">
+        <div class="tarto" id="egy">
+          <i></i>
+          <h1># 1 gomb</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+            voluptates.
+          </p>
+          <div>
+            <h2><a href="mailto:zozko@haj.com">ZOLI</a></h2>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt
+            quis, dolorum ipsum impedit, voluptates nostrum facilis, cum officia
+            minima voluptatibus ea velit architecto similique consequuntur
+            facere modi inventore ratione. Suscipit voluptatum quas aut minus
+            saepe debitis aliquam eveniet explicabo aperiam? Delectus animi
+            harum nesciunt officiis eos doloremque illo expedita! Quae ab
+            aliquam accusamus sapiente aperiam error delectus, expedita minima.
+            Eos cumque similique quisquam deleniti quas culpa quasi assumenda ut
+            cupiditate voluptatem accusantium, iste consequuntur provident alias
+            delectus nobis harum laudantium nam tempora ratione dolor maxime.
+            Sapiente necessitatibus temporibus dolore? Numquam vel modi cum quod
+            eligendi, corporis, dolorem temporibus animi, perspiciatis officiis
+            doloremque. Temporibus ducimus, ut doloremque consequuntur optio,
+            eaque nostrum ullam neque beatae quod earum blanditiis architecto
+            commodi odit. Similique, cumque libero? Tenetur amet similique
+            dolor, nostrum ullam nulla adipisci alias. Inventore dolorem
+            laboriosam vel. Dolorum rerum culpa corporis nam ad et beatae
+            molestiae eaque, sed aut saepe tempore!
+          </p>
+        </div>
+        <div class="tarto" id="ketto">
+          <i></i>
+          <h1># 2 gomb</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+            voluptates.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos sunt
+            quis, dolorum ipsum impedit, voluptates nostrum facilis, cum officia
+            minima voluptatibus ea velit architecto similique consequuntur
+            facere modi inventore ratione. Suscipit voluptatum quas aut minus
+            saepe debitis aliquam eveniet explicabo aperiam? Delectus animi
+            harum nesciunt officiis eos doloremque illo expedita! Quae ab
+            aliquam accusamus sapiente aperiam error delectus, expedita minima.
+            Eos cumque similique quisquam deleniti quas culpa quasi assumenda ut
+            cupiditate voluptatem accusantium, iste consequuntur provident alias
+            delectus nobis harum laudantium nam tempora ratione dolor maxime.
+            Sapiente necessitatibus temporibus dolore? Numquam vel modi cum quod
+            eligendi, corporis, dolorem temporibus animi, perspiciatis officiis
+            doloremque. Temporibus ducimus, ut doloremque consequuntur optio,
+            eaque nostrum ullam neque beatae quod earum blanditiis architecto
+            commodi odit. Similique, cumque libero? Tenetur amet similique
+            dolor, nostrum ullam nulla adipisci alias. Inventore dolorem
+            laboriosam vel. Dolorum rerum culpa corporis nam ad et beatae
+            molestiae eaque, sed aut saepe tempore!
+          </p>
+        </div>
+      </div>
+    </div>
+    <button>
+      <a href="magyarazok.html">vissza</a>
+    </button>
+
+    <script>
+      const mozgato = document.querySelectorAll(".tarto");
+      console.log(mozgato);
+      mozgato[0].addEventListener("click", function() {
+        const dobozKetto = document.getElementById("ketto");
+        if (dobozKetto.style.display == "none") {
+          dobozKetto.style.display = "block";
+          document.getElementById("egy").style.height = "60px";
+          document.getElementById("felso").style.display = "block";
+        } else {
+          dobozKetto.style.display = "none";
+          document.getElementById("egy").style.height = "auto";
+          document.getElementById("felso").style.display = "none";
+        }
+      });
+      mozgato[1].addEventListener("click", function() {
+        const dobozEgy = document.getElementById("egy");
+        if (dobozEgy.style.display == "none") {
+          dobozEgy.style.display = "block";
+          document.getElementById("ketto").style.height = "60px";
+          document.getElementById("felso").style.display = "block";
+        } else {
+          dobozEgy.style.display = "none";
+          document.getElementById("ketto").style.height = "auto";
+          document.getElementById("felso").style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
