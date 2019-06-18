@@ -1,50 +1,109 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>elotte es utanna</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
     <style>
-        a {
-            text-decoration: none;
-        }
+      a {
+        text-decoration: none;
+      }
 
-        a::after {
-            content: ' a link ahova mutat: ' attr(href);
-            font-style: italic;
+      a::after {
+        content: " a link ahova mutat: " attr(href);
+        font-style: italic;
 
-            color: red;
-        }
+        color: red;
+      }
 
-        .kep {
-            margin: 30px auto;
-            width: 300px;
-            height: 300px;
-            border: 5px solid brown;
-            background-image: url(images/lg.jpg);
-            background-size: cover;
-        }
+      .kep {
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border: 5px solid brown;
+        background-image: url(images/lg.jpg);
+        background-size: cover;
+      }
 
-        .kep::after {
-            position: relative;
-            left: 70%;
-            top: 92%;
-            content: 'zoli irja::after';
-            color: wheat;
-        }
+      .kep::after {
+        position: relative;
+        left: 70%;
+        top: 92%;
+        content: "zoli irja::after";
+        color: wheat;
+      }
+      /* 2. pelda */
+      #masik {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border: 2px solid black;
+        overflow: hidden;
+        z-index: 1;
+        background-color: white;
+        text-align: center;
+        margin: 30px;
+      }
+      #masik::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        background-color: red;
+        z-index: -10;
+        transition: all 1s;
+      }
+      #masik::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        background-color: green;
+        transition: all 1s;
+      }
+
+      #masik:hover::after {
+        width: 50%;
+        height: 50%;
+      }
+      #masik:hover::before {
+        height: 100%;
+        width: 100%;
+      }
+      #masik span {
+        position: relative;
+        display: block;
+        top: 50%;
+        transform: translateY(-50%);
+        /* transform: translate(0%, -50%); */
+        transition: all 1s;
+        z-index: 2;
+      }
+      #masik:hover span {
+        color: white;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <p>itt a link mellet lathato szoveg egy after pszeudoosztallyal lett kiiratva</p>
-    <br/>
+  <body>
+    <p>
+      itt a link mellet lathato szoveg egy after pszeudoosztallyal lett kiiratva
+    </p>
+    <br />
     <a href="magyarazok.html">visza</a>
     <p>a kepre a szoveg szinten ::after pszeudoosztallyal van kiiratva</p>
     <div class="kep"></div>
-</body>
-
+    <hr />
+    <p>második példa, a ::befor & ::after a :hover efektre aktivalodikk</p>
+    <div id="masik">
+      <span>ZOZI</span>
+    </div>
+  </body>
 </html>
