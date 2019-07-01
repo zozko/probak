@@ -1,0 +1,147 @@
+:root {
+  --primary-color: #7fffd4;
+  --secondary-color: #0a6949;
+  --max-width: 1100px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--primary-color);
+  font: normal 1rem/1.5 "Arial", san-serif;
+  color: #ffffff;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+}
+
+#main-header {
+  background-color: var(--secondary-color);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+#main-header h1 {
+  font-size: 2.3rem;
+}
+/* timelune UI */
+#timeline ul {
+  background-color: var(--primary-color);
+  padding: 50px 0;
+}
+
+/* ez csinalja kozepre a fuggoleges vonalat */
+#timeline ul li {
+  list-style: none;
+  position: relative;
+  width: 6px;
+  background-color: #ffffff;
+  padding-top: 50px;
+  margin: 0 auto;
+}
+
+/* boxok */
+#timeline ul li div {
+  position: relative;
+  bottom: 0;
+  width: 400px;
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  transition: all 0.5s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* jobb oldali boxok - odd*/
+#timeline ul li:nth-child(odd) div {
+  left: 40px;
+  transform: translate(200px, 0);
+}
+/* bal oldali boxok - even */
+#timeline ul li:nth-child(even) div {
+  left: -434px;
+  transform: translate(-200px, 0);
+}
+
+/* show boxes */
+#timeline ul li.show div {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* dots a timelinere */
+#timeline ul li:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%) scale(0);
+  width: 25px;
+  height: 25px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* show dots */
+#timeline ul li.show::after {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+/* mutatonyilak alapjai */
+#timeline div:before {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+/*  jobb oldalra mutato nyil */
+#timeline ul li:nth-child(odd) div::before {
+  left: -15px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent var(--secondary-color) transparent transparent;
+}
+
+/*  bal oldalra mutato nyil */
+#timeline ul li:nth-child(even) div::before {
+  right: -15px;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent transparent transparent var(--secondary-color);
+}
+
+/* responsiv beallitasok */
+@media (max-width: 900px) {
+  #timeline ul li div {
+    width: 250px;
+  }
+  #timeline ul li:nth-child(even) div {
+    left: -284px;
+  }
+}
+
+@media (max-width: 600px) {
+  #timeline ul li {
+    margin-left: 50px;
+  }
+  #timeline ul li div {
+    width: calc(100vw - 140px);
+  }
+  #timeline ul li:nth-child(even) div {
+    left: 40px;
+  }
+  #timeline ul li:nth-child(even) div::before {
+    left: -15px;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent var(--secondary-color) transparent transparent;
+  }
+}
