@@ -19,8 +19,7 @@
         margin: 50px 80px;
       }
       ol li {
-        margin: .7rem;
-        
+        margin: 0.7rem;
       }
 
       .logo_tarto {
@@ -261,10 +260,11 @@
         <li><a href="tulfolyas.html">OVERFLOW</a></li>
         <li><a href="arnyekolas.html">TEXT SHADOW MOOVER</a></li>
         <li><a href="fontawesome.html">font awsome hasznalata</a></li>
-        <li><a href="menugomb.html">Pres-tel webre menugomb</a></li> 
-        <li><a href="ichecked.html">input checked manipulaciora</a></li> 
+        <li><a href="menugomb.html">Pres-tel webre menugomb</a></li>
+        <li><a href="ichecked.html">input checked manipulaciora</a></li>
         <li><a href="btnvar.html">gomb variaciok</a></li>
-        <li><a href="verAlign.html">vertikalis elhelyezesek</a></li>        
+        <li><a href="verAlign.html">vertikalis elhelyezesek</a></li>
+        <li><a href="skalaefekt.html">scale efekt</a></li>
       </ol>
       <br />
       <h2>JavaScript próbálkozások</h2>
@@ -285,15 +285,21 @@
         <li><a href="igeret.html">promises</a></li>
         <li><a href="gradecalc.html">grade calculator avagy osztalyozo</a></li>
         <li><a href="webcim.html">URL kiolvaso - manipulalo</a></li>
-        <li><a href="ablakmeret.html">ablakmeret viselkedese valtoztatas eseten</a></li>
-        <li><a href="addeventlistener.html">add event listener viselkedese</a></li>
+        <li>
+          <a href="ablakmeret.html"
+            >ablakmeret viselkedese valtoztatas eseten</a
+          >
+        </li>
+        <li>
+          <a href="addeventlistener.html">add event listener viselkedese</a>
+        </li>
         <li><a href="ssjs.html">smooth scrolling JS</a></li>
         <li><a href="srollmozgas.html">elem mozgasa scrolling hatasara</a></li>
         <li><a href="photosroll.html">kép mozgása scroll hatására</a></li>
         <li><a href="jsdom.html">DOM rendezes JavaScriptel</a></li>
         <li><a href="sTimeline.html">simple timeline with JS</a></li>
       </ol>
-      <br>
+      <br />
       <h2>modern HTML & CSS feladatok</h2>
       <ol>
         <li><a href="formstyle.html">form style challenge</a></li>
@@ -320,20 +326,20 @@
     </div>
 
     <script type="text/javascript">
-      $('li').each(function(index) {
+      $("li").each(function(index) {
         /* index = a sorszama a Lista elemeknek */
         console.log(
-          index + ': ' + $(this).text()
+          index + ": " + $(this).text()
         ); /* a $(this).text() kiolvassa az index sorszamu listaelmet    */
       });
 
       //creating a new paragraph
-      var p = document.createElement('p');
-      var node = document.createTextNode('Some new text ');
+      var p = document.createElement("p");
+      var node = document.createTextNode("Some new text ");
       //adding the text to the paragraph
       p.appendChild(node);
 
-      var div = document.getElementById('demo');
+      var div = document.getElementById("demo");
       //adding the paragraph to the div
       div.appendChild(p);
     </script>
@@ -341,9 +347,9 @@
       function mozog() {
         let koord = window.pageYOffset;
         if (koord > 0) {
-          document.getElementById('elTuntet').style.visibility = 'hidden';
+          document.getElementById("elTuntet").style.visibility = "hidden";
         } else {
-          document.getElementById('elTuntet').style.visibility = 'visible';
+          document.getElementById("elTuntet").style.visibility = "visible";
         }
       }
     </script>
