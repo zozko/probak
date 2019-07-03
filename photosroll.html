@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="jscriptek/photoscroll.js"></script>
+    <title>Photo scrloll efect</title>
+    <style>
+      body {
+        width: 5720px;
+        height: 3540px;
+      }
+      button {
+        position: fixed;
+        outline: none;
+        border-width: 0;
+        background-color: transparent;
+      }
+
+      button > a {
+        text-decoration: none;
+        color: darkred;
+        padding: 10px;
+      }
+
+      button > a:hover,
+      button > a:active {
+        background-color: darkred;
+        color: #ffffff;
+        box-shadow: 3px 3px 6px rgba(139, 0, 0, 0.7);
+      }
+      #photo {
+        position: fixed;
+        top: 150px;
+        left: 360px;
+        width: 550px;
+        height: 350px;
+        border: 2px solid gray;
+        background: url(img/kep1.jpg);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: auto; /*cover*/
+        /* background-attachment: scroll;
+        background-clip: border-box; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="photo"></div>
+    </div>
+    <button>
+      <a href="magyarazok.html">vissza a főoldalra</a>
+    </button>
+  </body>
+</html>
