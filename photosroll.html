@@ -7,9 +7,21 @@
     <script src="jscriptek/photoscroll.js"></script>
     <title>Photo scrloll efect</title>
     <style>
+      * {
+        box-sizing: border-box;
+      }
       body {
         width: 5720px;
         height: 3540px;
+      }
+
+      #wrapper {
+        position: fixed;
+        width: 550px;
+        height: 350px;
+
+        top: 150px;
+        left: 360px;
       }
       button {
         position: fixed;
@@ -31,11 +43,11 @@
         box-shadow: 3px 3px 6px rgba(139, 0, 0, 0.7);
       }
       #photo {
-        position: fixed;
-        top: 150px;
-        left: 360px;
-        width: 550px;
-        height: 350px;
+        /* position: fixed; */
+        /* top: 150px;
+        left: 360px; */
+        width: 100%;
+        height: 100%;
         border: 2px solid gray;
         background: url(img/kep1.jpg);
         background-repeat: no-repeat;
@@ -53,5 +65,9 @@
     <button>
       <a href="magyarazok.html">vissza a főoldalra</a>
     </button>
+    <!-- <script>
+      let ize = document.getElementById("photo");
+      alert(ize);
+    </script> -->
   </body>
 </html>
