@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>two photos</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      section {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background-color: aqua;
+        overflow: hidden;
+        background: url(images/gep1.jpg);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      #layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: aquamarine;
+        background: url(images/gep2.jpg);
+        background-position: center;
+        background-size: cover;
+        border-left: 3px solid black;
+        overflow: hidden;
+      }
+
+      #layer h2 {
+        color: white;
+      }
+      section a {
+        color: white;
+        font-size: 24px;
+        padding: 20px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div id="layer">
+        <h2>ezen az aoldalon ha lenyomod az egeret, odaig nyilik a kep</h2>
+      </div>
+      <a href="magyarazok.html">vissza a kezdolapra</a>
+    </section>
+    <script>
+      var slider = document.getElementById("layer");
+
+      window.onmouseup = function coords(e) {
+        var x = e.clientX;
+        slider.style.left = x + "px";
+      };
+    </script>
+  </body>
+</html>
