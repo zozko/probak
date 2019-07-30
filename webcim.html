@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>URL manipulator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-        <div class="container">
-                <h2 align="center" class="text-danger">Get URL parameters in JavaScript</h2>
-                <hr />
-        
-                <!-- Get URL parameters in JavaScript -->
-                <h6 class="text-info">Click the button to modify and get the parameters from the url.</h6>
-                <div> </div>
-        
-                <button id="btn_submit" type="button" class="btn btn-success" onclick="getUrlParams();">Get</button>
-                <div> </div>
-        
-                <div id="result"></div>
-            </div>
-            <script>
-                function getUrlParams() {
-                    // Appending the url with the query-string parameters.
-                    var url = new URL(window.location.href + "?id=100&topic=main");
-        
-                    var search = new URLSearchParams(url.search);
-        
-                    // Iterate over the query-string parameters.
-                    var html = " ";
-                    for (var i of search) {
-                        html = html + " " + i[0] + ' : ' + i[1];
-                    }
-                    document.getElementById('result').innerHTML = html;
-                }
-            </script>
-    
-</body>
+    <!-- <script src="main.js"></script> -->
+  </head>
+  <body>
+    <div class="container">
+      <h2 align="center" class="text-danger">
+        Get URL parameters in JavaScript
+      </h2>
+      <hr />
+
+      <!-- Get URL parameters in JavaScript -->
+      <h6 class="text-info">
+        Click the button to modify and get the parameters from the url.
+      </h6>
+      <div></div>
+
+      <button
+        id="btn_submit"
+        type="button"
+        class="btn btn-success"
+        onclick="getUrlParams();"
+      >
+        Get
+      </button>
+      <div></div>
+
+      <div id="result"></div>
+    </div>
+    <script>
+      function getUrlParams() {
+        // Appending the url with the query-string parameters.
+        var url = new URL(window.location.href + "?id=100&topic=main");
+
+        var search = new URLSearchParams(url.search);
+
+        // Iterate over the query-string parameters.
+        var html = " ";
+        for (var i of search) {
+          html = html + "... " + i[0] + " : " + i[1];
+        }
+        document.getElementById("result").innerHTML = html;
+      }
+    </script>
+  </body>
 </html>
