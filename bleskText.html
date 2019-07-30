@@ -16,7 +16,6 @@
         font-family: "Jacques Francois Shadow", cursive;
         font-size: 3em;
         background-color: black;
-        /* color: transparent; */
       }
       section {
         position: relative;
@@ -35,16 +34,18 @@
         overflow: hidden;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: mozog 3s linear infinite;
-        color: yellow;
+        animation: mozog 5s linear infinite;
       }
 
       @keyframes mozog {
         0% {
-          background-position: -500%;
+          background-position: -400%;
+        }
+        50% {
+          background-position: 400%;
         }
         100% {
-          background-position: 500%;
+          background-position: -400%;
         }
       }
       a {
