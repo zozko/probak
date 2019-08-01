@@ -1,105 +1,158 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>POSITIONS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-        #elso {
-            position: relative;
-            top: 70px;
-            left: 30px;
-            width: 500px;
-            border: 2px solid;
-            font-size: 2em;
-            text-align: center;
-        }
+      html,
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      #elso {
+        position: relative;
+        top: 70px;
+        left: 30px;
+        width: 500px;
+        border: 2px solid;
+        font-size: 2em;
+        text-align: center;
+      }
 
-        #masodik {
-            position: relative;
-            width: 500px;
-            border: 2px dashed;
-            font-size: 2em;
-            text-align: center;
-        }
+      #masodik {
+        position: relative;
+        width: 500px;
+        border: 2px dashed;
+        font-size: 2em;
+        text-align: center;
+      }
 
-        #harmadik {
-            position: relative;
-            top: 150px;
-            width: 500px;
-            height: 200px;
-            border: 2px dashed;
-            font-size: 2em;
-            text-align: center;
-        }
+      #harmadik {
+        position: relative;
+        top: 150px;
+        width: 500px;
+        height: 200px;
+        border: 2px dashed;
+        font-size: 2em;
+        text-align: center;
+      }
 
-        #negyedik {
-            position: absolute;
-            width: 80%;
-            margin: 0 auto;
-            border: 2px solid;
-            font-size: 2rem;
-            text-align: center;
-        }
+      #negyedik {
+        position: absolute;
+        width: 80%;
+        margin: 0 auto;
+        border: 2px solid;
+        font-size: 2rem;
+        text-align: center;
+      }
 
-        a {
-            position: absolute;
-            bottom: 100px;
-        }
+      a {
+        position: absolute;
+        bottom: 100px;
+      }
 
-        .A {
-            position: relative;
-            border: 3px solid black;
-            top: 270px;
-            left: 100px;
-            width: 500px;
-            height: 400px;
-            background-color: darkcyan;
-        }
+      .A {
+        position: relative;
+        border: 3px solid black;
+        top: 270px;
+        left: 100px;
+        width: 500px;
+        height: 400px;
+        background-color: darkcyan;
+      }
 
-        .B {
-            position: relative;
-            top: 10px;
-            left: 15px;
-            width: 300px;
-            height: 200px;
-            background-color: gold;
-        }
+      .B {
+        position: relative;
+        top: 10px;
+        left: 15px;
+        width: 300px;
+        height: 200px;
+        background-color: gold;
+      }
 
-        .C {
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            width: 150px;
-            height: 100px;
-            background-color: blueviolet;
-        }
+      .C {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 150px;
+        height: 100px;
+        background-color: blueviolet;
+      }
+      /* fixed pozicionallasa */
+      .tarto {
+        position: relative;
+        top: 270px;
+        border: 2px solid blueviolet;
+        width: 100%;
+        height: 100vh;
+      }
+
+      nav {
+        width: 100%;
+        border: 1px solid navy;
+      }
+      article {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        background-color: aliceblue;
+      }
+
+      nav li {
+        display: inline-block;
+        margin: 0 50px;
+      }
+      .fikszalva {
+        position: fixed; /*a fixed mindig a viewporthoz kepest helyezkedik el! */
+        top: 50%;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="elso">elso doboz</div>
     <div id="masodik">masodik doboz</div>
 
     <div id="harmadik">
-        harmadik doboz
-        <div id="negyedik">
-            <p>negyedik doboz</p>
-        </div>
+      harmadik doboz
+      <div id="negyedik">
+        <p>negyedik doboz</p>
+      </div>
     </div>
-    <hr/>
+    <hr />
 
     <div class="A">
-        <div class="B">
-            <div class="C"></div>
-        </div>
+      <div class="B">
+        <div class="C"></div>
+      </div>
     </div>
     <div>
-        szia
+      szia
     </div>
+    <!-- position:fixed megertese -->
+    <section class="tarto">
+      <h1>fixed pozicionalasa</h1>
+      <nav>
+        <ul>
+          <li>egy</li>
+          <li>ketto</li>
+          <li>harom</li>
+          <li>negy</li>
+        </ul>
+      </nav>
+      <article>
+        <div class="fikszalva">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum
+            doloribus natus voluptatum a ratione sit nobis enim odit assumenda
+            nisi illo, saepe iure?
+          </p>
+        </div>
+      </article>
+    </section>
     <a href="magyarazok.html">vissza</a>
-</body>
-
+  </body>
 </html>
