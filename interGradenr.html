@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>interaktiv gradient</title>
+    <style>
+      body {
+        margin: O;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #gradient_tarto {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30%;
+        height: 30%;
+        border: 3px solid gray;
+        box-shadow: 0px 9px 18px gray;
+      }
+      a {
+        float: right;
+      }
+
+      input {
+        margin-right: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div id="gradient_tarto"></div>
+    </section>
+
+    <label for="szog">szög beallításá</label>
+    <input type="number" id="szog" value="0" onchange="modosito()" />
+
+    <label for="szin1">kezdeti szín beallításá</label>
+    <input type="color" id="szin1" value="#f5ef42" onchange="modosito()" />
+
+    <label for="szin2">befejező szín beallításá</label>
+    <input type="color" id="szin2" value="#4245f5" onchange="modosito()" />
+    <a href="magyarazok.html">vissza</a>
+    <script>
+      function modosito() {
+        let fok = document.getElementById("szog").value;
+        let firstColor = document.getElementById("szin1").value;
+        let lastColor = document.getElementById("szin2").value;
+
+        console.log(
+          "fok = " +
+            fok +
+            " kezdoszin = " +
+            firstColor +
+            " befejezo szin = " +
+            lastColor
+        );
+
+        document.getElementById(
+          "gradient_tarto"
+        ).style.backgroundImage = `linear-gradient(${fok}deg, ${firstColor}, ${lastColor})`;
+      }
+    </script>
+  </body>
+</html>
