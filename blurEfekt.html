@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>blur hatter</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .hatter {
+        position: absolute;
+        top: calc((-50vh) + 20px);
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: url(images/gep1.jpg) no-repeat center/cover;
+        z-index: -200;
+        transition: all 0.4s ease;
+      }
+
+      .gomb_tarto {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        text-align: center;
+        transform: translateY(-50%);
+      }
+
+      .elso,
+      .masodik {
+        display: inline-block;
+        width: 25%;
+        background: gray;
+        padding: 10px 30px;
+        margin: 0 30px;
+        border: 2px solid white;
+        text-align: center;
+        color: white;
+      }
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      footer span {
+        display: inline-block;
+        text-align: center;
+        width: 19%;
+        color: white;
+        margin-bottom: 50px;
+      }
+      .elso:hover,
+      .masodik:hover {
+        color: black;
+        background-color: white;
+      }
+      .elso:hover ~ div,
+      .masodik:hover ~ div {
+        color: black;
+        background-color: white;
+        filter: blur(3px);
+      }
+      .elso a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .elso a:hover {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="gomb_tarto">
+        <button class="elso"><a href="magyarazok.html">vissza</a></button>
+        <button class="masodik">masodik gomb</button>
+        <div class="hatter"></div>
+      </div>
+    </section>
+    <footer>
+      <span>elso info</span>
+      <span>masodik info</span>
+      <span>harmadik info</span>
+      <span>negyedik info</span>
+      <span>eotodik info</span>
+    </footer>
+  </body>
+</html>
