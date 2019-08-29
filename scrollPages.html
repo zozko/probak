@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>scrolling pages</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .elso {
+        width: 100%;
+        height: 100vh;
+        background-image: url(images/gep2.jpg);
+        background-position: center;
+        background-size: cover;
+      }
+      .masodik {
+        width: 100%;
+        height: 100vh;
+        background-image: url(images/gep1.jpg);
+        background-position: center;
+        background-size: cover;
+        opacity: 0.1;
+      }
+      .harmadik {
+        width: 100%;
+        height: 100vh;
+        background-image: url(images/gep5.jpg);
+        background-position: center;
+        background-size: cover;
+        opacity: 0.1;
+      }
+      a {
+        display: inline-block;
+        color: black;
+        text-decoration: none;
+        font-size: 2rem;
+        margin: 30px 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="elso">
+      <a href="magyarazok.html">vissza a fo oldalra</a>
+    </section>
+    <section class="masodik">
+      <a href="magyarazok.html">vissza a fo oldalra</a>
+    </section>
+    <section class="harmadik">
+      <a href="magyarazok.html">vissza a fo oldalra</a>
+    </section>
+    <script>
+      window.onload = function() {
+        let ablakMagassag = window.innerHeight;
+        let masodikAblak = window.innerHeight;
+        let harmadikkAblak = window.innerHeight * 2;
+        function megjelenit() {
+          console.log(
+            "Elsoablak :" +
+              ablakMagassag +
+              " masodik ablak kezdete: " +
+              masodikAblak +
+              " harmadik ablak kezdete : " +
+              harmadikkAblak
+          );
+          let yAxis = window.scrollY;
+          console.log(
+            "az ablak magassaga = " + ablakMagassag + "az yAxis : " + yAxis
+          );
+
+          if (yAxis > 100 && yAxis < ablakMagassag) {
+            let elessegSzazalek = yAxis / ablakMagassag;
+            let homalyositas = 1 - elessegSzazalek;
+            console.log(elessegSzazalek + "% tartunk");
+            document.getElementsByClassName(
+              "masodik"
+            )[0].style.opacity = elessegSzazalek;
+            document.getElementsByClassName(
+              "elso"
+            )[0].style.opacity = homalyositas;
+          }
+          if (yAxis > ablakMagassag + 100 && yAxis < harmadikkAblak) {
+            let elessegSzazalek = (1 - yAxis / ablakMagassag) * -1;
+            let homalyositas = 1 - elessegSzazalek;
+            console.log(elessegSzazalek + "% tartunk");
+            document.getElementsByClassName(
+              "harmadik"
+            )[0].style.opacity = elessegSzazalek;
+            document.getElementsByClassName(
+              "masodik"
+            )[0].style.opacity = homalyositas;
+          }
+        }
+        window.addEventListener("scroll", megjelenit);
+      };
+    </script>
+  </body>
+</html>
