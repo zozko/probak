@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: azure;
+      }
+      section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        /*margin: 0 auto; */
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        width: 300px;
+        color: azure;
+      }
+      ul:hover li {
+        opacity: 0.5;
+      }
+      ul:hover > h2 {
+      }
+
+      section h2 {
+        margin: 0;
+        font-size: 20px;
+        width: 300px;
+        height: 3rem;
+        line-height: 3rem;
+        color: azure;
+        background-color: blue;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+      }
+      li {
+        position: relative;
+        background-color: aqua;
+        color: blue;
+        height: 3rem;
+        font-size: 1rem;
+        line-height: 2rem;
+        list-style: none;
+        display: block;
+        transition: all 0.2s ease-in-out;
+      }
+      li:last-child {
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+      }
+
+      ul li:hover {
+        transform: scale(1.2);
+        box-shadow: 0px 5px 10px gray;
+        border-radius: 15px;
+        line-height: calc(2rem * 1.2);
+        opacity: 1;
+        z-index: 2;
+      }
+
+      /* li:hover:last-child {
+        transform: scale(1);
+      } */
+
+      /* li:last-child {
+        background-color: blue;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+      } */
+      li span {
+        display: inline-block;
+        height: 1.5rem;
+        width: 1.5rem;
+        line-height: 1.5rem;
+        margin: 5px;
+        position: absolute;
+
+        left: 0;
+        background-color: blue;
+        color: azure;
+        padding: 5px;
+        border-radius: 50%;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: inline-block;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>listaelem kiemeles</h2>
+      <ul>
+        <li><span>1</span> <a href="magyarazok.html">vissza</a></li>
+        <li><span>2</span> ketto</li>
+        <li><span>3</span> harom</li>
+        <li><span>4</span> negy</li>
+        <li><span>4</span>ot</li>
+      </ul>
+    </section>
+  </body>
+</html>
