@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>min | max | width</title>
+    <style>
+      .keret {
+        position: relative;
+        width: 80%;
+        border: 1px solid gray;
+        margin: 0 auto;
+      }
+
+      .kep {
+        width: 55%; /* 300 es 500px kozotti meret eseten betartja az 55%-os kepszelesseget az elemen belul*/
+        min-width: 300px; /*ettol a merettol sosem lesz kisebb a kep */
+        max-width: 500px; /*ettol a merettol sosem lesz nagyobb a kep*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="keret">
+      <img src="images/gep2.jpg" class="kep" alt="gep" />
+    </div>
+  </body>
+</html>
