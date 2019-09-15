@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>loading efekt</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      .tarto {
+        position: relative;
+        margin: 0 auto;
+        font-size: 16px;
+        width: 400px;
+        border: 1px solid gray;
+        overflow: hidden;
+        background-color: gray;
+      }
+      h1 {
+        position: relative;
+        width: 100%;
+        font-size: 3em;
+        color: #222;
+        text-transform: uppercase;
+        /*letter-spacing: 1.2em;*/
+        border-bottom: 16px solid #222;
+      }
+
+      /* ez takarja el a h1 eredeti kiirast az animacioval */
+      h1:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        color: #03a9f4;
+        overflow: hidden;
+        border-bottom: 16px solid #03a9f4;
+        animation: eltakar 6s linear infinite;
+      }
+      @keyframes eltakar {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tarto">
+      <h1 data-text="szoveg...">szoveg...</h1>
+    </div>
+
+    <a href="magyarazok.html">vissza</a>
+  </body>
+</html>
