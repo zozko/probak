@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>em vs rem</title>
+    <style>
+      html,
+      body {
+        font-size: 16px;
+      }
+      .emes {
+        font-size: 1.5em;
+      }
+      .remes {
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>em vs rem mukodese...</h1>
+    <hr />
+    <div class="emes">
+      <p>
+        ez a legkulso div amelybe az alattan levo divek vannak beagyazva. a
+        betumeret 1.5em.
+      </p>
+      <div class="emes">
+        <p>ez az 1. beagyozott div, amely 1.5em betunagysaggal van</p>
+        <div class="emes">
+          <p>ez a 2. beagyazott div, amely 1.5em betunagysaggal van</p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <p>az alabb a felso tokeletes masa, csak rem-mel</p>
+    <div class="remes">
+      <p>
+        ez a legkulso div amelybe az alattan levo divek vannak beagyazva. a
+        betumeret 1.5rem.
+      </p>
+      <div class="remes">
+        <p>ez az 1. beagyozott div, amely 1.5rem betunagysaggal van</p>
+        <div class="remes">
+          <p>ez a 2. beagyazott div, amely 1.5rem betunagysaggal van</p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <a href="magyarazok.html">vissza</a>
+  </body>
+</html>
