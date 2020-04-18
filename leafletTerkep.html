@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elso leaflet terkepem</title>
+
+    <!--   a terkep CDN szolgaltatasa   -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+
+    <style>
+        #mapid {
+            width: 30vw;
+            height: 30vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="mapid"></div>
+
+    <script>
+        var map = L.map('mapid').setView([47.799223, 18.718375], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([47.799223, 18.718375]).addTo(map)
+            .bindPopup('naše kancelárie');
+
+        // .openPopup();
+    </script>
+
+</body>
+
+</html>
