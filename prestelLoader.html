@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loader</title>
+    <style>
+        body {
+            background-color: white;
+        }
+        
+        .loader {
+            position: absolute;
+            width: 80px;
+            height: 30px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .loader div {
+            position: relative;
+            margin-bottom: 25%;
+            width: 100;
+            height: 25%;
+            transition: all 1s linear;
+            animation: betoltes 2s infinite;
+        }
+        
+        @keyframes betoltes {
+            0% {
+                background-image: linear-gradient(270deg, white 0%, white 50%, white 50%, white 100%);
+            }
+            5% {
+                background-image: linear-gradient(270deg, white 0%, white 90%, red 90%, red 100%);
+            }
+            15% {
+                background-image: linear-gradient(270deg, white 0%, white 80%, red 80%, red 100%);
+            }
+            20% {
+                background-image: linear-gradient(270deg, white 0%, white 70%, red 70%, red 100%);
+            }
+            25% {
+                background-image: linear-gradient(270deg, white 0%, white 60%, red 60%, red 100%);
+            }
+            30% {
+                background-image: linear-gradient(270deg, white 0%, white 50%, red 50%, red 100%);
+            }
+            35% {
+                background-image: linear-gradient(270deg, white 0%, white 40%, red 40%, red 100%);
+            }
+            40% {
+                background-image: linear-gradient(270deg, white 0%, white 30%, red 30%, red 100%);
+            }
+            45% {
+                background-image: linear-gradient(270deg, white 0%, white 20%, red 20%, red 100%);
+            }
+            50% {
+                background-image: linear-gradient(270deg, white 0%, white 10%, red 10%, red 100%);
+            }
+            55% {
+                background-image: linear-gradient(270deg, red 0%, red 100%);
+            }
+            60% {
+                background-image: linear-gradient(270deg, red 0%, red 90%, white 90%, white 100%);
+            }
+            65% {
+                background-image: linear-gradient(270deg, red 0%, red 80%, white 80%, white 100%);
+            }
+            70% {
+                background-image: linear-gradient(270deg, red 0%, red 70%, white 70%, white 100%);
+            }
+            75% {
+                background-image: linear-gradient(270deg, red 0%, red 60%, white 60%, white 100%);
+            }
+            80% {
+                background-image: linear-gradient(270deg, red 0%, red 50%, white 50%, white 100%);
+            }
+            85% {
+                background-image: linear-gradient(270deg, red 0%, red 40%, white 40%, white 100%);
+            }
+            90% {
+                background-image: linear-gradient(270deg, red 0%, red 30%, white 30%, white 100%);
+            }
+            95% {
+                background-image: linear-gradient(270deg, red 0%, red 20%, white 20%, white 100%);
+            }
+            100% {
+                background-image: linear-gradient(270deg, red 0%, red 10%, white 10%, white 100%);
+            }
+        }
+        
+        .loader2 {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+        }
+        
+        .loader2 div {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            margin-bottom: 20px;
+            background-color: red;
+            animation: noveles 1s linear infinite;
+        }
+        
+        .loader2 div:last-child {
+            animation-delay: 0.25s;
+        }
+        
+        @keyframes noveles {
+            0% {
+                width: 10px;
+            }
+            25% {
+                left: -20px;
+                width: 40px;
+            }
+            50% {
+                left: -40px;
+                width: 80px;
+            }
+            75% {
+                left: -20px;
+                width: 40px;
+            }
+            100% {
+                left: 0px;
+                width: 10px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="loader">
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="loader2">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>
