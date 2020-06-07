@@ -13,6 +13,7 @@ function sumAllPrimes(num) {
     console.log(summary);
 }
 
+//megallapitja, hogy az adott szam prim szam e egyaltalan
 function isPrime(num) {
     let counter = 0;
     for (let i = 1; i <= num; i++) {
@@ -26,5 +27,5 @@ function isPrime(num) {
     return true;
 }
 
-
-sumAllPrimes(977);
+//2-tol 20-ig fogja osszeadni a prim szamokat
+sumAllPrimes(20);
