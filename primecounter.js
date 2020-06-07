@@ -7,9 +7,16 @@ function sumAllPrimes(num) {
         }
     }
     let summary = 0;
-    for (let i = 0; i < tomb.length; i++) {
-        summary += tomb[i];
-    }
+
+    tomb.forEach(element => {
+        summary += element;
+    });
+
+    /*
+      for (let i = 0; i < tomb.length; i++) {
+          summary += tomb[i];
+      }
+      */
     console.log(summary);
 }
 
