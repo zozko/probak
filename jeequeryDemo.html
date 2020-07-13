@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery tanulo oldal</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <h1>jQuery demo oldal</h1>
+    <div>div1</div>
+    <div class="highlite">div2</div>
+    <div id="third">div3</div>
+    <div class="highlite">div4</div>
+
+    <script type="text/javascript">
+        //lila hatteret az osszes divnek
+        $("div").css("background-color", "purple");
+        //a highlite osztalyuakat 200px szelesse tenni
+        $(".highlite").css("width", "200px");
+        //a third id-ju divet keretbetenni
+        $("#third").css("border", "2px solid orange");
+
+        //csak az elso div betujet feherre valtoztatni
+        $("div:first-of-type").css("color", "white").css("font-size", "32px");
+
+        //lecsereli az elso div szoveget "elso div"-re
+        $("div:first-of-type").text("elso div");
+
+
+        //a <head>ban megvaltoztatja az oldal <title> elemenek a szoveget
+        $("title").text("wazze megvaltoztatom! ! !");
+
+        //sima javascriptel ugyan ez igy nez ki:
+        document.getElementsByTagName("title")[0].textContent = "juj";
+    </script>
+</body>
+
+</html>
