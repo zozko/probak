@@ -15,6 +15,8 @@
     <div class="highlite">div2</div>
     <div id="third">div3</div>
     <div class="highlite">div4</div>
+    <input type="text">
+    <p class="kiir"></p>
 
     <script type="text/javascript">
         //lila hatteret az osszes divnek
@@ -36,6 +38,24 @@
 
         //sima javascriptel ugyan ez igy nez ki:
         document.getElementsByTagName("title")[0].textContent = "juj";
+
+        //billenytuzet events
+        let fullText = "";
+        $("input[type='text']").keypress((event) => {
+            if (event.charCode === 13) {
+                fullText = "";
+            }
+            console.log(event.charCode);
+            let tc = event.charCode;
+            let text = String.fromCharCode(tc);
+            fullText += text;
+            console.log(text);
+            $(".kiir").text(fullText);
+        });
+
+        $("div:first-of-type").on('click', () => {
+            alert(fullText);
+        })
     </script>
 </body>
 
