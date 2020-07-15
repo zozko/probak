@@ -17,6 +17,7 @@
     <div class="highlite">div4</div>
     <input type="text">
     <p class="kiir"></p>
+    <button>click me</button>
 
     <script type="text/javascript">
         //lila hatteret az osszes divnek
@@ -54,7 +55,16 @@
         });
 
         $("div:first-of-type").on('click', () => {
-            alert(fullText);
+                alert(fullText);
+            })
+            //click alternativa
+        $("button").click(() => {
+            $("button").css("background-color", "red");
+            alert("megnyomtal vazze? - torlom a diveket...");
+            $("div").fadeOut(3000, () => {
+                console.log("elhalvanytva e");
+                $("div").fadeIn(5000);
+            });
         })
     </script>
 </body>
