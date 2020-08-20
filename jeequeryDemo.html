@@ -19,6 +19,20 @@
     <p class="kiir"></p>
     <button>click me</button>
 
+    <!-- ezt az elemet torli a jQuery DOM-bol -->
+    <p class="torolve">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur veritatis provident fuga ullam at similique animi labore, libero ipsa cumque odit tempore, fugiat quidem cupiditate adipisci alias maiores reiciendis voluptates? Repellendus eum
+        numquam eius dicta alias suscipit excepturi? Natus, laborum! Laudantium eos quaerat iure ad repellat, itaque nesciunt asperiores est id, quo odit eum atque voluptatibus earum incidunt in quia? Asperiores dolorum tempore enim nihil sed tenetur
+        illo ab, culpa voluptatum doloremque blanditiis dolores molestiae repudiandae, eveniet nulla non? Architecto quaerat, ipsa eveniet earum officia illo rerum officiis qui accusantium?
+    </p>
+
+    <ul>
+        <li><span>X</span> 1</li>
+        <li><span>X</span> 2</li>
+        <li><span>X</span> 3</li>
+        <li><span>X</span> 4</li>
+    </ul>
+
+
     <script type="text/javascript">
         //lila hatteret az osszes divnek
         $("div").css("background-color", "purple");
@@ -65,6 +79,31 @@
                 console.log("elhalvanytva e");
                 $("div").fadeIn(5000);
             });
+        })
+
+
+        //elem torlese a DOM-bol
+        $(".torolve").remove();
+        let adat = "";
+        //ha az <li> klikkelunk hozzaadunk egy ujobb elemet
+
+        $("ul").on("click", "li", (evt) => {
+            adat = $(this).index();
+            console.log(adat + ".");
+            alert(adat);
+            let uj = String.adat;
+            $("ul").append("<li><span>X</span> " + uj + 1 + "</li>");
+            evt.stopPropagation();
+        })
+
+
+        let elso = document.getElementsByTagName("li")[0];
+        elso.addEventListener("mouseover", () => {
+            // alert("ez most az...");
+            elso.style.color = "green";
+        })
+        elso.addEventListener("mouseleave", () => {
+            elso.style.color = "black";
         })
     </script>
 </body>
