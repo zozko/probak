@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inputok demo</title>
+    <script src="./jscriptek/inputchecker.js"></script>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+        
+        li {
+            margin: 10px 0;
+        }
+        
+        input[type='radio'] {
+            margin: 10px;
+        }
+        
+        input[type='radio']::after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -3px;
+            left: -2px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 3px solid rgb(10, 10, 10);
+        }
+        
+        input[type='radio']:hover::after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -3px;
+            left: -2px;
+            position: relative;
+            background-color: white;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 3px solid rgb(10, 10, 10);
+        }
+        
+        input[type='radio']:checked:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -3px;
+            left: -2px;
+            position: relative;
+            background-color: #df3416;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 3px solid rgb(11, 194, 240);
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <ul>
+            <li>
+                <input type="checkbox" id="doboz">
+                <label for="doboz">be van jelolve?</label>
+            </li>
+            <li>
+                <input type="text" id="name">
+                <label for="name">name</label>
+            </li>
+        </ul>
+        <input type="submit" onClick="ellenorizd()">
+    </form>
+    <br>
+    <hr>
+    <br>
+
+
+    <p>talalgato</p>
+    <form>
+        <ul>
+            <li>
+                <input type="radio" id="ans_a" name="valasz" value="a">
+                <label for="ans_a">a</label>
+            </li>
+            <li>
+                <input type="radio" id="ans_b" name="valasz" value="b">
+                <label for="ans_b">b</label>
+            </li>
+            <li>
+                <input type="radio" id="ans_c" name="valasz" value="c">
+                <label for="ans_c">c</label>
+            </li>
+            <li>
+                <input type="radio" id="ans_d" name="valasz" value="d">
+                <label for="ans_d">d</label>
+            </li>
+        </ul>
+        <input type="submit" onClick="birald()">
+    </form>
+    <br>
+    <hr>
+    <br>
+
+
+    <p>karakterszamolo</p>
+    <from>
+        <input type="text" id="szamolo" onkeydown="szmaolj()">
+        <label for="szamolo"></label>
+        <input type="submit" value="clear" onclick="torolj()">
+        <input type="submit" value="C" onclick="minuszegy()">
+    </from>
+    <p id="display">0</p>
+    <br>
+    <hr>
+    <br>
+
+
+
+
+</body>
+
+</html>
