@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroller-roller</title>
+    <style>
+        .wrapper {
+            display: flex;
+            overflow: auto;
+            flex: none;
+            width: 100vw;
+            height: 100vh;
+            flex-flow: column nowrap;
+        }
+        
+        .y-scroller {
+            scroll-snap-type: y mandatory;
+        }
+        
+        .wrapper>div {
+            scroll-snap-align: center;
+            flex: none;
+            width: 100%;
+            height: 100%;
+            font-size: 28px;
+        }
+        
+        .wrapper>div:nth-child(odd) {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='wrapper y-scroller'>
+        <div>1
+            <p>ezen az oldalon a scrollozas automatikusan kiegyenliti az uj oldalra gorgeteskor a poziciojat</p>
+        </div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+
+</body>
+
+</html>

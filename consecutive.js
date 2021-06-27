@@ -18,4 +18,6 @@ function makeconsecutive(arr) {
     console.log(neededItem);
 }
 let arr = [6, 2, 3, 8];
-makeconsecutive(arr);
+makeconsecutive(arr) 
+arr[0]; 
+

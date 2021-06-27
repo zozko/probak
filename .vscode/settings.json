@@ -1,3 +1,5 @@
 {
-  "liveServer.settings.multiRootWorkspaceName": "probak"
+  "liveServer.settings.multiRootWorkspaceName": "probak",
+  "errorLens.addAnnotationTextPrefixes": true,
+  "quokka.compactMessageOutput": true
 }

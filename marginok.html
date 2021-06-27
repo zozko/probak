@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marginok demonstracioja</title>
+
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .a,
+        .b,
+        .c {
+            position: relative;
+            /* top: 10px; */
+            left: 40px;
+            width: 200px;
+            height: 100px;
+            background-color: aquamarine;
+            border: 1px solid black;
+        }
+        
+        .a {
+            margin-bottom: 10px;
+        }
+        
+        .b {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .c {
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+        
+        img {
+            padding: 0;
+            height: 30%;
+            width: 30%;
+            margin: calc(10% / 6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a"></div>
+    <div class="b"></div>
+    <div class="c"></div>
+
+    <!-- ¨ha nem igy rakjuk ki a kepeket akkor a kalkulacio nem fog mukodni!!! -->
+    <img src="https://picsum.photos/200" class="pics" alt="random photos"><img src="https://picsum.photos/200" class="pics" alt="random photos"><img src="https://picsum.photos/200" class="pics" alt="random photos">
+
+
+    <!-- ha igy van kirakva akkor nem fer ki - a whitespacek miatt a HTML-ben -->
+    <img src="https://picsum.photos/200" class="pics" alt="random photos">
+
+    <img src="https://picsum.photos/200" class="pics" alt="random photos">
+
+    <img src="https://picsum.photos/200" class="pics" alt="random photos">
+
+</body>
+
+</html>

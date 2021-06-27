@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EVENT LISTENER</title>
     <style>
-       
         button {
             background-color: green;
             color: white;
@@ -15,6 +15,7 @@
         }
     </style>
 </head>
+
 <body>
     <p>az eventlistener mukodesenek a demonstracioja</p>
     <p>csak nyomd meg a gombot</p>
@@ -23,25 +24,42 @@
     <p id="write"></p>
     <br>
     <br>
+    <p>a consolon pedig ha megnyomod az entert...</p>
     <br>
     <br>
     <br>
     <a href="magyarazok.html">vissza</a>
     <script>
-    let gomb = document.getElementById('fogomb');
-    let a=0;
-    let sz = -1;
-    let z = ['red', 'blue', 'orange', 'cyan', 'gray', 'black']
-    let szoveg;
-    // az eventlistener ket attributumot var 1. az esemeny amire figyel, 2. a funkcio, ami leirja mit csinaljon!
-    gomb.addEventListener('click', function() {
-        a++;
-        console.log('megnyomta wazze', a,'x');
-        szoveg = 'megnyomtal wazze '+a+'x';
-        document.getElementById('write').innerHTML = szoveg; 
-        document.getElementsByTagName('button')[0].style.backgroundColor = z[sz];
-        sz == z.length-1? sz=0: sz++;      
-    })
-    </script>    
+        let gomb = document.getElementById('fogomb');
+        let a = 0;
+        let sz = -1;
+        let z = ['red', 'blue', 'orange', 'cyan', 'gray', 'black'];
+        let szoveg;
+        // az eventlistener ket attributumot var 1. az esemeny amire figyel, 2. a funkcio, ami leirja mit csinaljon!
+        gomb.addEventListener('click', function() {
+            a++;
+            console.log('megnyomta wazze', a, 'x');
+            szoveg = 'megnyomtal wazze ' + a + 'x';
+            document.getElementById('write').innerHTML = szoveg;
+            document.getElementsByTagName('button')[0].style.backgroundColor = z[sz];
+            sz == z.length - 1 ? sz = 0 : sz++;
+
+        })
+
+        //a key eventeket nem kotjuk kulon elemhez, ezert egyenesen a window objektumhoz kotjuk
+        window.addEventListener('keypress', (ev) => {
+            console.log(ev); //kiirja milyen esemenyt hoztal letre!
+            //ugytunik hasznalhato a charCode es a keyCode is - viszont inkabb a keyCodet oktatjak!
+            if (ev.charCode === 13) {
+                console.log('lenyomtad az ENTERT ?');
+            }
+
+            //good practice:  a wich hasznalata - az oregebb bonheszok miatt!
+            if (ev.keyCode === 32 || ev.which === 32) {
+                console.log('lenyomtad a SPACE gombot ?');
+            }
+        })
+    </script>
 </body>
+
 </html>

@@ -1,377 +1,369 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 
     <title>magyaraz</title>
     <style>
-      :root {
-        --alapszin: rgb(139, 248, 203);
-      }
-      a {
-        text-transform: uppercase;
-        text-decoration: none;
-      }
-
-      ol {
-        cursor: none;
-        list-style-type: upper-roman;
-        margin: 50px 80px;
-      }
-      ol li {
-        margin: 0.7rem;
-      }
-
-      .logo_tarto {
-        position: relative;
-        left: 200px;
-        width: 180px;
-        height: 55px;
-      }
-
-      h5 {
-        background-color: var(--alapszin);
-      }
-
-      .logo_tarto img {
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-
-      .alatta {
-        visibility: visible;
-        margin: 0;
-        padding: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 99%;
-        height: 99%;
-        text-align: center;
-        background-color: greenyellow;
-        z-index: -1;
-      }
-
-      h1:hover {
-        transition-duration: 2s;
-        color: red;
-        font-style: italic;
-      }
-
-      img:hover {
-        transition-duration: 1s;
-        transform: translate(-90px, 0) rotateY(90deg);
-      }
-
-      #menuTarto {
-        width: 70%;
-        margin: 2% auto;
-      }
-
-      ul {
-        margin: 0;
-        padding: 0;
-      }
-
-      .navigacio li {
-        list-style-type: none;
-        display: inline-block;
-        width: 100px;
-      }
-
-      .navigacio a {
-        display: block;
-        text-decoration: none;
-        text-transform: uppercase;
-        color: beige;
-        margin: 0 0.5%;
-        padding: 5px 10px;
-        font-variant: small-caps;
-        background-color: black;
-      }
-
-      a.aktivalva {
-        background-color: slategray;
-        padding: 5px 10px;
-        border-radius: 4px;
-      }
-
-      .navigacio li ul {
-        position: absolute;
-        width: inherit;
-        display: none;
-      }
-
-      /* almenu */
-
-      .navigacio li:hover ul {
-        display: block;
-      }
-
-      .scroll-link {
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .mouse {
-        display: block;
-        max-width: 2.5rem;
-        width: 100%;
-        height: 35px;
-      }
-
-      .scroll {
-        animation-name: scroll;
-        animation-duration: 1.5s;
-        animation-timing-function: cubic-bezier(0.65, -0.55, 0.25, 1.5);
-        animation-iteration-count: infinite;
-        transform-origin: 50% 20.5px;
-        will-change: transform;
-      }
-
-      @keyframes scroll {
-        0%,
-        20% {
-          transform: translateY(0) scaleY(1);
+         :root {
+            --alapszin: rgb(139, 248, 203);
         }
-      }
-
-      @keyframes scroll {
-        10% {
-          opacity: 1;
+        
+        a {
+            text-transform: uppercase;
+            text-decoration: none;
         }
-
-        100% {
-          transform: translateY(36px) scaleY(2);
-          opacity: 0.01;
+        
+        ol {
+            cursor: none;
+            list-style-type: upper-roman;
+            margin: 50px 80px;
         }
-      }
-
-      .heart {
-        fill: red;
-        position: relative;
-        width: 15px;
-        animation: pulse 1s ease infinite;
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
+        
+        ol li {
+            margin: 0.7rem;
         }
-        50% {
-          transform: scale(1.5);
+        
+        .logo_tarto {
+            position: relative;
+            left: 200px;
+            width: 180px;
+            height: 55px;
         }
-        100% {
-          transform: scale(1);
+        
+        h5 {
+            background-color: var(--alapszin);
         }
-      }
+        
+        .logo_tarto img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .alatta {
+            visibility: visible;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 99%;
+            height: 99%;
+            text-align: center;
+            background-color: greenyellow;
+            z-index: -1;
+        }
+        
+        h1:hover {
+            transition-duration: 2s;
+            color: red;
+            font-style: italic;
+        }
+        
+        img:hover {
+            transition-duration: 1s;
+            transform: translate(-90px, 0) rotateY(90deg);
+        }
+        
+        #menuTarto {
+            width: 70%;
+            margin: 2% auto;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navigacio li {
+            list-style-type: none;
+            display: inline-block;
+            width: 100px;
+        }
+        
+        .navigacio a {
+            display: block;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: beige;
+            margin: 0 0.5%;
+            padding: 5px 10px;
+            font-variant: small-caps;
+            background-color: black;
+        }
+        
+        a.aktivalva {
+            background-color: slategray;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        .navigacio li ul {
+            position: absolute;
+            width: inherit;
+            display: none;
+        }
+        /* almenu */
+        
+        .navigacio li:hover ul {
+            display: block;
+        }
+        
+        .scroll-link {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .mouse {
+            display: block;
+            max-width: 2.5rem;
+            width: 100%;
+            height: 35px;
+        }
+        
+        .scroll {
+            animation-name: scroll;
+            animation-duration: 1.5s;
+            animation-timing-function: cubic-bezier(0.65, -0.55, 0.25, 1.5);
+            animation-iteration-count: infinite;
+            transform-origin: 50% 20.5px;
+            will-change: transform;
+        }
+        
+        @keyframes scroll {
+            0%,
+            20% {
+                transform: translateY(0) scaleY(1);
+            }
+        }
+        
+        @keyframes scroll {
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(36px) scaleY(2);
+                opacity: 0.01;
+            }
+        }
+        
+        .heart {
+            fill: red;
+            position: relative;
+            width: 15px;
+            animation: pulse 1s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
-  </head>
+</head>
 
-  <body onscroll="mozog()">
+<body onscroll="mozog()">
     <div>
-      <div id="demo">some content</div>
-      <h1>nagy</h1>
-      <small
-        >kisebb <small>meg kisebb <small>es meg kisebb</small> </small>
-      </small>
-      <h5>kicsi</h5>
-      <big>
-        nagyobb <big> meg nagyobb <big> es a legnagyobb </big> </big>
-      </big>
-      <!-- sziv ikon -->
-      <svg class="heart" viewBox="0 0 32 29.6">
-        <path
-          d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-    c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"
-        />
-      </svg>
-      <!-- sziv ikon end -->
-      <p class="ikon_FA fa-heart" aria-hidden="true">
-        ezt a szoveget nem olvassa fel a screen-reader
-      </p>
-      <ol type="A">
-        <li>szam#1</li>
-        <li>szam#2</li>
-        <li>szam#3</li>
-        <li>szam#4</li>
-      </ol>
-      <div class="logo_tarto">
-        <img src=" prestel.jpg " />
-        <a href="http://www.prestel.sk/" class="alatta">hello</a>
-      </div>
-      <!-- NAVBAR -->
-      <nav id="menuTarto" onscroll="mozog()">
-        <ul class="navigacio">
-          <li><a href="#" class="aktivalva">Home</a></li>
-          <li>
-            <a href="#">Product</a>
-            <!-- almenu -->
-            <ul>
-              <li><a href="#">JCB</a></li>
-              <li><a href="#">Komatsu</a></li>
-              <li><a href="#">Iveco</a></li>
+        <div id="demo">some content</div>
+        <h1>nagy</h1>
+        <small>kisebb <small>meg kisebb <small>es meg kisebb</small> </small>
+        </small>
+        <h5>kicsi</h5>
+        <big>
+      nagyobb <big> meg nagyobb <big> es a legnagyobb </big> </big>
+        </big>
+        <!-- sziv ikon -->
+        <svg class="heart" viewBox="0 0 32 29.6">
+      <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+    c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z" />
+    </svg>
+        <!-- sziv ikon end -->
+        <p class="ikon_FA fa-heart" aria-hidden="true">
+            ezt a szoveget nem olvassa fel a screen-reader
+        </p>
+        <ol type="A">
+            <li>szam#1</li>
+            <li>szam#2</li>
+            <li>szam#3</li>
+            <li>szam#4</li>
+        </ol>
+        <div class="logo_tarto">
+            <img src=" prestel.jpg " />
+            <a href="http://www.prestel.sk/" class="alatta">hello</a>
+        </div>
+        <!-- NAVBAR -->
+        <nav id="menuTarto" onscroll="mozog()">
+            <ul class="navigacio">
+                <li><a href="#" class="aktivalva">Home</a></li>
+                <li>
+                    <a href="#">Product</a>
+                    <!-- almenu -->
+                    <ul>
+                        <li><a href="#">JCB</a></li>
+                        <li><a href="#">Komatsu</a></li>
+                        <li><a href="#">Iveco</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
             </ul>
-          </li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ducimus?
-      </p>
-      <h2>HTML es CSS példák</h2>
-      <ol>
-        <li><a href="betuzok.html" accesskey="a">betuk es sorok</a></li>
-        <li><a href="interaktivKeret.html">iFrame</a></li>
-        <li><a href="keret.html" target="_top">keret-ek</a></li>
-        <li>
-          <a href="keretSarok.html" target="_top">keret sarok gombolyites</a>
-        </li>
-        <li><a href="linkelek.html" accesskey="b">linkekhez</a></li>
-        <li><a href="linkelek.html#ott">ez egy uj bekezdes</a></li>
-        <li><a href="fototext.html">kepen írás</a></li>
-        <li><a href="lapozas.html">lap gorgetese</a></li>
-        <li><a href="halo.html">GRID-ek GRID-je</a></li>
-        <li><a href="uszik.html">mi a float?</a></li>
-        <li><a href="tOsztaly.html">TARGET pszeudo osztaly</a></li>
-        <li><a href="kockaMgomb.html">menu TARGET pseudo osztallyal </a></li>
-        <li><a href="egerHaver.html">hover funkcio</a></li>
-        <li><a href="dragdrop.html">Drag & Drop</a></li>
-        <li><a href="jsForm.html">JS form ellenorzes</a></li>
-        <li><a href="text.html">responsive text</a></li>
-        <li><a href="pozik.html">positions | relative | absolute</a></li>
-        <li><a href="elotteUtanna.html">Before / After</a></li>
-        <li><a href="nyomda.html">printer version</a></li>
-        <li><a href="transit.html">transition mukodese</a></li>
-        <li><a href="fleks.html">FLEXBox</a></li>
-        <li><a href="side.html">side MENU</a></li>
-        <li><a href="reMenu.html">responsive MENU</a></li>
-        <li><a href="elore.html">elotuno szoveg</a></li>
-        <li><a href="bmGomb.html">burger menu Animacioval</a></li>
-        <li><a href="bmAnim.html">burger menu Animacioval #2</a></li>
-        <li><a href="infoAnim.html">infoablak animacio</a></li>
-        <li><a href="nem.html">pseudo NOT</a></li>
-        <li><a href="pszeudojelek.html">pseudo szelektorok</a></li>
-        <li><a href="ujFont.html">betutipus importalas filebol</a></li>
-        <li><a href="paralaxSite.html">PARALAX oldal - proba</a></li>
-        <li><a href="tulfolyas.html">OVERFLOW</a></li>
-        <li><a href="arnyekolas.html">TEXT SHADOW MOOVER</a></li>
-        <li><a href="fontawesome.html">font awsome hasznalata</a></li>
-        <li><a href="menugomb.html">Pres-tel webre menugomb</a></li>
-        <li><a href="ichecked.html">input checked manipulaciora</a></li>
-        <li><a href="btnvar.html">gomb variaciok</a></li>
-        <li><a href="verAlign.html">vertikalis elhelyezesek</a></li>
-        <li><a href="skalaefekt.html">scale efekt</a></li>
-        <li><a href="bleskText.html">felvillano szoveg</a></li>
-        <li><a href="blurEfekt.html">BLUR efektus a hatteren</a></li>
-        <li><a href="listaEfekt.html">listaelem kiemelese</a></li>
-        <li>
-          <a href="minMaxSzelesseg.html">minimum es maximum elemszelesseg</a>
-        </li>
-        <li>
-          <a href="loadAnimation.html">loading animacio</a>
-        </li>
-        <li>
-          <a href="emVSrem.html">em VS rem</a>
-        </li>
-      </ol>
-      <br />
-      <h2>JavaScript próbálkozások</h2>
-      <ol>
-        <li><a href="sop.html">sum of positive ARRAY</a></li>
-        <li><a href="dum.html">DOM manipulation</a></li>
-        <li><a href="textManipulator.html">TEXT manipulator</a></li>
-        <li><a href="tombok.html">tombok</a></li>
-        <li><a href="kalkulator.html">számológép</a></li>
-        <li><a href="okey.html">ON KEY</a></li>
-        <li><a href="borderRoundSetter.html">keretsarok beállító</a></li>
-        <li><a href="jsOra.html">klasszikus ora</a></li>
-        <li><a href="notes.html">Note - shift - click</a></li>
-        <li><a href="newtag.html">NEW TAG on DOM</a></li>
-        <li>
-          <a href="napOra.html">NAP felkelte es Nap nyugta javascriptben</a>
-        </li>
-        <li><a href="igeret.html">promises</a></li>
-        <li><a href="gradecalc.html">grade calculator avagy osztalyozo</a></li>
-        <li><a href="webcim.html">URL kiolvaso - manipulalo</a></li>
-        <li>
-          <a href="ablakmeret.html"
-            >ablakmeret viselkedese valtoztatas eseten</a
-          >
-        </li>
-        <li>
-          <a href="addeventlistener.html">add event listener viselkedese</a>
-        </li>
-        <li>
-          <a href="querySelect.html">queryselector mukodes</a>
-        </li>
-        <li><a href="ssjs.html">smooth scrolling JS</a></li>
-        <li><a href="srollmozgas.html">elem mozgasa scrolling hatasara</a></li>
-        <li><a href="photosroll.html">kép mozgása scroll hatására</a></li>
-        <li><a href="jsdom.html">DOM rendezes JavaScriptel</a></li>
-        <li><a href="sTimeline.html">simple timeline with JS</a></li>
-        <li><a href="twoPhoto.html">ket foto egymason - osszahosniltas</a></li>
-        <li><a href="interGradenr.html">interaktiv gradient</a></li>
-        <li>
-          <a href="scrollPages.html">oldal megjelenese scroll hatasara</a>
-        </li>
-      </ol>
-      <br />
-      <h2>modern HTML & CSS feladatok</h2>
-      <ol>
-        <li><a href="formstyle.html">form style challenge</a></li>
-      </ol>
-      <!-- eger animacio SCROLLING start -->
-      <div class="scroll-link">
-        <svg id="elTuntet" class="mouse" viewBox="0 0 76 130">
-          <!-- xmlns="..." preserveAspectRatio="xMidYmid meet" -->
-          <g fill="none" fill-rule="evenodd">
-            <rect
-              width="70"
-              height="118"
-              x="1.5"
-              y="1.5"
-              stroke="#000"
-              stroke-width="5"
-              rx="26"
-            />
-            <circle cx="36.5" cy="31.5" r="4.5" fill="#000" class="scroll" />
-          </g>
-        </svg>
-      </div>
-      <!-- eger animacio end -->
+        </nav>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ducimus?
+        </p>
+        <h2>HTML es CSS példák</h2>
+        <ol>
+            <li><a href="betuzok.html" accesskey="a">betuk es sorok</a></li>
+            <li><a href="interaktivKeret.html">iFrame</a></li>
+            <li><a href="keret.html" target="_top">keret-ek</a></li>
+            <li>
+                <a href="keretSarok.html" target="_top">keret sarok gombolyites</a>
+            </li>
+            <li><a href="linkelek.html" accesskey="b">linkekhez</a></li>
+            <li><a href="linkelek.html#ott">ez egy uj bekezdes</a></li>
+            <li><a href="fototext.html">kepen írás</a></li>
+            <li><a href="lapozas.html">lap gorgetese</a></li>
+            <li><a href="halo.html">GRID-ek GRID-je</a></li>
+            <li><a href="uszik.html">mi a float?</a></li>
+            <li><a href="tOsztaly.html">TARGET pszeudo osztaly</a></li>
+            <li><a href="kockaMgomb.html">menu TARGET pseudo osztallyal </a></li>
+            <li><a href="egerHaver.html">hover funkcio</a></li>
+            <li><a href="dragdrop.html">Drag & Drop</a></li>
+            <li><a href="jsForm.html">JS form ellenorzes</a></li>
+            <li><a href="text.html">responsive text</a></li>
+            <li><a href="pozik.html">positions | relative | absolute</a></li>
+            <li><a href="elotteUtanna.html">Before / After</a></li>
+            <li><a href="nyomda.html">printer version</a></li>
+            <li><a href="transit.html">transition mukodese</a></li>
+            <li><a href="fleks.html">FLEXBox</a></li>
+            <li><a href="side.html">side MENU</a></li>
+            <li><a href="reMenu.html">responsive MENU</a></li>
+            <li><a href="elore.html">elotuno szoveg</a></li>
+            <li><a href="bmGomb.html">burger menu Animacioval</a></li>
+            <li><a href="bmAnim.html">burger menu Animacioval #2</a></li>
+            <li><a href="infoAnim.html">infoablak animacio</a></li>
+            <li><a href="nem.html">pseudo NOT</a></li>
+            <li><a href="pszeudojelek.html">pseudo szelektorok</a></li>
+            <li><a href="ujFont.html">betutipus importalas filebol</a></li>
+            <li><a href="paralaxSite.html">PARALAX oldal - proba</a></li>
+            <li><a href="tulfolyas.html">OVERFLOW</a></li>
+            <li><a href="arnyekolas.html">TEXT SHADOW MOOVER</a></li>
+            <li><a href="fontawesome.html">font awsome hasznalata</a></li>
+            <li><a href="menugomb.html">Pres-tel webre menugomb</a></li>
+            <li><a href="ichecked.html">input checked manipulaciora</a></li>
+            <li><a href="btnvar.html">gomb variaciok</a></li>
+            <li><a href="verAlign.html">vertikalis elhelyezesek</a></li>
+            <li><a href="skalaefekt.html">scale efekt</a></li>
+            <li><a href="bleskText.html">felvillano szoveg</a></li>
+            <li><a href="blurEfekt.html">BLUR efektus a hatteren</a></li>
+            <li><a href="listaEfekt.html">listaelem kiemelese</a></li>
+            <li>
+                <a href="minMaxSzelesseg.html">minimum es maximum elemszelesseg</a>
+            </li>
+            <li>
+                <a href="loadAnimation.html">loading animacio</a>
+            </li>
+            <li>
+                <a href="emVSrem.html">em VS rem</a>
+            </li>
+        </ol>
+        <br />
+        <h2>JavaScript próbálkozások</h2>
+        <ol>
+            <li><a href="sop.html">sum of positive ARRAY</a></li>
+            <li><a href="dum.html">DOM manipulation</a></li>
+            <li><a href="textManipulator.html">TEXT manipulator</a></li>
+            <li><a href="tombok.html">tombok</a></li>
+            <li><a href="kalkulator.html">számológép</a></li>
+            <li><a href="okey.html">ON KEY</a></li>
+            <li><a href="borderRoundSetter.html">keretsarok beállító</a></li>
+            <li><a href="jsOra.html">klasszikus ora</a></li>
+            <li><a href="notes.html">Note - shift - click</a></li>
+            <li><a href="newtag.html">NEW TAG on DOM</a></li>
+            <li>
+                <a href="napOra.html">NAP felkelte es Nap nyugta javascriptben</a>
+            </li>
+            <li><a href="igeret.html">promises</a></li>
+            <li><a href="gradecalc.html">grade calculator avagy osztalyozo</a></li>
+            <li><a href="webcim.html">URL kiolvaso - manipulalo</a></li>
+            <li>
+                <a href="ablakmeret.html">ablakmeret viselkedese valtoztatas eseten</a>
+            </li>
+            <li>
+                <a href="addeventlistener.html">add event listener viselkedese</a>
+            </li>
+            <li>
+                <a href="querySelect.html">queryselector mukodes</a>
+            </li>
+            <li><a href="ssjs.html">smooth scrolling JS</a></li>
+            <li><a href="srollmozgas.html">elem mozgasa scrolling hatasara</a></li>
+            <li><a href="photosroll.html">kép mozgása scroll hatására</a></li>
+            <li><a href="jsdom.html">DOM rendezes JavaScriptel</a></li>
+            <li><a href="sTimeline.html">simple timeline with JS</a></li>
+            <li><a href="twoPhoto.html">ket foto egymason - osszahosniltas</a></li>
+            <li><a href="interGradenr.html">interaktiv gradient</a></li>
+            <li>
+                <a href="scrollPages.html">oldal megjelenese scroll hatasara</a>
+            </li>
+            <li>
+                <a href="elemthis.html">elem viselkedesvaltoztatas this keywordel</a>
+            </li>
+        </ol>
+        <br />
+        <h2>modern HTML & CSS feladatok</h2>
+        <ol>
+            <li><a href="formstyle.html">form style challenge</a></li>
+        </ol>
+        <!-- eger animacio SCROLLING start -->
+        <div class="scroll-link">
+            <svg id="elTuntet" class="mouse" viewBox="0 0 76 130">
+        <!-- xmlns="..." preserveAspectRatio="xMidYmid meet" -->
+        <g fill="none" fill-rule="evenodd">
+          <rect width="70" height="118" x="1.5" y="1.5" stroke="#000" stroke-width="5" rx="26" />
+          <circle cx="36.5" cy="31.5" r="4.5" fill="#000" class="scroll" />
+        </g>
+      </svg>
+        </div>
+        <!-- eger animacio end -->
     </div>
 
     <script type="text/javascript">
-      $("li").each(function(index) {
-        /* index = a sorszama a Lista elemeknek */
-        console.log(
-          index + ": " + $(this).text()
-        ); /* a $(this).text() kiolvassa az index sorszamu listaelmet    */
-      });
+        $("li").each(function(index) {
+            /* index = a sorszama a Lista elemeknek */
+            console.log(
+                index + ": " + $(this).text()
+            ); /* a $(this).text() kiolvassa az index sorszamu listaelmet    */
+        });
 
-      //creating a new paragraph
-      var p = document.createElement("p");
-      var node = document.createTextNode("Some new text ");
-      //adding the text to the paragraph
-      p.appendChild(node);
+        //creating a new paragraph
+        var p = document.createElement("p");
+        var node = document.createTextNode("Some new text ");
+        //adding the text to the paragraph
+        p.appendChild(node);
 
-      var div = document.getElementById("demo");
-      //adding the paragraph to the div
-      div.appendChild(p);
+        var div = document.getElementById("demo");
+        //adding the paragraph to the div
+        div.appendChild(p);
     </script>
     <script>
-      function mozog() {
-        let koord = window.pageYOffset;
-        if (koord > 0) {
-          document.getElementById("elTuntet").style.visibility = "hidden";
-        } else {
-          document.getElementById("elTuntet").style.visibility = "visible";
+        function mozog() {
+            let koord = window.pageYOffset;
+            if (koord > 0) {
+                document.getElementById("elTuntet").style.visibility = "hidden";
+            } else {
+                document.getElementById("elTuntet").style.visibility = "visible";
+            }
         }
-      }
     </script>
-  </body>
+</body>
+
 </html>
