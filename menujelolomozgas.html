@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menucsik</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu_container {
+            position: relative;
+        }
+        
+        .menu_elem {
+            min-width: 200px;
+            text-align: center;
+            /* border: 1px solid #bbb; */
+            cursor: pointer;
+        }
+        
+        ul {
+            display: flex;
+            margin-top: 20px;
+            margin-bottom: 3px;
+            align-content: space-around;
+            list-style: none;
+        }
+        
+        .menu_cursor {
+            position: absolute;
+            width: 200px;
+            height: 5px;
+            background: #25008b;
+            opacity: 1;
+            transition: all ease-in-out .6s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='menu_container'>
+        <ul>
+            <li class='menu_elem'>home</li>
+            <li class='menu_elem'>products</li>
+            <li class='menu_elem'>references</li>
+            <li class='menu_elem'>contact</li>
+        </ul>
+        <div class='menu_cursor'></div>
+    </div>
+
+    <script>
+        const menuElem = document.querySelectorAll('.menu_elem');
+        const menuMarker = document.querySelector('.menu_cursor');
+
+        menuElem.forEach(menu => {
+            menu.addEventListener('mouseover', (ev) => {
+                let aktualKoord = menuMarker.getClientRects();
+                let elemKoord = ev.target.getClientRects();
+                elemKoord = elemKoord[0].x + 'px';
+                // menuMarker.style.opacity = '1';
+                menuMarker.style.transform = `translateX(${elemKoord})`;
+                console.log(ev.target.getClientRects(), aktualKoord[0].x);
+            })
+            menu.addEventListener('mouseout', (ev) => {
+                // menuMarker.style.opacity = '0';
+            });
+        });
+    </script>
+
+</body>
+
+</html>

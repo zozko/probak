@@ -8,7 +8,8 @@
     <title>elem manipulacio this keywordel</title>
 
     <style>
-        .forma {
+        .forma,
+        button {
             width: 50px;
             height: 50px;
             border: 1px solid black;
@@ -21,16 +22,16 @@
     <h2>szinvalaszto a negyzetekre</h2>
     <p>valassz a menubol egy szint es kattints valamelyik negyzetre</p>
     <label for="szin">
-    <select name="szin" id="color">
-      <option value="red">red</option>
-      <option value="green">green</option>
-      <option value="blue">blue</option>
-      <option value="yellow">yellow</option>
-      <option value="pink">pink</option>
-      <option value="white">white</option>
-      <option value="black">black</option>
-    </select>
-  </label>
+        <select name="szin" id="color">
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="blue">blue</option>
+            <option value="yellow">yellow</option>
+            <option value="pink">pink</option>
+            <option value="white">white</option>
+            <option value="black">black</option>
+        </select>
+    </label>
 
     <div class="forma"></div>
     <div class="forma"></div>
@@ -40,16 +41,20 @@
 
 
     <button>
-    <a href="magyarazok.html">vissza</a>
-  </button>
+        <a href="magyarazok.html">vissza</a>
+    </button>
 
     <script>
-        let elemList = document.querySelectorAll('.forma'); //ez egy tombot ad vissza
+        let elemList = document.querySelectorAll('.forma'); //ez egy nodeList-et ad vissza
+        console.log(elemList);
 
 
+        //a nodelistbol tudunk tmbot kesziteni
+        let elemTomb = Array.from(elemList);
+        console.log(elemTomb);
         //az osszes elemhez az elemList tombbe, hozzarendeljuk az eventListenert
-        for (let i = 0; i < elemList.length; i++) {
-            elemList[i].addEventListener('click', function() {
+        for (let i = 0; i < elemTomb.length; i++) {
+            elemTomb[i].addEventListener('click', function() {
                 let colorpicker = document.getElementsByTagName('select')[0].value;
                 let color = colorpicker;
                 // console.log(color, this);
@@ -57,13 +62,11 @@
             });
         };
 
-        function changeColor(elem, szin) {
+        function changeColor(kontext, szin) {
             // console.log('az ide erkezo this:', elem, szin);
-            elem.style.backgroundColor = szin;
+            kontext.style.backgroundColor = szin;
+            // this.style.backgroundColor = szin;
         }
-
-
-        // let elem = document.querySelector('.forma')
     </script>
 </body>
 

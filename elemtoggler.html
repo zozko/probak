@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggler hasznalata</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        .jo {
+            border: 3px solid red;
+        }
+        
+        .a,
+        .b,
+        .c,
+        .egyenlo {
+            margin: 10px;
+            padding: 8px;
+            width: 40px;
+            height: 40px;
+            background-color: black;
+            color: orange;
+        }
+        
+        p {
+            padding: 8px;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class='a' data-i='A gomb'>A</div>
+    <div class='b' data-i='B gomb'>B</div>
+    <div class='c' data-i='C gomb'>C</div>
+
+    <div class="egyenlo" data-i='1. gomb'>1</div>
+    <div class="egyenlo" data-i='2. gomb'>2</div>
+    <div class="egyenlo" data-i='3. gomb'>3</div>
+
+    <br>
+
+    <p class='kijelzo'></p>
+
+    <button>
+        <a href="magyarazok.html">vissza</a>
+    </button>
+
+
+    <script>
+        let kijelzo = document.getElementsByClassName('kijelzo')[0];
+        let boxA = document.querySelector('.a');
+        let boxB = document.querySelector('.b');
+        let boxC = document.querySelector('.c');
+
+        boxA.addEventListener('click', changer);
+        boxB.addEventListener('click', changer);
+        boxC.addEventListener('click', changer);
+
+
+
+        let egyenloBox = document.querySelectorAll('.egyenlo'); //itt egy nodeList keletkezik az egynelo osztalyu elemekbol 
+        egyenloBox.forEach(db => {
+            db.addEventListener('click', changer);
+        })
+
+
+        function changer() {
+            //a this mindig arra az elemre mutat, ahonnet hivjuk ezt a funkciot
+            console.log(this.classList);
+            console.log(this.innerText);
+            kijelzo.innerHTML = this.dataset.i;
+            this.classList.toggle('jo');
+        }
+    </script>
+
+</body>
+
+</html>
