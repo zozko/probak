@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rekurzive tomb feltoltes</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        .finished,
+        input {
+            width: 36px;
+            height: 28px;
+            line-height: 28px;
+            display: inline-block;
+            margin: 5px;
+            border: 1px solid #000;
+        }
+        
+        .valid {
+            background-color: rgb(200, 233, 200);
+            color: green;
+        }
+        
+        .not_valid {
+            background-color: rgb(250, 202, 202);
+            color: red;
+        }
+        
+        .filled_aray {
+            transition: all 300ms ease;
+        }
+        
+        .workOn {
+            /* transsition: all 400ms ease; */
+            border: 3px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>vizualis rekurziv tomb feltoltes</h1>
+    <input type="number" name="nulla" min="0" max="9" value="0">
+    <input type="number" name="egy" min="0" max="9" value="0">
+    <input type="number" name="ketto" min="0" max="9" value="0">
+    <input type="number" name="harom" min="0" max="9" value="0">
+    <input type="number" name="negy" min="0" max="9" value="0">
+    <input type="number" name="ot" min="0" max="9" value="0">
+    <input type="number" name="hat" min="0" max="9" value="0">
+    <input type="number" name="het" min="0" max="9" value="0">
+    <input type="number" name="nyolc" min="0" max="9" value="0">
+    <button class="start">start</button>
+
+    <div class="original_array">
+
+    </div>
+    <div class="filled_aray">
+        <div class="finished"></div>
+        <div class="finished"></div>
+        <div class="finished"></div>
+        <div class="finished"></div>
+        <div class="finished"></div>
+        <div class="finished"></div>
+        <div class="finished"></div>
+        <div class="finished"></div>
+        <div class="finished"></div>
+    </div>
+    <script src="rekurzivtomb.js"></script>
+</body>
+
+</html>
