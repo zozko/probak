@@ -26,8 +26,9 @@ startBtn.addEventListener('click', () => {
         osztalyNev = "not_valid";
     } else {
         osztalyNev = "valid";
-        getExistNums(startTmb); //feltolti a meglevo szamokkal az existNumsInArr tombot
     }
+
+    getExistNums(startTmb); //feltolti a meglevo szamokkal az existNumsInArr tombot
     showOriginalArr.innerHTML = "";
     creatNewTag(showOriginalArr, 'p', osztalyNev, startTmb);
     creatNewTag(showOriginalArr, 'span', 0, existNumInArr + ' a mar szereplo szamok');
@@ -36,15 +37,17 @@ startBtn.addEventListener('click', () => {
 
 
     //logikara ugras amig nincs befejezve a tablazatunk
-    let oldjamTovabb = true;
-    while (oldjamTovabb) {
-        let kesz = guesTheNum();
-        if (kesz) {
-            console.log('OK');
-            console.log(existNumInArr);
-            oldjamTovabb = false;
+    if (osztalyNev === 'valid') {
+        let oldjamTovabb = true;
+        while (oldjamTovabb) {
+            let kesz = guesTheNum();
+            if (kesz) {
+                console.log('OK');
+                console.log(existNumInArr);
+                oldjamTovabb = false;
+            }
         }
-    }
+    };
 
 });
 
