@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>special hover effect</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            --boxieWidth: 1000px;
+            --boxieHeight: 1000px;
+            --boxieDeg: -25deg;
+            --scaleTo: 0;
+        }
+        
+        .special_hover {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            left: 200px;
+            top: 50px;
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid #3e3e3e; */
+            background: #ffa500;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .born {
+            position: absolute;
+            background: #9ef78a;
+            width: 1px;
+            height: 1px;
+            /* border: 1px solid #3e3e3e; */
+            border-radius: 50%;
+            transition: all 2s;
+            transform: scale(0, 0);
+            animation: felSkalazoo .6s linear;
+            /* ez allitja le az animaciot amikor befejezodik, es az elem nagysaga megmarad!*/
+            animation-fill-mode: forwards;
+            /* opacity: 0.5; */
+        }
+        
+        @keyframes felSkalazoo {
+            /* 0% {
+                transform: scale(0);
+            } */
+            100% {
+                transform: scale(1000);
+            }
+        }
+        
+        @keyframes leSkalazoo {
+            0% {
+                transform: scale(1000);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+        
+        .udvozlet {
+            width: auto;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <p>specialis hover effect a kartyan</p>
+    <div class="special_hover">
+        <p class='udvozlet'>HELLO</p>
+    </div>
+    <script>
+        let root = document.documentElement;
+        let box = document.querySelector('.special_hover');
+        box.addEventListener('mouseenter', (el) => {
+            let boxieParent = el.target;
+            // console.log(el.target, 'huh');
+            let xCoor = window.event.clientX - 200;
+            let yCoor = window.event.clientY - 100;
+            // console.log('X:', xCoor, 'y', yCoor);
+            let hoverBox = makeBox(boxieParent, xCoor, yCoor);
+            hoverBox.style.animationName = 'felSkalazoo';
+            // hoverBox.style.transition = 'transform 2s';
+            // hoverBox.style.transform = 'scale(1000,1000)';
+            // boxie.style.transform = 'scale(50,50)';
+            // root.style.setProperty('--scaleTo', '100');
+
+        });
+
+
+        box.addEventListener('mouseleave', () => {
+            let hoverEfectBox = document.querySelectorAll('.born');
+            // console.log(hoverEfectBox);
+
+            hoverEfectBox.forEach(element => {
+
+                element.style.animationName = 'leSkalazoo';
+                setTimeout(() => {
+                    element.parentNode.removeChild(element);
+                }, 1000);
+
+            });
+        });
+
+        function makeBox(elem, xCoor, yCoor) {
+            let boxie = document.createElement('div');
+            // root.style.setProperty('--scaleTo', '100', '!important');
+            boxie.classList.add('born');
+            boxie.style.top = yCoor + 'px';
+            boxie.style.left = xCoor + 'px';
+            elem.append(boxie);
+            return boxie;
+        }
+    </script>
+</body>
+
+</html>
