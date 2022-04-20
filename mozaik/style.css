@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+    background: rgb(205, 204, 204);
+}
+
+.photo_container {
+    max-width: 900px;
+    height: 500px;
+    overflow: hidden;
+    border: 1px solid red;
+}
