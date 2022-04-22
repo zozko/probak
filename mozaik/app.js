@@ -80,6 +80,8 @@ function tileOpacityRemover(array) {
     // }
 }
 
+
+//az atlatszosagot szabalyzo funkcio - a tombbol torli az atlatszonak beallitott elelemet
 function setOpacity(aktualArr) {
     let inportedArr = aktualArr.length;
     let blockNumber = Math.floor(Math.random() * inportedArr);
