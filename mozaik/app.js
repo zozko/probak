@@ -87,7 +87,7 @@ function tileOpacity(array, whatToDo) {
 function setOpacity(aktualArr, makeIt) {
     let inportedArr = aktualArr.length;
     let blockNumber = Math.floor(Math.random() * inportedArr);
-    console.log(`ezt torlom eppen ${blockNumber}`);
+    // console.log(`ezt torlom eppen ${blockNumber}`);
     //  ===
     // ===
     // // =
