@@ -2,6 +2,7 @@ const dom = (function() {
     let photoArr = ['photos/a.jpg', 'photos/b.jpg', 'photos/c.jpg'];
     let container = document.querySelector('.photo_container');
 
+    let inputMethod = document.forms[0]; //a radiobutton formularra mutat
     let tileArr = [];
 
     let btn = document.querySelectorAll('button');
@@ -11,12 +12,20 @@ const dom = (function() {
         bgPhto: photoArr,
         gomb: btn,
         tileBlockArr: tileArr,
+        methodSelected: inputMethod
     };
 })();
 
 const picture = (function() {
     let originArr;
     let showPics = dom.gomb[0].addEventListener('click', () => {
+        // a radiobutton ertekenek kiolvsasa
+        console.log(dom.methodSelected.elements['render'].value);
+        let methodToRender = dom.methodSelected.elements['render'].value;
+        console.log('kijelolve:', methodToRender);
+
+
+
         dom.tileBlockArr.length = 0;
 
         if (dom.photoRam.hasChildNodes()) {
