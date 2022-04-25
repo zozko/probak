@@ -84,8 +84,9 @@ button {
     -o-transform: scale(1);
 }
 
-.tile_wrapper:hover div,
+.tile_wrapper:hover>div,
 .tile:hover {
+    opacity: 0;
     transform: scale(0);
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
