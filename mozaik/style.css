@@ -44,11 +44,19 @@ button {
     height: 100%;
     top: 0;
     left: 0;
-    /* overflow: hidden; */
-    /* opacity: 0; */
+    /*overflow: hidden;
+    */
+    /*opacity: 0;
+    */
     background: inherit;
     font-size: 0;
-    /* line-height: 0; */
+    /*line-height: 0;
+    */
+    /* transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear; */
 }
 
 .tile {
@@ -56,11 +64,33 @@ button {
     display: inline-block;
     width: 20px;
     height: 10px;
-    /* line-height: 0; */
+    /*line-height: 0;
+    */
     background: #cdcccc;
     opacity: 1;
-    /* border: 1px solid red; */
+    /*transform: scale(1);
+    */
+    /*border: 1px solid red;
+    */
     z-index: 11;
+    transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
+
+.tile_wrapper:hover div,
+.tile:hover {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
 }
 
 .carry_left {

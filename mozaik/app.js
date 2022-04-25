@@ -18,10 +18,12 @@ const dom = (function() {
 
 const picture = (function() {
     let originArr;
+    console.log(dom.methodSelected.elements['render']);
+    // let methodToRender = dom.methodSelected.elements['render'].value;
+
     let showPics = dom.gomb[0].addEventListener('click', () => {
         // a radiobutton ertekenek kiolvsasa
-        console.log(dom.methodSelected.elements['render'].value);
-        let methodToRender = dom.methodSelected.elements['render'].value;
+        methodToRender = dom.methodSelected.elements['render'].value;
         console.log('kijelolve:', methodToRender);
 
 
@@ -36,7 +38,7 @@ const picture = (function() {
         let picNum = Math.floor(Math.random() * 3);
 
         dom.photoRam.style.background = `url(${dom.bgPhto[picNum]})`;
-        // let backgroundPicture = makeElem(dom.photoRam, 'img', 'kep', 0);
+
 
         for (let k = 0; k < 50; k++) {
             for (let i = 1; i <= 45; i++) {
@@ -48,14 +50,15 @@ const picture = (function() {
             }
         }
         originArr = dom.tileBlockArr.map((el) => el);
-        tileOpacity(dom.tileBlockArr, 'remove');
+        tileOpacity(dom.tileBlockArr, 'remove', methodToRender);
     });
 
     let fadePics = dom.gomb[1].addEventListener('click', () => {
+        methodToRender = dom.methodSelected.elements['render'].value;
         // console.log('fading...?', originArr);
         //  let blockNumber = Math.floor(Math.random() * originArr.length);
         if (originArr != undefined && originArr.length > 0) {
-            tileOpacity(originArr, 'fade');
+            tileOpacity(originArr, 'fade', methodToRender);
         } else {
             //   console.log('nothing to fade');
         }
@@ -67,7 +70,7 @@ const picture = (function() {
 })();
 
 //az atlatszosagot levenni a takaro negyzetekrol - veletlenszeruen
-function tileOpacity(array, whatToDo) {
+function tileOpacity(array, whatToDo, methodName) {
     //   console.log(array);
     let todo;
     let originArr = array.map((el) => el);
@@ -77,47 +80,109 @@ function tileOpacity(array, whatToDo) {
 
     if (whatToDo === 'remove') todo = 'rem';
     if (whatToDo === 'fade') todo = 'cover';
-    let futtato = setInterval(() => {
-        munkatomb = setOpacity(munkatomb, todo);
-        // console.log('   tomb merete:', munkatomb.length);
-        if (munkatomb.length < 1) {
-            clearInterval(futtato);
-        }
-        // console.log('eredeti tomb: ', originArr);
-    }, 0);
+
+    setOpacity(munkatomb, todo, methodName);
 }
 
-// <<
-// <<
-// << < HEAD
+
 
 //az atlatszosagot szabalyzo funkcio - a tombbol torli az atlatszonak beallitott elelemet
 // function setOpacity(aktualArr) {
-function setOpacity(aktualArr, makeIt) {
-    let inportedArr = aktualArr.length;
+function setOpacity(aktualArr, makeIt, howRenderMethod) {
+    let makeItMethod = makeIt;
+    let munkaTomb = aktualArr.map(e => e);
+
+    switch (howRenderMethod) {
+        case 'random':
+            let futtato = setInterval(() => {
+                munkaTomb = randomRenderer(munkaTomb, makeItMethod);
+                // console.log('   tomb merete:', munkatomb.length);
+                if (munkaTomb.length < 1) {
+                    clearInterval(futtato);
+                }
+                // console.log('eredeti tomb: ', munkaTomb);
+            }, 0);
+            // randomRenderer(aktualArr, makeIt);
+            // return aktualArr;
+            break;
+
+        case 'start':
+            console.log('START METHOD CALLED... funkcioja', makeItMethod);
+            startRenderer(munkaTomb, makeItMethod);
+            // aktualArr.shift();
+            return munkaTomb;
+
+        case 'end':
+            console.log('END METHOD CALLED... funkcioja', makeItMethod);
+            endRenderer(munkaTomb, makeItMethod);
+            // aktualArr.shift();
+            return munkaTomb;
+
+        default:
+            console.log('ops');
+            munkaTomb.length = 0;
+            return munkaTomb;
+
+    }
+
+}
+
+
+
+function randomRenderer(aktArray, tileFunc) {
+    console.log('RANDOMOLOK.... funkcioja: ', tileFunc);
+    let inportedArr = aktArray.length;
+    let munkaTomb = aktArray.map(el => el);
     let blockNumber = Math.floor(Math.random() * inportedArr);
-    // console.log(`ezt torlom eppen ${blockNumber}`);
-    //  ===
-    // ===
-    // // =
-    // let inportedArr = aktualArr.length;
+
+    if (tileFunc === 'rem') {
+        munkaTomb[blockNumber].style.opacity = '0';
+    }
+
+    if (tileFunc === 'cover') {
+        munkaTomb[blockNumber].style.opacity = '1';
+    }
+
+    munkaTomb.splice(blockNumber, 1);
+
+    return munkaTomb;
+}
+
+
+function startRenderer(aktArray, tileFunc) {
+    console.log('STARTOLOK.... funkcioja: ', tileFunc, aktArray);
+    let inportedArr = aktArray.map(el => el);
+
     // let blockNumber = Math.floor(Math.random() * inportedArr);
-    //   console.log(`ezt torlom eppen ${blockNumber}`);
-    // >>>
-    // >>>
-    // > origin / office_work
 
-    if (makeIt === 'rem') {
-        aktualArr[blockNumber].style.opacity = '0';
+    for (let j = 0; j < 50; j++) {
+        for (let i = 0; i < 2250; i += 45) {
+            let num = i + j;
+            if (tileFunc === 'rem') {
+                setTimeout(() => {
+                    setTimeout(() => {
+                        inportedArr[num].style.transform = 'scale(0)';
+                    }, 250);
+
+                }, 250);
+
+            }
+            if (tileFunc === 'cover') {
+                setTimeout(() => {
+                    setTimeout(() => {
+                        inportedArr[num].style.transform = 'scale(1)';
+                    }, 250);
+                }, 250);
+            }
+            // aktArray.splice(i + j, 1);
+
+        }
     }
+    return aktArray;
+}
 
-    if (makeIt === 'cover') {
-        aktualArr[blockNumber].style.opacity = '1';
-    }
-
-    aktualArr.splice(blockNumber, 1);
-
-    return aktualArr;
+function endRenderer(a, b) {
+    console.log('END RENDER FUNCTION....');
 }
 
 
