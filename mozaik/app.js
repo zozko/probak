@@ -23,6 +23,7 @@ const picture = (function() {
 
     let showPics = dom.gomb[0].addEventListener('click', () => {
         // a radiobutton ertekenek kiolvsasa
+        dom.gomb[0].setAttribute('disabled', true);
         methodToRender = dom.methodSelected.elements['render'].value;
         console.log('kijelolve:', methodToRender);
 
@@ -51,9 +52,11 @@ const picture = (function() {
         }
         originArr = dom.tileBlockArr.map((el) => el);
         tileOpacity(dom.tileBlockArr, 'remove', methodToRender);
+
     });
 
     let fadePics = dom.gomb[1].addEventListener('click', () => {
+        dom.gomb[0].removeAttribute('disabled');
         methodToRender = dom.methodSelected.elements['render'].value;
         // console.log('fading...?', originArr);
         //  let blockNumber = Math.floor(Math.random() * originArr.length);
@@ -71,6 +74,7 @@ const picture = (function() {
 
 //az atlatszosagot levenni a takaro negyzetekrol - veletlenszeruen
 function tileOpacity(array, whatToDo, methodName) {
+
     //   console.log(array);
     let todo;
     let originArr = array.map((el) => el);
@@ -81,7 +85,10 @@ function tileOpacity(array, whatToDo, methodName) {
     if (whatToDo === 'remove') todo = 'rem';
     if (whatToDo === 'fade') todo = 'cover';
 
-    setOpacity(munkatomb, todo, methodName);
+    let done = setOpacity(munkatomb, todo, methodName);
+    // console.info('visszakaptam a vezerlest...');
+    // if (done) dom.gomb[0].removeAttribute('disabled');
+
 }
 
 
@@ -100,28 +107,32 @@ function setOpacity(aktualArr, makeIt, howRenderMethod) {
                 if (munkaTomb.length < 1) {
                     clearInterval(futtato);
                 }
+                // dom.gomb[0].removeAttribute('disabled');
                 // console.log('eredeti tomb: ', munkaTomb);
             }, 0);
             // randomRenderer(aktualArr, makeIt);
-            // return aktualArr;
-            break;
+
+            return true;
+
 
         case 'start':
             console.log('START METHOD CALLED... funkcioja', makeItMethod);
             startRenderer(munkaTomb, makeItMethod);
             // aktualArr.shift();
-            return munkaTomb;
+            // dom.gomb[0].removeAttribute('disabled');
+            return true;
 
         case 'end':
             console.log('END METHOD CALLED... funkcioja', makeItMethod);
             endRenderer(munkaTomb, makeItMethod);
+            // dom.gomb[0].removeAttribute('disabled');
             // aktualArr.shift();
-            return munkaTomb;
+            return true;
 
         default:
             console.log('ops');
             munkaTomb.length = 0;
-            return munkaTomb;
+            return true;
 
     }
 
@@ -149,13 +160,14 @@ function randomRenderer(aktArray, tileFunc) {
 }
 
 
+
 function startRenderer(aktArray, tileFunc) {
     console.log('STARTOLOK.... funkcioja: ', tileFunc, aktArray);
     let inportedArr = aktArray.map(el => el);
 
     // let blockNumber = Math.floor(Math.random() * inportedArr);
 
-    for (let j = 0; j < 50; j++) {
+    for (let j = 0; j < 45; j++) {
         for (let i = 0; i < 2250; i += 45) {
             let num = i + j;
             if (tileFunc === 'rem') {
@@ -181,8 +193,29 @@ function startRenderer(aktArray, tileFunc) {
     return aktArray;
 }
 
-function endRenderer(a, b) {
-    console.log('END RENDER FUNCTION....');
+function endRenderer(aktArray, tileFunc) {
+    console.log('END RENDER FUNCTION....', aktArray, tileFunc);
+    if (tileFunc === 'rem') {
+        for (let i = aktArray.length - 1; i > -1; i--) {
+            setTimeout(() => {
+                setTimeout(() => {
+                    aktArray[i].style.transform = 'scale(0)';
+                }, 450);
+
+            }, 150);
+        }
+    }
+    if (tileFunc === 'cover') {
+        for (let i = aktArray.length - 1; i > -1; i--) {
+            setTimeout(() => {
+                setTimeout(() => {
+                    aktArray[i].style.transform = 'scale(1)';
+                }, 450);
+
+            }, 150);
+        }
+
+    }
 }
 
 
