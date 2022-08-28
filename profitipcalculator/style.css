@@ -1,0 +1,83 @@
+* {
+    background: #CCC;
+    box-sizing: border-box;
+}
+
+.rating_stars {
+    position: relative;
+    margin: 20px;
+    width: 600px;
+    height: 35px;
+    overflow: hidden;
+}
+
+input[name="ratings"] {
+    position: relative;
+    display: inline;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 30px;
+    overflow: hidden;
+}
+
+label[for="rating_#1"],
+label[for="rating_#2"],
+label[for="rating_#3"],
+label[for="rating_#4"],
+label[for="rating_#5"] {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.star_display {
+    position: absolute;
+    display: inline;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+input[name="rounded"] {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 20px 10px;
+}
+
+label[for="up"],
+label[for="down"] {
+    position: relative;
+    display: inline;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* margin: 20px 40px */
+}
+
+.up_arrow,
+.down_arrow {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: 0;
+    left: 0;
+}
+
+.round_Up,
+.round_Down {
+    margin-right: 20px;
+    /* margin-top: 10px; */
+}
+
+.rounder_text {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    margin-left: 20px;
+}

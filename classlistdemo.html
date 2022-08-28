@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList demo</title>
+    <style>
+        .a {
+            color: red;
+        }
+        
+        .b {
+            color: blue;
+        }
+        
+        .c {
+            background: coral;
+            color: beige
+        }
+        
+        .tgl {
+            background: yellowgreen;
+        }
+        
+        .newTgl {
+            border: 3px solid magenta;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p class="a">hello</p>
+
+        <p class="tgl">akarmi e</p>
+
+        <p id="rplc" class="b">ezt cserelem</p>
+    </div>
+
+    <div>
+        <span> K </span><span> Z </span><span> M </span>
+    </div>
+    <br><br><br>
+
+    <input type="text" class="text">
+
+
+
+</body>
+<script>
+    let parag = document.getElementsByClassName('a')[0];
+    let par2 = document.querySelector('.tgl');
+    let par3 = document.getElementById('rplc');
+
+    let bdy = document.querySelectorAll('div');
+    let inpt = document.querySelector('.text');
+
+    let spn = document.querySelectorAll('span');
+
+    spn.forEach(el => {
+        el.addEventListener('mouseover', () => {
+            el.style.background = 'brown';
+            el.style.color = 'white';
+        });
+        el.addEventListener('mouseout', function() {
+            el.style.background = '';
+            this.style.color = ''; // a normal funkcion keresztul megkapjuk az elemet a this-be
+        });
+    });
+
+    let realBdy = document.body;
+
+    inpt.addEventListener('keydown', mutasd);
+
+    function mutasd(event) {
+        console.log(`mutatom ${event.key} : ${event.code} :az input elem tartalma:${this.value} : ${event.keyCode}`); //a this a html elembol jon
+        console.log(this.value.length);
+        if (this.value.length > 4) {
+            this.style.color = 'pink';
+        } else {
+            this.style.color = 'grey';
+        }
+    }
+
+    console.dir(bdy);
+    console.log(realBdy.children);
+
+
+    parag.addEventListener('click', () => {
+        if (parag.classList.contains('a')) {
+            parag.classList.remove('a');
+            parag.classList.add('b');
+        } else {
+            parag.classList.remove('b');
+            parag.classList.add('a');
+        }
+    });
+
+    par2.addEventListener('click', () => {
+        par2.classList.toggle('tgl');
+        par2.classList.toggle('newTgl');
+    });
+
+    // ugyan az mint a parag, csak egyszerubben
+    par3.addEventListener('click', () => {
+        if (par3.classList.contains('b')) {
+            par3.classList.replace('b', 'c'); //igy lehet lecserelni a class-ot
+        } else {
+            par3.classList.replace('c', 'b');
+        }
+    });
+</script>
+
+</html>

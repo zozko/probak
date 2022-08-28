@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profi Tip Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <label for="total">
+        add bill´s total
+    </label>
+    <input type="number" name="total" id="total" class="total_value" value="0">
+
+    <button>calculate</button>
+
+    <div class="settings_holder">
+        <p>settings</p>
+
+        <div class="rate_wrapper">
+            <p>RATE SERVICE:</p>
+            <form action="" class="rating_stars">
+                <label for="rating_#1">
+                    <input type="radio" name="ratings" id="rating_#1" value="1" checked>
+                    <img src="imgs/star_ON.png" alt="rating_stars" class="star_display">
+                </label>
+                <label for="rating_#2">
+                    <input type="radio" name="ratings" id="rating_#2" value="2">
+                    <img src="imgs/star_OFF.png" alt="rating_stars" class="star_display">
+                </label>
+                <label for="rating_#3">
+                    <input type="radio" name="ratings" id="rating_#3" value="3">
+                    <img src="imgs/star_OFF.png" alt="rating_stars" class="star_display">
+                </label>
+                <label for="rating_#4">
+                    <input type="radio" name="ratings" id="rating_#4" value="4">
+                    <img src="imgs/star_OFF.png" alt="rating_stars" class="star_display">
+                </label>
+                <label for="rating_#5">
+                    <input type="radio" name="ratings" id="rating_#5" value="5">
+                    <img src="imgs/star_OFF.png" alt="rating_stars" class="star_display">
+                </label>
+            </form>
+        </div>
+
+        <div class="set_percentage">
+            <label for="min">set minimum percentage
+                <input type="range" class='min_percent' name="min" min="5" max="25" valueAsNumber="true" value="5">
+                <p class="min_output"></p>
+            </label>
+            <label for="min">set maximum percentage
+                <input type="range" class='max_percent' name="max" min="10" max="30" valueAsNumber="true" value="10">
+                <p class="max_output"></p>
+            </label>
+
+        </div>
+
+        <div class="round_box">
+            <form action="">
+                <p>SET HOW TO ROUND BILL</p>
+
+                <div class="round_Up">
+                    <p class="rounder_text">UP:</p>
+                    <label for="up">
+                        <input type="radio" name="rounder" id="up" value="UP">
+                        <img src="imgs/Arrow_UP.png" alt="round up arrow" class="up_arrow">
+                    </label>
+                </div>
+                <div class="round_Down">
+                    <p class="rounder_text">DOWN:</p>
+                    <label for="down">
+                        <input type="radio" name="rounder" id="down" value="DOWN">
+                        <img src="imgs/Arrow_DOWN.png" alt="round down arrow" class="down_arrow">
+                    </label>
+                </div>
+
+            </form>
+
+        </div>
+        <button class="save_data">save</button>
+    </div>
+
+    <script src="logic.js"></script>
+</body>
+
+</html>
