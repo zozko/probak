@@ -81,3 +81,8 @@ label[for="down"] {
     width: 60px;
     margin-left: 20px;
 }
+
+.min_output,
+.max_output {
+    display: inline-block;
+}
