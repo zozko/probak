@@ -48,53 +48,59 @@ const manipulators = (function() {
         //TODO elso funkcio majd a localstorage ellenorzese
 
         // a szamla osszegenek megszerzese
-        console.log(DOMelems.billTotal.value);
         let billValue = +parseFloat(DOMelems.billTotal.value).toFixed(2);
+        console.log('szamla erteke:', typeof billValue, billValue);
+        if (DOMelems.billTotal.value <= 0 || DOMelems.billTotal.valuee === NaN) {
+            DOMelems.showCalc.innerText = 'NO LEGAL INPUT!';
+            DOMelems.showCalc.classList.add('fault');
+        } else {
+            DOMelems.showCalc.classList.remove('fault');
 
-        //alap ratingStars beallitas OK
-        if (!ratingStars) {
-            DOMelems.ratingSetter.forEach(elem => {
-                // console.log(elem.getAttribute('checked'), elem.value);
-                if (elem.getAttribute('checked'))
-                    ratingStars = starSwitcher(parseInt(elem.value));
-            });
+            //alap ratingStars beallitas OK
+            if (!ratingStars) {
+                DOMelems.ratingSetter.forEach(elem => {
+                    // console.log(elem.getAttribute('checked'), elem.value);
+                    if (elem.getAttribute('checked'))
+                        ratingStars = starSwitcher(parseInt(elem.value));
+                });
+            }
+            console.log('a csillag alapszama:', ratingStars);
+
+            //alap kerekites beallitasa - ellenorizni, hogy van e mentve a LocalStorageba
+            console.log('alap kerekites', setRounder);
+
+            // a minimum es maximum szazalek
+            console.log('min: ', minimumPercent, 'max: ', maximumPercent);
+
+            switch (ratingStars) {
+                case 1:
+                    tip = oneStar(billValue);
+                    break;
+                case 2:
+                    tip = twoStars(billValue);
+                    break;
+                case 3:
+                    tip = threeStars(billValue);
+                    break;
+                case 4:
+                    tip = fourStars(billValue, setRounder, minimumPercent);
+                    break;
+                case 5:
+                    tip = fourStars(billValue, setRounder, maximumPercent);
+                    break;
+                default:
+                    console.log('lefutott');
+                    tip = 0;
+                    break;
+            }
+
+            //show tip
+            tip = +parseFloat(tip).toFixed(2);
+            // console.log(typeof billValue, typeof tip);
+            let fullBill = billValue + tip;
+            // console.log('ellenorzo', billValue, tip, fullBill);
+            DOMelems.showCalc.innerText = `at ${ratingStars} stars ratings our recomended tip is =${tip}.-!  Pay =${fullBill}.- `;
         }
-        console.log('a csillag alapszama:', ratingStars);
-
-        //alap kerekites beallitasa - ellenorizni, hogy van e mentve a LocalStorageba
-        console.log('alap kerekites', setRounder);
-
-        // a minimum es maximum szazalek
-        console.log('min: ', minimumPercent, 'max: ', maximumPercent);
-
-
-
-
-
-        switch (ratingStars) {
-            case 1:
-                tip = oneStar(billValue);
-                break;
-            case 2:
-                tip = twoStars(billValue);
-                break;
-            case 3:
-                tip = threeStars(billValue);
-                break;
-
-            default:
-                console.log('lefutott');
-                tip = 0;
-                break;
-        }
-
-        //show tip
-        tip = +parseFloat(tip).toFixed(2);
-        // console.log(typeof billValue, typeof tip);
-        let fullBill = billValue + tip;
-        // console.log('ellenorzo', billValue, tip, fullBill);
-        DOMelems.showCalc.innerText = `at ${ratingStars} stars ratings our recomended tip is =${tip}.-!  Pay =${fullBill}.- `;
-
 
 
     });
@@ -246,7 +252,6 @@ function starSwitcher(numberOfStar) {
     return rStar;
 }
 
-
 //1 csillagos kalkulacio = visszaadja a szamlat - nincs jatt
 function oneStar(bill) {
     return 0;
@@ -284,5 +289,31 @@ function threeStars(bill) {
 }
 
 //4 csillagos kalkulacio
+function fourStars(bill, rounding, percent) {
+    //22,28 + % --- kerekiteni egesz szamra
+    // tip  =(bill + % (kerekitve egesz szamra)) - bill
+    let tempTip
+    if (bill > 100) percent -= 3;
+    if (rounding === 'UP') {
+        tempTip = Math.ceil(bill + (bill * (percent / 100))) - bill;
+
+    } else {
+        tempTip = Math.floor(bill + (bill * (percent / 100))) - bill;
+    }
+    return parseFloat(tempTip).toFixed(2);
+}
 
 //5 csillagos kalkulacio
+function fiveStars(bill, rounding, percent) {
+    //22,28 + % --- kerekiteni egesz szamra
+    // tip  =(bill + % (kerekitve egesz szamra)) - bill
+    let tempTip
+    if (bill > 100) percent -= 3;
+    if (rounding === 'UP') {
+        tempTip = Math.ceil(bill + (bill * (percent / 100))) - bill;
+
+    } else {
+        tempTip = Math.floor(bill + (bill * (percent / 100))) - bill;
+    }
+    return parseFloat(tempTip).toFixed(2);
+}

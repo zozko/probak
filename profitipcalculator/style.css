@@ -86,3 +86,7 @@ label[for="down"] {
 .max_output {
     display: inline-block;
 }
+
+.fault {
+    color: red;
+}
