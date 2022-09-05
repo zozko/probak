@@ -33,15 +33,43 @@ const DOMelems = (function() {
     };
 })();
 
-// console.log(DOMelems);
+
+//kiolvassa az adatokat a localstoragebol
+const savedPreferences = (function() {
+    let rm, minp, maxp;
+    if (window.localStorage.getItem('roundMethod')) rm = window.localStorage.getItem('roundMethod');
+
+    if (window.localStorage.getItem('minPercent')) minp = window.localStorage.getItem('minPercent');
+
+    if (window.localStorage.getItem('maxPercent')) maxp = window.localStorage.getItem('maxPercent');
+
+    return {
+        setRound: rm,
+        setMinPercent: minp,
+        setMaxPercent: maxp
+    };
+})();
+
+console.log('local data readed', savedPreferences.setRound, savedPreferences.setMinPercent, savedPreferences.setMaxPercent);
 
 const manipulators = (function() {
+    let tip;
     let setRounder;
     let ratingStars;
     let minimumPercent = DOMelems.min_percent.value;
     let maximumPercent = DOMelems.max_percent.value;
-    let tip;
+    if (savedPreferences.setRound) setRounder = savedPreferences.setRound;
+    if (savedPreferences.setMinPercent) {
+        DOMelems.min_percent.value = savedPreferences.setMinPercent;
+        DOMelems.minOut.innerText = savedPreferences.setMinPercent + '%';
+        minimumPercent = savedPreferences.setMinPercent;
+    };
 
+    if (savedPreferences.setMaxPercent) {
+        DOMelems.max_percent.value = savedPreferences.setMaxPercent;
+        DOMelems.maxOut.innerText = savedPreferences.setMaxPercent + '%';
+        maximumPercent = savedPreferences.setMaxPercent;
+    };
 
     //calculations
     DOMelems.calc.addEventListener('click', (event) => {
@@ -100,6 +128,15 @@ const manipulators = (function() {
             let fullBill = billValue + tip;
             // console.log('ellenorzo', billValue, tip, fullBill);
             DOMelems.showCalc.innerText = `at ${ratingStars} stars ratings our recomended tip is =${tip}.-!  Pay =${fullBill}.- `;
+            //ha 5 csillagos ertekeles van, irjuk ki a minimum TIP-et is
+            if (ratingStars === 5) {
+
+                let mintip = fourStars(billValue, setRounder, minimumPercent);
+                mintip = +parseFloat(mintip).toFixed(2);
+                fullBill = billValue + mintip;
+
+                DOMelems.showCalc.innerHTML = `${DOMelems.showCalc.innerText} <h6>min tip is ${mintip}.- min. pay = ${fullBill}.-</h6>`;
+            }
         }
 
 
@@ -144,7 +181,7 @@ const manipulators = (function() {
     DOMelems.ratingSetter.forEach((elem) => {
         elem.addEventListener('change', (event) => {
             let starNumber = parseInt(elem.value);
-            // console.log(elem, elem.value, starNumber);
+            console.log(elem, elem.value, starNumber);
             ratingStars = starSwitcher(starNumber);
             console.log('csillag:', ratingStars);
         });
@@ -152,16 +189,29 @@ const manipulators = (function() {
 
 
     // rounder methods
-    // let rounder =
     DOMelems.rounderInput.forEach(elem => {
         //default settings - ha lesz mentve localsorageba - ellenorizni, es az szerint allitani!
-        if (elem.getAttribute('checked') && elem.value === 'UP') {
-            setRounder = elem.value;
-            DOMelems.roundUP.style.border = '3px solid green';
-        }
-        if (elem.getAttribute('checked') && elem.value === 'DOWN') {
-            setRounder = elem.value;
-            DOMelems.roundDOWN.style.border = '3px solid green';
+
+        if (setRounder) {
+            if (setRounder === 'UP') {
+                DOMelems.roundUP.style.border = '3px solid green';
+                DOMelems.roundDOWN.style.border = 'none';
+            }
+
+            if (setRounder === 'DOWN') {
+                DOMelems.roundDOWN.style.border = '3px solid green';
+                DOMelems.roundUP.style.border = 'none';
+            }
+
+        } else {
+            if (elem.getAttribute('checked') && elem.value === 'UP') {
+                setRounder = elem.value;
+                DOMelems.roundUP.style.border = '3px solid green';
+            }
+            if (elem.getAttribute('checked') && elem.value === 'DOWN') {
+                setRounder = elem.value;
+                DOMelems.roundDOWN.style.border = '3px solid green';
+            }
         }
 
         elem.addEventListener('change', ev => {
@@ -185,10 +235,17 @@ const manipulators = (function() {
     DOMelems.setStorage.addEventListener('click', () => {
         // window.localStorage.clear();
         // window.localStorage.setItem('rating', ratingStars);
-        window.localStorage.setItem('roundMethod', setRounder);
-        window.localStorage.setItem('minPercent', minimumPercent);
-        window.localStorage.setItem('maxPercent', maximumPercent);
-        console.log('data stored', window.localStorage);
+        let confirmSave = confirm(`saveing data:\nminimum percent is set to ${minimumPercent} % \nmaximum percent is set to ${maximumPercent} %, and \nrounding method is set to ${setRounder}`);
+
+        if (confirmSave) {
+            window.localStorage.setItem('roundMethod', setRounder);
+            window.localStorage.setItem('minPercent', minimumPercent);
+            window.localStorage.setItem('maxPercent', maximumPercent);
+            console.log('data stored', window.localStorage);
+            alert('data saved - OK!');
+        } else {
+            alert('NOT saved!');
+        }
 
     });
 
