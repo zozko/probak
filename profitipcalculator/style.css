@@ -1,6 +1,8 @@
 * {
     background: #CCC;
     box-sizing: border-box;
+    color: #1414d2;
+    /* #3d3a3a; */
 }
 
 .rating_stars {
