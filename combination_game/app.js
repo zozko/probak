@@ -13,7 +13,7 @@ let elemCreator = (function() {
         kombinacio.push(kombNum);
     }
 
-    console.log(kombinacio);
+    // console.log(kombinacio);
 
 
 
@@ -51,8 +51,11 @@ let elemCreator = (function() {
         mezo.setAttribute('type', 'number');
         mezo.classList.add('mezo#' + i);
         mezo.setAttribute('value', num);
-        mezo.setAttribute('min', 0);
-        mezo.setAttribute('max', 9);
+        // mezo.setAttribute('min', 0);
+        mezo.min = 0;
+        // mezo.setAttribute('max', 9);
+        mezo.max = 9;
+        mezo.size = 1;
     }
 
     //probalkozas kijelzo
@@ -84,12 +87,12 @@ let DOMelemek = (function() {
     let gessNum = 0;
 
     let inElemek = document.querySelectorAll('input');
-    console.log(inElemek);
+    // console.log(inElemek);
     inElemek.forEach(el => {
         gessArr.push(el.value);
 
     });
-    console.log(gessArr);
+    // console.log(gessArr);
 
     elemCreator.gomb.addEventListener('click', tesztelj);
 
@@ -107,7 +110,7 @@ let DOMelemek = (function() {
 
 //veletlen szam oszto
 function randomNumberMaker() {
-    return Math.floor(Math.random() * 9);
+    return Math.floor(Math.random() * 10);
 }
 
 
@@ -122,18 +125,21 @@ function creator(parent, elem) {
 
 
 function tesztelj() {
-    console.log('OK');
+    // console.log('OK');
     DOMelemek.probalkozas++;
-    console.log(DOMelemek.zarElemszama);
+    // console.log(DOMelemek.zarElemszama);
     for (let i = 0; i < elemCreator.szefzar.length; i++) {
-        if (elemCreator.szefzar[i] > DOMelemek.zarElemszama[i].value) {
-            DOMelemek.zarElemszama[i].style.background = '#009dc4';
-        }
 
-        if (elemCreator.szefzar[i] < DOMelemek.zarElemszama[i].value) {
-            DOMelemek.zarElemszama[i].style.background = '#ff8b3d';
+        elemCreator.szefzar[i] > DOMelemek.zarElemszama[i].value ? DOMelemek.zarElemszama[i].style.background = '#009dc4' : DOMelemek.zarElemszama[i].style.background = '#ff8b3d';
 
-        }
+        // if (elemCreator.szefzar[i] > DOMelemek.zarElemszama[i].value) {
+        //     DOMelemek.zarElemszama[i].style.background = '#009dc4';
+        // }
+
+        // if (elemCreator.szefzar[i] < DOMelemek.zarElemszama[i].value) {
+        //     DOMelemek.zarElemszama[i].style.background = '#ff8b3d';
+
+        // }
 
         if (elemCreator.szefzar[i] == DOMelemek.zarElemszama[i].value) {
             DOMelemek.zarElemszama[i].style.background = '#7ab97a';
@@ -145,15 +151,15 @@ function tesztelj() {
     let ok = 0;
 
     DOMelemek.zarElemszama.forEach(el => {
-        console.log(el.hasAttribute('disabled'));
+        // console.log(el.hasAttribute('disabled'));
         if (el.hasAttribute('disabled')) {
             ok++;
         }
 
     });
-    console.log('OK:', ok);
+    // console.log('OK:', ok);
     if (ok === 6) {
-        console.log('GAME OVER');
+        // console.log('GAME OVER');
         elemCreator.gomb.style.display = "none";
         let gameOver = creator(elemCreator.bdy, 'div');
         gameOver.style.color = 'red';
