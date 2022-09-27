@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array shuffler</title>
+</head>
+
+<body>
+    <h1>a tombben szereplo szavak beturendjet keveri sossze</h1>
+
+    <h3 class="eredeti">
+        <psan>eredeti:</psan>
+    </h3>
+
+    <p class="kevert"><span>kevert szo:</span></p>
+    <button>uj</button>
+
+    <script>
+        let arrOfWords = ['zoltan', 'auto', 'annamaria', 'elektromos', 'bukarest', 'marmonkanna', 'villanyvonat', 'motoreger'];
+        let eredetiKijelzo = document.querySelector('.eredeti');
+        let eredetiLabel = eredetiKijelzo.innerText;
+        let kevertKijelzo = document.querySelector('.kevert');
+        let kevertLabel = kevertKijelzo.innerHTML;
+        let gmb = document.querySelector('button');
+
+        gmb.addEventListener('click', () => {
+            let kivalasztottSzo = arrOfWords[Math.floor(Math.random() * arrOfWords.length)];
+            eredetiKijelzo.innerHTML = eredetiLabel + ' ' + kivalasztottSzo;
+            let betuk = kivalasztottSzo.split('');
+            // console.log(betuk);
+            let ujSzo = shuflle(betuk);
+            // console.log(ujSzo);
+            kevertKijelzo.innerHTML = kevertLabel + ' ' + ujSzo;
+        });
+
+
+        function shuflle(szo) {
+            let rendezo = szo.sort((a, b) => {
+                return ((Math.random() * 1) - 0.5);
+            });
+            // join methodus a tomb elemeinek egyesitesere
+            let ujszo = rendezo.join('');
+
+
+            // for methodus a tomb elemeinek egyesitesere
+            // for (let i = 0; i < rendezo.length; i++) {
+            //     ujszo = ujszo + rendezo[i];
+            // }
+            return ujszo;
+        }
+    </script>
+
+</body>
+
+</html>
