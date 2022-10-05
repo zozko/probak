@@ -1,0 +1,43 @@
+*,
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border: 3px solid #555;
+    margin: 0 auto;
+    /* overflow: hidden; */
+}
+
+.colorBox {
+    display: inline-block;
+    border: 1px solid #333;
+    width: 50%;
+    height: 50%;
+    background-color: antiquewhite;
+}
+
+.ketto {
+    width: 100px;
+    height: 100px;
+}
+
+.harom {
+    width: 150px;
+    height: 150px;
+}
+
+.box2 {
+    width: 50%;
+    height: 50%;
+}
+
+.box3 {
+    width: 33%;
+    height: 33%;
+}
