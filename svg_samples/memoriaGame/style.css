@@ -15,11 +15,17 @@ body {
 }
 
 .colorBox {
+    cursor: pointer;
     display: inline-block;
     border: 1px solid #333;
     width: 50%;
     height: 50%;
     background-color: antiquewhite;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
 }
 
 .ketto {
