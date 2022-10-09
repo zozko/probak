@@ -11,6 +11,7 @@ body {
     flex-wrap: wrap;
     border: 3px solid #555;
     margin: 0 auto;
+    box-shadow: 0px 6px 8px rgba(85, 85, 85, 0.597);
     /* overflow: hidden; */
 }
 
@@ -26,6 +27,26 @@ body {
     -moz-transition: all .4s ease;
     -ms-transition: all .4s ease;
     -o-transition: all .4s ease;
+}
+
+.monitor {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 60%;
+    height: 20%;
+    text-align: center;
+    font-size: 32px;
+    color: red;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.message {
+    width: 100%;
 }
 
 .ketto {
@@ -46,4 +67,34 @@ body {
 .box3 {
     width: 33%;
     height: 33%;
+}
+
+.quitBtn,
+.restartBtn {
+    box-shadow: 0px 6px 8px rgba(85, 85, 85, 0.597);
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+    margin-right: 30%;
+    padding: 5px 16px;
+    background-color: green;
+    color: white
+}
+
+.quitBtn {
+    /* /* cursor: pointer; */
+    /* display: inline-block; */
+    /* padding: 5px 16px; */
+    margin-right: 0;
+    background-color: red;
+}
+
+.result {
+    position: absolute;
+    width: 100%;
+    height: 7%;
+    padding: 3.5%;
+    background-color: darkgray;
+    bottom: 30px;
+    text-align: end;
 }

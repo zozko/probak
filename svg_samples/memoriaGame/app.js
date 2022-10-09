@@ -3,6 +3,7 @@ let pcColorArr = [];
 let playerClickedArr = [];
 let tovabb = true;
 let pcPickArr = [];
+let contiNeau = false;
 
 const DOMelems = (function() {
     // console.log('betoltve');
@@ -12,6 +13,8 @@ const DOMelems = (function() {
     const gameField = document.querySelector('.field');
     const startBtn = document.querySelector('.strBtn');
     const levle = document.querySelector('.level');
+    const messageWindow = document.querySelector('.monitor');
+    const best = document.querySelector('.result');
 
 
 
@@ -20,7 +23,9 @@ const DOMelems = (function() {
         displyaLevel: levle,
         runner: gameRun,
         box: gameField,
-        start: startBtn
+        start: startBtn,
+        messageBox: messageWindow,
+        personalBest: best
     };
 })();
 
@@ -37,6 +42,7 @@ const playGame = (function() {
     // console.log('startBTN:', DOMelems.start);
 
     displayLevel(DOMelems.gLevel);
+    saveBestResult();
 
     /* mig a level kisebb 10-nel csak 2 x 2 es negyzetet rajzoljon
     amikor a level nagyobb 10 akkor mar 3 x 3 negyzetet rajzoljon
@@ -80,6 +86,11 @@ function startGame() {
     if (!DOMelems.runner) {
         DOMelems.runner = true;
         DOMelems.start.disabled = true;
+        if (contiNeau) {
+            playGame.repaint();
+            console.log('%c FOLYTATAS...', 'color:orange');
+            contiNeau = false;
+        }
         theGameMain();
     }
     console.log('teljes szin sorrend:', pcColorArr);
@@ -144,22 +155,47 @@ function theGameMain() {
                 let gameResult = pcPickArr.every((el, inx) => el === playerClickedArr[inx]);
 
                 if (gameResult) {
-                    console.log('NYERTEL');
-                    playerTrials = 0;
-                    pcColorArr = [];
-                    pcPickArr = [];
-                    playerClickedArr = [];
-                    playGame.gameBoxes = [];
-                    DOMelems.box.innerHTML = '';
-                    playGame.repaint();
-                    DOMelems.gLevel++;
-                    displayLevel(DOMelems.gLevel);
-                    // DOMelems.start.disabled = false;
-                    DOMelems.runner = false;
-                    startGame();
+                    DOMelems.messageBox.innerText = 'OK';
+                    setTimeout(() => {
+
+                        console.log('NYERTEL');
+                        playerTrials = 0;
+                        pcColorArr = [];
+                        pcPickArr = [];
+                        playerClickedArr = [];
+                        playGame.gameBoxes = [];
+                        DOMelems.box.innerHTML = '';
+                        DOMelems.gLevel++;
+                        // DOMelems.start.disabled = false;
+
+                        console.log("%cUJRAINDUL: ", "color:green");
+                        DOMelems.runner = false;
+                        playGame.repaint();
+                        displayLevel(DOMelems.gLevel);
+                        startGame();
+                        DOMelems.messageBox.innerHTML = '';
+                    }, 1800);
+
 
                 } else {
                     console.log('NO NEM NYERTEL');
+                    saveBestResult();
+                    let gameOverText = eleMaker(DOMelems.messageBox, 'p', 'message');
+                    gameOverText.innerText = 'GAME OVER';
+                    let ujraBtn = eleMaker(DOMelems.messageBox, 'button', 'restartBtn');
+                    ujraBtn.innerText = 'restart';
+                    ujraBtn.addEventListener('click', () => {
+                        clearGameProps();
+                        displayLevel(DOMelems.gLevel);
+                        startGame();
+                    });
+
+                    let quitBtn = eleMaker(DOMelems.messageBox, 'button', 'quitBtn');
+                    quitBtn.innerText = 'quit';
+                    quitBtn.addEventListener('click', () => {
+                        clearGameProps();
+                        displayLevel(DOMelems.gLevel);
+                    });
                 }
 
             }
@@ -169,9 +205,39 @@ function theGameMain() {
 
     //szamoljuk mennyi negyzetet nyomott le - ugyan annyit nyomott le, mint a leve, akkor ellenorizzuk sorrendet
 
+};
 
 
+function saveBestResult() {
+    let bestRes = localStorage.getItem('memoryBest');
+    if (!bestRes) {
+        localStorage.setItem('memoryBest', 0);
+        DOMelems.personalBest.innerHTML = `eddig elert legjobb eredmenyed: 0`;
+    }
 
+    if (bestRes < DOMelems.gLevel) {
+        let personalRecord = DOMelems.gLevel;
+        localStorage.setItem('memoryBest', DOMelems.gLevel);
+        DOMelems.personalBest.innerHTML = `eddig elert legjobb eredmenyed: ${personalRecord}`;
+    } else {
+        DOMelems.personalBest.innerHTML = `eddig elert legjobb eredmenyed: ${bestRes}`;
+    }
+}
+
+// a jatek visszaallitasa alaphelyzetbe
+function clearGameProps() {
+    DOMelems.messageBox.innerHTML = '';
+    DOMelems.box.innerHTML = '';
+    DOMelems.start.disabled = false;
+    DOMelems.runner = false;
+    playerTrials = 0;
+    pcColorArr = [];
+    pcPickArr = [];
+    playerClickedArr = [];
+    playGame.gameBoxes = [];
+    DOMelems.box.innerHTML = '';
+    DOMelems.gLevel = 1;
+    contiNeau = true;
 };
 
 
