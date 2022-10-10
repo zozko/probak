@@ -110,6 +110,10 @@ body {
 }
 
 .quitBtn {
+    margin-right: 0;
+}
+
+.quitBtn {
     /* /* cursor: pointer; */
     /* display: inline-block; */
     /* padding: 5px 16px; */
@@ -129,4 +133,41 @@ body {
     background-color: darkgray;
     bottom: 30px;
     text-align: end;
+}
+
+
+/*mobilescreen*/
+
+@media only screen and (max-width: 600px) {
+    * {
+        font-size: 12px;
+    }
+    .info {
+        width: 55%;
+    }
+    .monitor {
+        font-size: 16px;
+    }
+    .strBtn,
+    .quitBtn,
+    .restartBtn {
+        position: relative;
+        box-shadow: 0px 6px 8px rgba(85, 85, 85, 0.597);
+        cursor: pointer;
+        width: 70px;
+        top: 100%;
+        font-size: 12px;
+        display: inline-block;
+        margin-right: 15%;
+        padding: 5px 12px;
+        background-color: green;
+        color: white
+    }
+    .quitBtn {
+        /* /* cursor: pointer; */
+        /* display: inline-block; */
+        /* padding: 5px 16px; */
+        margin-right: 0;
+        background-color: red;
+    }
 }
