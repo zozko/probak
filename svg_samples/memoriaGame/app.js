@@ -10,11 +10,15 @@ const DOMelems = (function() {
     let gameLevel = 1;
     let gameRun = false;
 
+
+
     const gameField = document.querySelector('.field');
     const startBtn = document.querySelector('.strBtn');
     const levle = document.querySelector('.level');
+    levle.style.visibility = 'hidden';
     const messageWindow = document.querySelector('.monitor');
     const best = document.querySelector('.result');
+    const info = document.querySelector('.info');
 
 
 
@@ -25,7 +29,8 @@ const DOMelems = (function() {
         box: gameField,
         start: startBtn,
         messageBox: messageWindow,
-        personalBest: best
+        personalBest: best,
+        gameInfo: info
     };
 })();
 
@@ -37,7 +42,7 @@ let playerTrials = 0;
 const playGame = (function() {
     let colorBoxes = [];
     let trayingNo = DOMelems.gLevel;
-    console.log('LEVEL szint: ', DOMelems.gLevel);
+    // console.log('LEVEL szint: ', DOMelems.gLevel);
     let boxom = DOMelems.box;
     // console.log('startBTN:', DOMelems.start);
 
@@ -68,7 +73,7 @@ const playGame = (function() {
     };
     boxPainter();
 
-    console.log('a jatek dobozok tombje:', colorBoxes);
+    // console.log('a jatek dobozok tombje:', colorBoxes);
 
     DOMelems.start.addEventListener('click', startGame);
 
@@ -82,18 +87,21 @@ const playGame = (function() {
 
 
 function startGame() {
+
+    DOMelems.gameInfo.style.visibility = 'hidden';
+    DOMelems.displyaLevel.style.visibility = 'visible';
     // console.log('megnyomtal...');
     if (!DOMelems.runner) {
         DOMelems.runner = true;
         DOMelems.start.disabled = true;
         if (contiNeau) {
             playGame.repaint();
-            console.log('%c FOLYTATAS...', 'color:orange');
+            // console.log('%c FOLYTATAS...', 'color:orange');
             contiNeau = false;
         }
         theGameMain();
     }
-    console.log('teljes szin sorrend:', pcColorArr);
+    // console.log('teljes szin sorrend:', pcColorArr);
 };
 
 // rajzolja ki a jatekmezot = net a negyzetek szama
@@ -118,6 +126,7 @@ function paintFields(net) {
         // console.log('OK?', tovabb);
     };
 
+    DOMelems.messageBox.innerText = `van hátra: ${DOMelems.gLevel - playerTrials} próbálkozásod`;
 
     return {
         square: ujEl // a mezo egyes elemei
@@ -127,38 +136,43 @@ function paintFields(net) {
 
 function theGameMain() {
     // veletlen szeru mezoforgatas a jatekszint szama szerint:
+    let mintaLefutott = sequence(DOMelems.gLevel);
     let gameBoxes = document.querySelectorAll('.colorBox');
-    sequence(DOMelems.gLevel);
+    gameBoxes.forEach(box => { box.removeEventListener('click', this) });
 
 
     gameBoxes.forEach(box => {
         box.addEventListener('click', (el) => {
             playerTrials++;
+            DOMelems.messageBox.innerText = `van hátra: ${DOMelems.gLevel - playerTrials} próbálkozásod`;
             // ujEl.addEventListener('click', (el) => {
+
             let clickedElementColor = el.target.style.background;
 
             el.target.style.transform = 'scale(0.4)';
             setTimeout(() => {
                 el.target.style.transform = 'scale(1)';
-            }, 200);
-            console.log(playerTrials, '. lenyomot elem szine', clickedElementColor);
+            }, 500);
+            // console.log(playerTrials, '. lenyomot elem szine', clickedElementColor);
             playerClickedArr.push(clickedElementColor);
-            console.log('lenyomottak :', playerClickedArr);
-            console.log('PC szinsorredn tomb :', pcPickArr);
-            console.log('jatekos click: ', playerTrials, '   - LEVEL: ', DOMelems.gLevel);
-            console.log('ELLENORZES ', pcPickArr, ' Vs ', playerClickedArr);
+
+            // console.log('lenyomottak :', playerClickedArr);
+            // console.log('PC szinsorredn tomb :', pcPickArr);
+            // console.log('jatekos click: ', playerTrials, '   - LEVEL: ', DOMelems.gLevel);
+            // console.log('ELLENORZES ', pcPickArr, ' Vs ', playerClickedArr);
+
 
 
             if (playerTrials === DOMelems.gLevel) {
-                console.log('nincs tobb probalkozasod! ! !');
+                // console.log('nincs tobb probalkozasod! ! !');
+                box.removeEventListener('click', this, true);
 
                 let gameResult = pcPickArr.every((el, inx) => el === playerClickedArr[inx]);
 
                 if (gameResult) {
                     DOMelems.messageBox.innerText = 'OK';
                     setTimeout(() => {
-
-                        console.log('NYERTEL');
+                        // console.log('NYERTEL');
                         playerTrials = 0;
                         pcColorArr = [];
                         pcPickArr = [];
@@ -168,17 +182,16 @@ function theGameMain() {
                         DOMelems.gLevel++;
                         // DOMelems.start.disabled = false;
 
-                        console.log("%cUJRAINDUL: ", "color:green");
+                        // console.log("%cUJRAINDUL: ", "color:green");
                         DOMelems.runner = false;
                         playGame.repaint();
                         displayLevel(DOMelems.gLevel);
                         startGame();
-                        DOMelems.messageBox.innerHTML = '';
+                        DOMelems.messageBox.innerText = `van hátra: ${DOMelems.gLevel - playerTrials} próbálkozásod`;
+                        // DOMelems.messageBox.innerHTML = '';
                     }, 1800);
-
-
                 } else {
-                    console.log('NO NEM NYERTEL');
+                    // console.log('NO NEM NYERTEL');
                     saveBestResult();
                     let gameOverText = eleMaker(DOMelems.messageBox, 'p', 'message');
                     gameOverText.innerText = 'GAME OVER';
@@ -202,6 +215,7 @@ function theGameMain() {
             // startGame();
         });
     });
+
 
     //szamoljuk mennyi negyzetet nyomott le - ugyan annyit nyomott le, mint a leve, akkor ellenorizzuk sorrendet
 
@@ -244,13 +258,12 @@ function clearGameProps() {
 function sequence(nums) {
     let readyBoxes = document.querySelectorAll('.colorBox');
     nums--;
-
     if (nums < 0) {
         return;
     }
 
     let boxNumber = Math.floor(Math.random() * readyBoxes.length);
-    console.log('a PC valasztott boxanak szine: ', readyBoxes[boxNumber].style.background);
+    // console.log('a PC valasztott boxanak szine: ', readyBoxes[boxNumber].style.background);
     // betesszuk a megjelolt szint a pcColor tombbe:
     pcPickArr.push(readyBoxes[boxNumber].style.background);
     readyBoxes[boxNumber].style.transform = 'scale(.4)';
@@ -258,8 +271,11 @@ function sequence(nums) {
         readyBoxes[boxNumber].style.transform = "scale(1)";
         setTimeout(() => {
             sequence(nums);
-        }, 1000);
-    }, 500);
+        }, 400);
+    }, 400);
+
+    return true;
+
 }
 
 // elem letrehozo funkcio
