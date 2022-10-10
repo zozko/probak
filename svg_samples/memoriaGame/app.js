@@ -106,7 +106,7 @@ function startGame() {
 
 // rajzolja ki a jatekmezot = net a negyzetek szama
 function paintFields(net) {
-    const colorArr = ['blue', 'red', 'lime', 'orange', 'blue', 'blueviolet', 'pink', 'green', 'black', 'cyan', 'brown', 'DarkOliveGreen'];
+    const colorArr = ['blue', 'red', 'lime', 'orange', 'blue', 'coral', 'blueviolet', 'pink', 'green', 'black', 'PapayaWhip', 'cyan', 'brown', 'DarkOliveGreen', 'LemonChiffon'];
     // console.log('a negyzetem ', net);
     // console.log('a colorArr merete: ', colorArr.length);
 
