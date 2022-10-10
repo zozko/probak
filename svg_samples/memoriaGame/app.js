@@ -47,7 +47,6 @@ const playGame = (function() {
     // console.log('startBTN:', DOMelems.start);
 
     displayLevel(DOMelems.gLevel);
-    saveBestResult();
 
     /* mig a level kisebb 10-nel csak 2 x 2 es negyzetet rajzoljon
     amikor a level nagyobb 10 akkor mar 3 x 3 negyzetet rajzoljon
@@ -100,6 +99,7 @@ function startGame() {
             // console.log('%c FOLYTATAS...', 'color:orange');
             contiNeau = false;
         }
+        saveBestResult();
         theGameMain();
     }
     // console.log('teljes szin sorrend:', pcColorArr);
