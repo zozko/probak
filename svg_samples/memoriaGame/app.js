@@ -245,20 +245,23 @@ function saveBestResult() {
     let d = new Date();
     let bestRes = localStorage.getItem('memoryBest') || 0;
     let timeStmp = localStorage.getItem('memoryTimeStamp') || 'no data';
-
+    let stmpArr = d.toString().split(' ');
+    let timeStmpStr = stmpArr.filter((el, idx) => idx < 5 ? el : '');
+    timeStmpStr = timeStmpStr.join(' ');
+    console.log(stmpArr, timeStmpStr);
     if (!bestRes) {
         localStorage.setItem('memoryBest', 0);
-        localStorage.setItem('memoryTimeStamp', d);
-        DOMelems.personalBest.innerHTML = `eddigi legjobb eredményed:`;
+        localStorage.setItem('memoryTimeStamp', timeStmpStr);
+        DOMelems.personalBest.innerHTML = `rekordod:`;
     }
 
     if (bestRes < DOMelems.gLevel) {
         let personalRecord = DOMelems.gLevel - 1;
         localStorage.setItem('memoryBest', personalRecord);
-        localStorage.setItem('memoryTimeStamp', d);
-        DOMelems.personalBest.innerHTML = `eddigi legjobb eredményed: ${bestRes}<br>${timeStmp}`;
+        localStorage.setItem('memoryTimeStamp', timeStmpStr);
+        DOMelems.personalBest.innerHTML = `rekordod: <span>${bestRes}</span><br>${timeStmp}`;
     } else {
-        DOMelems.personalBest.innerHTML = `eddigi legjobb eredményed: ${bestRes}<br>${timeStmp}`;
+        DOMelems.personalBest.innerHTML = `rekordod:  <span>${bestRes}</span><br>${timeStmp}`;
     }
 }
 
