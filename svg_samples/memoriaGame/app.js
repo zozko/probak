@@ -128,9 +128,11 @@ function paintFields(net) {
     };
 
     DOMelems.messageBox.innerText = `van hátra: ${DOMelems.gLevel - playerTrials} próbálkozásod`;
+    // const colorBoxes = document.querySelectorAll('.colorBox');
 
     return {
-        square: ujEl // a mezo egyes elemei
+        square: ujEl, // a mezo egyes elemei
+
     }
 };
 
@@ -139,7 +141,7 @@ function theGameMain() {
     // veletlen szeru mezoforgatas a jatekszint szama szerint:
     let mintaLefutott = sequence(DOMelems.gLevel);
     let gameBoxes = document.querySelectorAll('.colorBox');
-    gameBoxes.forEach(box => { box.removeEventListener('click', this) });
+    // gameBoxes.forEach(box => { box.removeEventListener('click', this) });
 
 
     gameBoxes.forEach(box => {
@@ -150,11 +152,11 @@ function theGameMain() {
 
             let clickedElementColor = el.target.style.background;
 
-            el.target.style.transform = 'scale(0.3) rotate(180deg)';
+            el.target.style.transform = 'scale(0.3)';
             // el.target.style.transform = '';
             setTimeout(() => {
                 // el.target.style.transform = 'rotate(45deg)';
-                el.target.style.transform = 'rotate(0deg) scale(1)';
+                el.target.style.transform = 'scale(1)';
             }, 500);
             // console.log(playerTrials, '. lenyomot elem szine', clickedElementColor);
             playerClickedArr.push(clickedElementColor);
@@ -200,6 +202,11 @@ function theGameMain() {
                     }, 1800);
                 } else {
                     // console.log('NO NEM NYERTEL');
+                    // console.log(gameBoxes);
+                    for (let i = 0; i < gameBoxes.length; i++) {
+                        gameBoxes[i].style.display = 'none';
+                    }
+                    DOMelems.box.style.visibility = 'hidden';
                     saveBestResult();
                     let gameOverText = eleMaker(DOMelems.messageBox, 'p', 'message');
                     gameOverText.innerText = 'GAME OVER';
@@ -207,6 +214,10 @@ function theGameMain() {
                     ujraBtn.innerText = 'restart';
                     ujraBtn.addEventListener('click', () => {
                         clearGameProps(true);
+                        for (let i = 0; i < gameBoxes.length; i++) {
+                            gameBoxes[i].style.display = 'inline-block';
+                        }
+                        DOMelems.box.style.visibility = 'visible';
                         displayLevel(DOMelems.gLevel);
                         startGame();
                     });
