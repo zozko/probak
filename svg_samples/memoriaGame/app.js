@@ -163,11 +163,11 @@ function theGameMain() {
     const page = document.querySelector('body');
 
 
+
+    //csalo funkcio... z billentyure muxik
     page.addEventListener('keydown', (ev) => {
         press++;
         ev.stopPropagation();
-
-
         DOMelems.helper.style.display = 'block';
 
         if (ev.keyCode === 90 && press < 2) {
@@ -180,14 +180,10 @@ function theGameMain() {
         };
 
         page.addEventListener('keyup', () => {
-
             press = 0;
             DOMelems.helper.style.display = 'none';
             DOMelems.helper.innerHTML = '';
         });
-
-
-
     });
 
 
@@ -257,6 +253,14 @@ function theGameMain() {
                 } else {
                     // console.log('NO NEM NYERTEL');
                     // console.log(gameBoxes);
+                    let sumOfErr = 0;
+                    //TODO ide kell megcsinalni a funkciot, hogy hany hibat vetett a jatekos!!!
+                    for (let i = 0; i < pcPickArr.length; i++) {
+                        if (pcPickArr[i] !== playerClickedArr[i]) {
+                            sumOfErr++;
+                        }
+                    }
+                    DOMelems.messageBox.innerText = `${sumOfErr} hibás lépésed volt`;
                     for (let i = 0; i < gameBoxes.length; i++) {
                         gameBoxes[i].style.display = 'none';
                     }
