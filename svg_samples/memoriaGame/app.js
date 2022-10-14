@@ -8,7 +8,11 @@ let contiNeau = false;
 let playerTrials = 0;
 //szamlalo a cheet-ben
 let press = 0;
-
+let repeatBtn;
+let repeatArr = [];
+// a box valtozo az ismetles funkcional kap szerepet
+let box = 0;
+let letrepeatNumber = 4;
 
 const DOMelems = (function() {
     // console.log('betoltve');
@@ -23,6 +27,7 @@ const DOMelems = (function() {
     const best = document.querySelector('.result');
     const info = document.querySelector('.info');
     const helpBox = document.querySelector('.helpingBox');
+    const repeatWrapper = document.querySelector('.repeatBox');
 
     return {
         gLevel: gameLevel,
@@ -33,7 +38,8 @@ const DOMelems = (function() {
         messageBox: messageWindow,
         personalBest: best,
         gameInfo: info,
-        helper: helpBox
+        helper: helpBox,
+        repeatBox: repeatWrapper
     };
 })();
 
@@ -155,12 +161,32 @@ function paintFields(net) {
 
 function theGameMain() {
     // veletlen szeru mezoforgatas a jatekszint szama szerint:
-    let mintaLefutott = sequence(DOMelems.gLevel);
+    // let mintaLefutott =
+    sequence(DOMelems.gLevel);
     let gameBoxes = document.querySelectorAll('.colorBox');
     // gameBoxes.forEach(box => { box.removeEventListener('click', this) });
 
     //help inditasa
     const page = document.querySelector('body');
+
+
+    //ismetlogom letrehozasa
+    if (!repeatBtn) {
+        repeatBtn = eleMaker(DOMelems.repeatBox, 'button', 'repeater');
+        repeatBtn.innerText = `repeat sequence?`;
+        repeatBtn.addEventListener('click', () => {
+            letrepeatNumber--;
+            repeatBtn.innerText = `you have ${letrepeatNumber -1} repeater left `;
+            box = 0;
+            if (letrepeatNumber > 0) {
+                repeatFullSequence(DOMelems.gLevel);
+
+            } else {
+                repeatBtn.innerText = 'no more aid';
+            }
+        });
+    }
+
 
 
 
@@ -334,7 +360,11 @@ function clearGameProps(allProp) {
         DOMelems.messageBox.innerHTML = '';
         contiNeau = true;
         playGame.gameBoxes = [];
+        letrepeatNumber = 4;
+        DOMelems.repeatBox.innerHTML = '';
+        repeatBtn = null;
     } else {
+        repeatArr = [];
         // DOMelems.gLevel++;
         // contiNeau = false;
     }
@@ -343,6 +373,7 @@ function clearGameProps(allProp) {
     pcColorArr = [];
     pcPickArr = [];
     playerClickedArr = [];
+
     // playGame.gameBoxes = [];
     DOMelems.start.disabled = false;
     DOMelems.box.innerHTML = '';
@@ -368,6 +399,7 @@ function sequence(nums) {
     let boxNumber = Math.floor(Math.random() * readyBoxes.length);
     // console.log('a PC valasztott boxanak szine: ', readyBoxes[boxNumber].style.background);
     // betesszuk a megjelolt szint a pcColor tombbe:
+    repeatArr.push(readyBoxes[boxNumber]);
     pcPickArr.push(readyBoxes[boxNumber].style.background);
     readyBoxes[boxNumber].style.transform = 'scale(.4)';
     setTimeout(() => {
@@ -377,7 +409,28 @@ function sequence(nums) {
         }, 500);
     }, 500);
 
-    return true;
+    // return true;
+}
+
+
+function repeatFullSequence(xor) {
+    if (letrepeatNumber > 0) {
+        console.log(`%cISMETELEK...${xor}`, 'color:purple');
+        console.log('REPEAT TOMB: ', repeatArr);
+        if (xor < 0) {
+            return;
+        }
+        xor--;
+        console.log('%cBOX:', `color:${pcPickArr[box]}`, repeatArr[box]);
+        repeatArr[box].style.transform = 'scale(.4)';
+        setTimeout(() => {
+            repeatArr[box].style.transform = 'scale(1)';
+            setTimeout(() => {
+                box++;
+                repeatFullSequence(xor);
+            }, 500);
+        }, 500);
+    }
 }
 
 // elem letrehozo funkcio
