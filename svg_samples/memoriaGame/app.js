@@ -173,16 +173,16 @@ function theGameMain() {
     //ismetlogom letrehozasa
     if (!repeatBtn) {
         repeatBtn = eleMaker(DOMelems.repeatBox, 'button', 'repeater');
-        repeatBtn.innerText = `repeat sequence?`;
+        repeatBtn.innerText = `megismételjem?`;
         repeatBtn.addEventListener('click', () => {
             letrepeatNumber--;
-            repeatBtn.innerText = `you have ${letrepeatNumber -1} repeater left `;
+            repeatBtn.innerText = `maradt ${letrepeatNumber -1} ismetlés`;
             box = 0;
             if (letrepeatNumber > 0) {
                 repeatFullSequence(DOMelems.gLevel);
 
             } else {
-                repeatBtn.innerText = 'no more aid';
+                repeatBtn.innerText = 'nincs tobb...';
             }
         });
     }
