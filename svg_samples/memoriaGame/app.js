@@ -10,8 +10,8 @@ let playerTrials = 0;
 let press = 0;
 let repeatBtn;
 let repeatArr = [];
-// a box valtozo az ismetles funkcional kap szerepet
-let box = 0;
+// a box valtozo az xor funkcional kap szerepet
+let rebox = 0;
 let letrepeatNumber = 4;
 
 const DOMelems = (function() {
@@ -174,16 +174,24 @@ function theGameMain() {
     if (!repeatBtn) {
         repeatBtn = eleMaker(DOMelems.repeatBox, 'button', 'repeater');
         repeatBtn.innerText = `megismételjem?`;
-        repeatBtn.addEventListener('click', () => {
-            letrepeatNumber--;
-            repeatBtn.innerText = `maradt ${letrepeatNumber -1} ismetlés`;
-            box = 0;
-            if (letrepeatNumber > 0) {
-                repeatFullSequence(DOMelems.gLevel);
 
-            } else {
-                repeatBtn.innerText = 'nincs tobb...';
+        repeatBtn.addEventListener('click', (ev) => {
+            let ismetles = DOMelems.gLevel;
+            rebox = 0;
+            console.log('clickben a repeatnumber = ', letrepeatNumber);
+            letrepeatNumber--;
+            if (letrepeatNumber >= 0) {
+                repeatFullSequence(ismetles);
+                if (letrepeatNumber - 1 <= 0) {
+                    repeatBtn.innerText = `nincs több ismetlés`;
+                    repeatBtn.classList.add('offBtn');
+
+                } else {
+                    repeatBtn.innerText = `maradt ${letrepeatNumber-1 } ismetlés`;
+                }
             }
+
+
         });
     }
 
@@ -333,7 +341,7 @@ function saveBestResult() {
     let stmpArr = d.toString().split(' ');
     let timeStmpStr = stmpArr.filter((el, idx) => (idx < 5 ? el : ''));
     timeStmpStr = timeStmpStr.join(' ');
-    console.log(stmpArr, timeStmpStr);
+    // console.log(stmpArr, timeStmpStr);
     if (!bestRes) {
         localStorage.setItem('memoryBest', 0);
         localStorage.setItem('memoryTimeStamp', timeStmpStr);
@@ -362,13 +370,13 @@ function clearGameProps(allProp) {
         playGame.gameBoxes = [];
         letrepeatNumber = 4;
         DOMelems.repeatBox.innerHTML = '';
-        repeatBtn = null;
-    } else {
-        repeatArr = [];
-        // DOMelems.gLevel++;
-        // contiNeau = false;
+
+        repeatBtn = '';
     }
 
+
+
+    repeatArr = [];
     playerTrials = 0;
     pcColorArr = [];
     pcPickArr = [];
@@ -401,7 +409,7 @@ function sequence(nums) {
     // betesszuk a megjelolt szint a pcColor tombbe:
     repeatArr.push(readyBoxes[boxNumber]);
     pcPickArr.push(readyBoxes[boxNumber].style.background);
-    readyBoxes[boxNumber].style.transform = 'scale(.4)';
+    readyBoxes[boxNumber].style.transform = 'scale(.2)';
     setTimeout(() => {
         readyBoxes[boxNumber].style.transform = 'scale(1)';
         setTimeout(() => {
@@ -414,23 +422,28 @@ function sequence(nums) {
 
 
 function repeatFullSequence(xor) {
+
+
+    let ism = xor;
     if (letrepeatNumber > 0) {
-        console.log(`%cISMETELEK...${xor}`, 'color:purple');
+        console.log(`%cISMETELEK...${ism}x`, 'color:yellow');
         console.log('REPEAT TOMB: ', repeatArr);
-        if (xor < 0) {
+        console.log(`%c${rebox} BOXOT ismetlem:`, `color:${pcPickArr[rebox]}`, repeatArr[rebox]);
+        console.log('box valtozo: ', rebox, 'megkapott szorzo XOR: ', xor, '-ism:', ism);
+        if (ism < 0) {
             return;
         }
-        xor--;
-        console.log('%cBOX:', `color:${pcPickArr[box]}`, repeatArr[box]);
-        repeatArr[box].style.transform = 'scale(.4)';
+        repeatArr[rebox].style.transform = 'scale(.4)';
         setTimeout(() => {
-            repeatArr[box].style.transform = 'scale(1)';
+            repeatArr[rebox].style.transform = 'scale(1)';
+            ism--;
             setTimeout(() => {
-                box++;
-                repeatFullSequence(xor);
+                rebox++;
+                repeatFullSequence(ism);
             }, 500);
         }, 500);
     }
+
 }
 
 // elem letrehozo funkcio
