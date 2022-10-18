@@ -178,20 +178,25 @@ function theGameMain() {
         repeatBtn.addEventListener('click', (ev) => {
             let ismetles = DOMelems.gLevel;
             rebox = 0;
-            console.log('clickben a repeatnumber = ', letrepeatNumber);
+            // console.log('clickben a repeatnumber = ', letrepeatNumber);
             letrepeatNumber--;
-            if (letrepeatNumber >= 0) {
-                repeatFullSequence(ismetles);
-                if (letrepeatNumber - 1 <= 0) {
-                    repeatBtn.innerText = `nincs több ismetlés`;
-                    repeatBtn.classList.add('offBtn');
 
-                } else {
-                    repeatBtn.innerText = `maradt ${letrepeatNumber-1 } ismetlés`;
-                }
+
+            if (letrepeatNumber - 1 <= 0) {
+                repeatBtn.innerText = `nincs több ismetlés`;
+                repeatBtn.classList.add('offBtn');
+            } else {
+                repeatBtn.style.display = 'none';
+                repeatBtn.innerText = `maradt ${letrepeatNumber-1 } ismetlés`;
             }
 
+            if (letrepeatNumber >= 0) {
+                repeatFullSequence(ismetles);
+                setTimeout(() => {
+                    repeatBtn.style.display = 'inline-block';
+                }, DOMelems.gLevel * 1001);
 
+            }
         });
     }
 
@@ -426,10 +431,10 @@ function repeatFullSequence(xor) {
 
     let ism = xor;
     if (letrepeatNumber > 0) {
-        console.log(`%cISMETELEK...${ism}x`, 'color:yellow');
-        console.log('REPEAT TOMB: ', repeatArr);
-        console.log(`%c${rebox} BOXOT ismetlem:`, `color:${pcPickArr[rebox]}`, repeatArr[rebox]);
-        console.log('box valtozo: ', rebox, 'megkapott szorzo XOR: ', xor, '-ism:', ism);
+        // console.log(`%cISMETELEK...${ism}x`, 'color:yellow');
+        // console.log('REPEAT TOMB: ', repeatArr);
+        // console.log(`%c${rebox} BOXOT ismetlem:`, `color:${pcPickArr[rebox]}`, repeatArr[rebox]);
+        // console.log('box valtozo: ', rebox, 'megkapott szorzo XOR: ', xor, '-ism:', ism);
         if (ism < 0) {
             return;
         }
