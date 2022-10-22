@@ -1,0 +1,27 @@
+body {
+    box-sizing: border-box;
+}
+
+.gameBox,
+.wordBox {
+    display: inline-block;
+    margin: O 10px;
+    width: 16vw;
+    height: 22px;
+    text-align: center;
+    background-color: red;
+    color: red;
+}
+
+.gameBox {
+    border: 1px solid #444;
+}
+
+.gameBox:hover {
+    background-color: aliceblue;
+    color: blue;
+}
+
+.searchFor {
+    font-size: 32px;
+}
