@@ -5,8 +5,8 @@ body {
 .gameBox,
 .wordBox {
     display: inline-block;
-    margin: O 10px;
-    width: 16vw;
+    margin-right: 10px;
+    width: calc((100vw - 90px) / 6);
     height: 22px;
     text-align: center;
     background-color: red;
@@ -24,4 +24,20 @@ body {
 
 .searchFor {
     font-size: 32px;
+}
+
+.startBtn,
+.restart {
+    width: 100px;
+    height: 24px;
+    background-color: cadetblue;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.restart {
+    margin-left: 20px;
 }
