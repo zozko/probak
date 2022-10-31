@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>character limit</title>
+    <style>
+        .warning {
+            border: 1px solid red;
+            background-color: rgba(255, 0, 0, 0.748);
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <p>szamolja es limitalja a textareaba bevitt charakterek szamat</p>
+    <textarea name="charFields" id="char_Field" cols="30" rows="5"></textarea>
+    <div class="message_box">
+
+    </div>
+
+
+    <script>
+        const maxChar = 150;
+        const charFields = document.querySelector('#char_Field');
+        const messageBox = document.querySelector('.message_box');
+
+        ['keyup', 'keydown', 'change'].forEach(el => {
+            charFields.addEventListener(el, charakterCounter);
+        });
+
+        function charakterCounter(ev) {
+            let text = charFields.value;
+            let charLength = charFields.value.length;
+            console.log(charFields.value.length, text);
+            if (charLength > (maxChar - 3)) {
+                messageBox.classList.add('warning');
+            } else {
+                messageBox.classList.remove('warning');
+            }
+            if (charLength >= maxChar) {
+                charFields.value = text.substring(0, maxChar);
+            }
+            messageBox.innerText = `${maxChar - charFields.value.length} charaktert irhatsz meg be!`;
+        }
+    </script>
+</body>
+
+</html>
