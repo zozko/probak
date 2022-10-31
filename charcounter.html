@@ -11,6 +11,7 @@
             border: 1px solid red;
             background-color: rgba(255, 0, 0, 0.748);
             color: aliceblue;
+            width: calc(30 * 8px);
         }
     </style>
 </head>
@@ -24,10 +25,12 @@
 
 
     <script>
-        const maxChar = 150;
+        const maxChar = 15;
         const charFields = document.querySelector('#char_Field');
         const messageBox = document.querySelector('.message_box');
 
+
+        //ha egyszerre tobb eventlistenert akarunk tennni egy taghoz, akkor igy a legegyszerubb
         ['keyup', 'keydown', 'change'].forEach(el => {
             charFields.addEventListener(el, charakterCounter);
         });
@@ -35,14 +38,14 @@
         function charakterCounter(ev) {
             let text = charFields.value;
             let charLength = charFields.value.length;
+            if (charLength >= maxChar) {
+                charFields.value = text.substring(0, maxChar);
+            }
             console.log(charFields.value.length, text);
             if (charLength > (maxChar - 3)) {
                 messageBox.classList.add('warning');
             } else {
                 messageBox.classList.remove('warning');
-            }
-            if (charLength >= maxChar) {
-                charFields.value = text.substring(0, maxChar);
             }
             messageBox.innerText = `${maxChar - charFields.value.length} charaktert irhatsz meg be!`;
         }
