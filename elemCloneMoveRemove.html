@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elem cloner - move - remove</title>
+    <style>
+        .trash {
+            position: absolute;
+            bottom: 40px;
+            right: 50px;
+            width: 100px;
+            height: 100px;
+            /* border: 1px solid #555; */
+            background-image: url('images/trash.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .clonable {
+            display: inline-block;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #444;
+            text-align: center;
+            margin-right: 10px;
+        }
+        
+        .cloned {
+            position: absolute;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+
+<body>
+    <p>itt a megjeleno elemre kattintva, keszitunk belole egy masolatot, melyet at lehet helyezni barhova a kepernyon, ill. a kukaba lehet helyezni a torleshez...</p>
+
+    <div class="clonable">clone ME</div>
+    <div class="clonable">clone ME</div>
+    <div class="clonable">clone ME</div>
+    <div class="trash"></div>
+
+    <script>
+        const clonable = document.querySelectorAll('.clonable');
+        const trash = document.querySelector('.trash');
+        let kurzorX, kurzorY, elemXpos, elemYpos;
+
+
+
+        // console.log('a TRASH posicioja', trashPos);
+
+        clonable.forEach(eventMove => {
+            eventMove.addEventListener('click', goClone);
+        });
+
+
+
+        function goClone(event) {
+            // console.log('klonozom: ', this);
+            let clonedElem = event.target.cloneNode();
+            let zInx = Math.floor(Math.random() * 100);
+            clonedElem.style.backgroundColor = randomColor();
+            clonedElem.innerText = 'cloned #' + zInx;
+            clonedElem.style.zIndex = zInx;
+            clonedElem.classList.add('cloned'); // a legfontosabb, hogy az elem pozicioja:absolut legyen
+            clonedElem.addEventListener('mousedown', replaceElem);
+            document.body.appendChild(clonedElem);
+        }
+
+
+
+
+
+
+        function replaceElem(mauseEvent) {
+            mauseEvent = mauseEvent || window.event;
+            mauseEvent.preventDefault();
+            // console.log(mauseEvent.target.getBoundingClientRect());
+
+            kurzorX = mauseEvent.clientX;
+            kurzorY = mauseEvent.clientY;
+
+            // console.log('%ca kurzor koordinatai: ', 'color:cyan', 'X: ', kurzorX, '  Y: ', kurzorY, mauseEvent);
+            document.onmouseup = closeDrag;
+            document.onmousemove = move;
+
+        };
+
+        function move(eventMove) {
+            eventMove = eventMove || window.event;
+            eventMove.preventDefault();
+            // console.log('%cEVENT: ', 'color:yellow', eventMove.type);
+            // console.log('%cez az elem mozog', 'color:magenta', eventMove.target);
+            // console.log('%ca kurzor posicioja: ', 'color:cyan', kurzorX, kurzorY);
+            elemXpos = kurzorX - eventMove.clientX;
+            elemYpos = kurzorY - eventMove.clientY;
+            // console.log('%cELEM ELMOZDULASA:', 'color:magenta', eventMove.clientX, ' : ', eventMove.clientY);
+            // console.log('%cELEM NEW POS:', 'color:green', 'X: ', elemXpos, '  Y: ', elemYpos);
+            kurzorX = eventMove.clientX;
+            kurzorY = eventMove.clientY;
+            // console.log('%cKurzor NEW  pos: ', 'color:cyan', ' X:', kurzorX, '   Y:', kurzorY);
+
+            // console.log('ELEM TOP/Y: ', eventMove.target.offsetTop - elemYpos, '  ELEM LEFT/X: ', eventMove.target.offsetLeft - elemXpos);
+            eventMove.target.style.top = (eventMove.target.offsetTop - elemYpos) + 'px';
+            eventMove.target.style.left = (eventMove.target.offsetLeft - elemXpos) + 'px';
+
+        };
+
+        function closeDrag(grabbedElem) {
+            let trashPos = trash.getBoundingClientRect();
+            let grabd = grabbedElem.target.getBoundingClientRect();
+
+            // console.log('grabbed elem: ', grabd);
+            // console.log('trash elem: ', trash.getBoundingClientRect());
+
+            console.log('GRABBED TOP=', grabd.top, ' LEFT:', grabd.left, ' BOTTOM=', grabd.bottom, ' RIGHT:', grabd.right);
+            console.log('TRASH TOP=', trashPos.top, ' LEFT:', trashPos.left, ' BOTTOM=', trashPos.bottom, ' RIGHT:', trashPos.right);
+
+            if (grabd.bottom > trashPos.top && grabd.right > trashPos.left && grabd.left < trashPos.right && grabd.bottom > trashPos.top && grabd.top < trashPos.bottom) {
+                console.log('%cKUKAZOM ! ! !', 'color:red');
+                //kitorlom az adott elemet a DOM-bol
+                grabbedElem.target.parentElement.removeChild(grabbedElem.target);
+            }
+            // stop moving when mouse button is released:
+            console.log('%cSTOP', 'color:blue');
+            document.onmouseup = null;
+            document.onmousemove = null;
+        };
+
+
+        function randomColor() {
+            function color() {
+                let colorNum = Math.floor(Math.random() * 256).toString(16); // toStrin(16) = HEXADecimalis szmot hoz letre a decimalisbol
+                return ('0' + colorNum).substr(-2);
+            }
+            return '#' + color() + color() + color();
+        };
+    </script>
+</body>
+
+</html>
