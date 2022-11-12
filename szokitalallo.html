@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>szokitalallo</title>
+    <style>
+        .letter_space,
+        .single_Letter {
+            display: inline-block;
+            width: 20px;
+            height: 24px;
+            font-size: 16px;
+            line-height: 24px;
+            border-radius: 5px;
+            background-color: #acddde8c;
+            /* #acddde; */
+            margin: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .letter_space {
+            background-color: inherit;
+            cursor: auto;
+            /* color: #777 */
+        }
+        
+        .uzenofal {
+            margin: 20px;
+        }
+        
+        .indit {
+            width: 72px;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 5px;
+            background-color: rgb(1, 94, 1);
+            color: #CCC;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="uzenofal"></div>
+    <div class="abc"></div>
+    <div class="szo_kijelzo"></div>
+    <button class="indit">start</button>
+
+
+    <script>
+        let play = false;
+        let wordsArr = ['javascript', 'programozas', 'markologep', 'holdutazas', 'turmixgep', 'jalapeno'];
+        let singleWordArr;
+        let counter = 0;
+        let matchCount = 0;
+
+        const messageBox = document.querySelector('.uzenofal');
+        messageBox.innerText = 'talald ki betuvalasztassal a rejtvenyben szereplo szot!'
+        const charakterBox = document.querySelector('.abc');
+        const wordBox = document.querySelector('.szo_kijelzo');
+        const startBtn = document.querySelector('.indit');
+        let letterSpaceSpans;
+
+
+        function abcSetter() {
+            for (let i = 0; i < 26; i++) {
+                let letter = String.fromCharCode(i + 65);
+                let letterBox = document.createElement('span');
+                letterBox.innerText = letter;
+                letterBox.setAttribute('class', 'single_Letter');
+                charakterBox.appendChild(letterBox);
+            }
+        }
+
+
+        startBtn.addEventListener('click', () => {
+            messageBox.innerText = 'talald ki betuvalasztassal a rejtvenyben szereplo szot!'
+            wordBox.innerHTML = '';
+            abcSetter();
+            let word = chooseWord();
+            if (!play) {
+                word = word.toLocaleUpperCase();
+                singleWordArr = word.split('');
+                // console.log(singleWordArr);
+                startBtn.style.display = 'none';
+
+                for (let i = 0; i < word.length; i++) {
+                    let letterSpace = document.createElement('span');
+                    letterSpace.innerText = '_';
+                    letterSpace.setAttribute('class', 'letter_space');
+                    wordBox.appendChild(letterSpace);
+                }
+
+                letterSpaceSpans = document.querySelectorAll('.letter_space');
+
+                let charakters = document.querySelectorAll('.single_Letter');
+                charakters.forEach(charEl => {
+                    charEl.addEventListener('click', charTest);
+                });
+
+            }
+        });
+
+
+        function charTest(ev) {
+            counter++;
+            let clikcedLetter = ev.target.innerText.toUpperCase();
+            messageBox.innerText = `probalkozasaid szama: ${counter}`;
+            if (singleWordArr.includes(clikcedLetter)) {
+                // console.log('van :', clikcedLetter);
+                for (let i = 0; i < singleWordArr.length; i++) {
+                    if (clikcedLetter == singleWordArr[i]) {
+                        letterSpaceSpans[i].innerText = clikcedLetter;
+                        ev.target.style.backgroundColor = 'inherit';
+                        ev.target.style.color = '#777';
+                        ev.target.removeEventListener('click', charTest);
+                        matchCount++
+                    }
+
+                }
+            } else {
+                // console.log('NINCS benne:', clikcedLetter);
+                ev.target.style.backgroundColor = 'inherit';
+                ev.target.style.color = '#777';
+                ev.target.removeEventListener('click', charTest);
+            }
+            // console.log('counter = ', counter, '     talalatok: ', matchCount);
+            if (matchCount >= singleWordArr.length) {
+                // console.log('GAME OVER');
+                matchCount = 0;
+                counter = 0;
+                startBtn.style.display = 'block';
+                charakterBox.innerHTML = '';
+            }
+        };
+
+
+
+        function chooseWord() {
+            return wordsArr[Math.floor(Math.random() * wordsArr.length)];
+        }
+    </script>
+</body>
+
+</html>
