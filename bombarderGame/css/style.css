@@ -1,0 +1,35 @@
+body {
+    box-sizing: border-box;
+    background-color: rgb(166, 208, 245);
+}
+
+.aircraft {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 100px;
+    height: auto;
+    /* color: black; */
+}
+
+.display_wrapper {
+    width: 90%;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn {
+    width: 80px;
+    height: 34px;
+    margin: 10px;
+    ;
+    font-size: 16px;
+    line-height: 26px;
+    background-color: rgb(1, 40, 1);
+    color: #CCC;
+}
+
+.message {
+    color: blue;
+}
