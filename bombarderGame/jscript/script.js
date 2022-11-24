@@ -1,6 +1,7 @@
 const displayWrapper = document.querySelector('.display_wrapper');
 const gameArea = document.querySelector('.game_area');
 
+
 let pressCounter = 0;
 let messageBox = document.createElement('div');
 let startBtn = document.createElement('button');
@@ -12,7 +13,7 @@ displayWrapper.appendChild(messageBox);
 displayWrapper.appendChild(startBtn);
 startBtn.addEventListener('click', startGame);
 
-
+let scoreBox;
 
 
 document.addEventListener('keyup', pressOff);
@@ -32,9 +33,7 @@ let pressedKeys = {
 };
 
 let enemyObj = [];
-
-
-
+// let enemObjPosition = [];
 let gameField = {};
 
 function startGame(event) {
@@ -47,12 +46,18 @@ function startGame(event) {
     player.X = player.airCraft.offsetLeft;
     player.Y = player.airCraft.offsetTop;
 
+    scoreBox = document.createElement('div');
+    scoreBox.classList.add('display_score');
+
+    displayWrapper.appendChild(scoreBox);
+
     window.requestAnimationFrame(playGame);
 };
 
 
 function playGame() {
     messageBox.innerText = `fennmarado bombak szama: ${player.bomb}`;
+    scoreBox.innerText = `score: ${player.score}`;
     //ez az aktualis lathato jatekmezo meretei w=szelesseg h=magassag
     gameField.w = window.innerWidth;
     gameField.h = window.innerHeight;
@@ -62,11 +67,18 @@ function playGame() {
     let bombDirection = 'le';
     if (player.run) {
 
-        moveBomb();
         while (enemyObj.length < 3) {
-            enemyObj.push(makeEnemyObj());
+            let enObj = makeEnemyObj();
+            enemyObj.push(enObj);
         }
-        console.log('%cOBJEKTUMOK', 'color:orange', enemyObj);
+        moveBomb();
+
+        // enemObjPosition = [];
+        // getEnemyObjektPosition();
+
+        // console.log('OBJEKTUMOK posicioi:', enemObjPosition);
+
+        // console.log('%cOBJEKTUMOK', 'color:orange', enemyObj);
 
 
         if (!pressedKeys.ArrowUp || !pressedKeys.ArrowDown) {
@@ -89,12 +101,15 @@ function playGame() {
         }
 
         if (pressedKeys.space) {
-            pressCounter++;
-            if (player.bomb > 0 && pressCounter < 2) {
-                console.log('BOMBAAA');
-                dropBomb(bombDirection);
-                player.bomb--;
-            }
+            setTimeout(() => {
+                pressCounter++;
+
+                if (player.bomb > 0 && pressCounter < 2) {
+                    // console.log('BOMBAAA');
+                    dropBomb(bombDirection);
+                    player.bomb--;
+                }
+            }, 350);
         }
 
     }
@@ -153,11 +168,20 @@ function moveBomb() {
             bomb.style.top = (tempCoorY + 5) + 'px';
             // ellenorizni, hogy utkozott e epulettel
 
+
         } else {
             bomb.style.display = 'none';
         }
 
+        //ha talalat volt
+        if (testHitTarget(tempCoorX, tempCoorY)) {
+            bomb.parentElement.removeChild(bomb);
+            player.bombak.splice(idx, 1);
+            player.score++;
+        };
+
     });
+
 };
 
 function dropBomb(drctn) {
@@ -195,9 +219,35 @@ function makeEnemyObj() {
     enObj.style.height = objHeight + 'px';
     enObj.style.backgroundColor = '#' + objColor;
     gameArea.appendChild(enObj);
+
+    // getEnemyObjektPosition();
+
+
     return enObj;
+
 };
 
+
+
+function testHitTarget(bPosX, bPosY) {
+    //235  650
+    // conso % le.log('TAGET...');
+    // console.log('a bombak pozicioja:', bPosX, bPosY); // 235 , 650
+    // console.log('az epuletek pozicioja', enemyObj);
+
+    for (let i = 0; i < enemyObj.length; i++) {
+        // console.log(i, enemyObj[i].offsetWidth);
+        let objRight = enemyObj[i].offsetLeft + enemyObj[i].offsetWidth;
+
+        if (enemyObj[i].offsetTop < bPosY && enemyObj[i].offsetLeft < bPosX && objRight > bPosX) {
+            // console.log('TALALAT');
+            enemyObj[i].remove();
+            enemyObj.splice(i, 1);
+            return true;
+        }
+    }
+    // console.log('EPULETEK :', enemyObj);
+}
 
 
 //css szin gyarto funkcio

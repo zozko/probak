@@ -50,3 +50,12 @@ body {
     position: absolute;
     bottom: 0;
 }
+
+.hideObj {
+    display: none;
+}
+
+.display_score {
+    font-size: 2rem;
+    color: #333
+}
