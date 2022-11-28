@@ -11,22 +11,25 @@ messageBox.classList.add('message');
 messageBox.innerText = 'a kezdeshez nyomd meg a start gombot';
 displayWrapper.appendChild(messageBox);
 displayWrapper.appendChild(startBtn);
-startBtn.addEventListener('click', startGame);
-
+let bombakValtozo;
 let scoreBox;
+let colision = false;
+
+//a jatekot inditja
+
 
 
 document.addEventListener('keyup', pressOff);
 document.addEventListener('keydown', pressOn);
+startBtn.addEventListener('click', startGame);
 
 let player = {
     run: false,
     score: 0,
     speed: 2,
-    bomb: 50,
+    bomb: 10,
     bombak: []
 };
-player.airCraft = document.createElement('img');
 
 let pressedKeys = {
     space: false
@@ -37,11 +40,22 @@ let enemyObj = [];
 let gameField = {};
 
 function startGame(event) {
+    player.bombak = [];
+    if (player.bomb < 10) player.bomb = 10;
+    gameArea.innerHTML = '';
+    // displayWrapper.innerHTML = '';
+    if (scoreBox) {
+        scoreBox.innerHTML = '';
+    }
+    bombakValtozo = player.bomb;
+    // console.log('bombakvaltozo = ', bombakValtozo);
     player.run = true;
+
     messageBox.innerHTML = '';
     startBtn.style.display = 'none';
-    player.airCraft.src = 'imgs/aircraft.png';
+    player.airCraft = document.createElement('img');
     player.airCraft.classList.add('aircraft');
+    player.airCraft.src = 'imgs/aircraft.png';
     gameArea.appendChild(player.airCraft);
     player.X = player.airCraft.offsetLeft;
     player.Y = player.airCraft.offsetTop;
@@ -56,8 +70,9 @@ function startGame(event) {
 
 
 function playGame() {
-    messageBox.innerText = `fennmarado bombak szama: ${player.bomb}`;
-    scoreBox.innerText = `score: ${player.score}`;
+
+    messageBox.innerHTML = `fennmarado bombak szama: ${player.bomb}`;
+    scoreBox.innerHTML = `score: ${player.score}`;
     //ez az aktualis lathato jatekmezo meretei w=szelesseg h=magassag
     gameField.w = window.innerWidth;
     gameField.h = window.innerHeight;
@@ -66,20 +81,13 @@ function playGame() {
     let planeYcoord;
     let bombDirection = 'le';
     if (player.run) {
-
         while (enemyObj.length < 3) {
             let enObj = makeEnemyObj();
             enemyObj.push(enObj);
         }
-        moveBomb();
 
-        // enemObjPosition = [];
-        // getEnemyObjektPosition();
 
-        // console.log('OBJEKTUMOK posicioi:', enemObjPosition);
-
-        // console.log('%cOBJEKTUMOK', 'color:orange', enemyObj);
-
+        //leellenorizni, hogy a repulo nem e hajtott bele a hazba
 
         if (!pressedKeys.ArrowUp || !pressedKeys.ArrowDown) {
             //egyenesit
@@ -103,25 +111,32 @@ function playGame() {
         if (pressedKeys.space) {
             setTimeout(() => {
                 pressCounter++;
-
-                if (player.bomb > 0 && pressCounter < 2) {
+                if (player.bomb >= 0 && pressCounter < 2) {
+                    player.bomb--;
+                    // console.log('lefuta bombagyar', player.bomb);
                     // console.log('BOMBAAA');
                     dropBomb(bombDirection);
-                    player.bomb--;
                 }
             }, 350);
+
         }
+        player.airCraft.style.top = player.Y + 'px';
+        player.airCraft.style.left = (player.X += player.speed) + 'px';
 
+        colision = isAirCraftHitTheObject(player.airCraft, enemyObj);
+        // console.log('karambol van?:', colision);
+        moveBomb();
+        if (colision) isGameOver();
+
+
+
+
+
+
+
+        // messageBox.innerText = `width: ${gameField.w}  |  height: ${gameField.h}`;
+        //rekurziv funkcio a mozgashoz
     }
-
-    player.airCraft.style.top = player.Y + 'px';
-    player.airCraft.style.left = (player.X += player.speed) + 'px';
-
-
-
-
-    // messageBox.innerText = `width: ${gameField.w}  |  height: ${gameField.h}`;
-    //rekurziv funkcio a mozgashoz
     let planeGPS = player.airCraft.offsetLeft;
 
     // console.log(planeGPS, gameField.w);
@@ -141,12 +156,36 @@ function playGame() {
         player.airCraft.style.left = '0px';
         player.X = 0;
     };
-    window.requestAnimationFrame(playGame);
+    if (player.run) {
+        window.requestAnimationFrame(playGame);
+    } else {
+        window.cancelAnimationFrame(playGame);
+        // stop the game
+        // gameArea.innerHTML = '';
+        let percent = (player.score / bombakValtozo) * 100;
+        console.log(percent + '%');
+        messageBox.innerHTML = 'GAME OVER';
+        scoreBox.innerHTML = `you hit the target in ${percent}%`;
+        startBtn.style.display = 'block';
+
+        pressedKeys = {
+            space: false
+        }
+
+        enemyObj = [];
+        pressCounter = 0;
+        player = {
+            run: false,
+            score: 0,
+            speed: 2,
+            bomb: 10,
+            bombak: []
+        };
+    }
 
 };
 
 function moveBomb() {
-
     let bombs = document.querySelectorAll('.bomba');
     bombs.forEach((bomb, idx) => {
         // console.log('bomba index = ', idx);
@@ -179,6 +218,15 @@ function moveBomb() {
             player.bombak.splice(idx, 1);
             player.score++;
         };
+        if (!player.run) {
+            console.log('bombatorles');
+
+            bombs.forEach(bmbs => {
+                bmbs.style.display = 'none';
+            });
+            // player.bombak = [];
+            // player.bomb = 10;
+        }
 
     });
 
@@ -194,12 +242,14 @@ function dropBomb(drctn) {
 };
 
 function pressOn(event) {
+    event.preventDefault();
     let actualKey = (event.key == ' ') ? 'space' : event.key;
     pressedKeys[actualKey] = true;
     // console.log(pressedKeys);
 };
 
 function pressOff(event) {
+    event.preventDefault();
     let actualKey = (event.key == ' ') ? 'space' : event.key;
     pressedKeys[actualKey] = false;
     pressCounter = 0;
@@ -210,9 +260,9 @@ function makeEnemyObj() {
     let enObj = document.createElement('div');
     // enemyObj.push(enObj);
     enObj.classList.add('enemy');
-    objX = Math.floor(Math.random() * (gameField.w - (gameField.w / 3)) + 30);
+    objX = Math.floor(Math.random() * (gameField.w - (gameField.w / 4)) + 30);
     objWidth = Math.floor(Math.random() * (gameField.w / 3) + 30);
-    objHeight = Math.floor(Math.random() * (gameField.h / 2) + 20);
+    objHeight = Math.floor(Math.random() * (gameField.h / 1.75) + 20);
     objColor = setObjColor();
     enObj.style.left = objX + 'px';
     enObj.style.width = objWidth + 'px';
@@ -230,6 +280,8 @@ function makeEnemyObj() {
 
 
 function testHitTarget(bPosX, bPosY) {
+    let contin = isGameOver();
+    if (contin) { return false };
     //235  650
     // conso % le.log('TAGET...');
     // console.log('a bombak pozicioja:', bPosX, bPosY); // 235 , 650
@@ -258,4 +310,34 @@ function setObjColor() {
         return color;
     }
     return mixColor() + mixColor() + mixColor();
+}
+
+
+function isGameOver() {
+    if (colision) {
+        player.bomb = -1000;
+    }
+    if (player.bomb < 0) {
+        player.run = false;
+        player.bomb = 10;
+        //continue?
+        return true;
+    }
+}
+
+
+function isAirCraftHitTheObject(repulo, epuletObj) {
+    let gond = false;
+    for (let i = 0; i < epuletObj.length; i++) {
+        let epuletSzelesseg = epuletObj[i].getBoundingClientRect();
+        epuletSzelesseg = epuletSzelesseg.width;
+        // console.log('epulet X : ', epuletObj[i].offsetLeft + epuletSzelesseg);
+        // console.log('repulo X', repulo.offsetLeft + 100);
+        if (epuletObj[i].offsetTop < (repulo.offsetTop + 63) && epuletObj[i].offsetLeft < (repulo.offsetLeft + 70) &&
+            (epuletObj[i].offsetLeft + epuletSzelesseg) > (repulo.offsetLeft)) {
+            // console.log('karambol...');
+            gond = true;
+        }
+    }
+    return gond;
 }
