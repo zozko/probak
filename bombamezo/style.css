@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.message_wrapper {
+    position: relative;
+    top: 0;
+    width: 100vw;
+    height: 150px;
+    border: 1px solid #666;
+    background-color: #2e8b57;
+    color: azure
+}
+
+.game_field {
+    position: relative;
+    top: 1px;
+    width: 100vw;
+    height: calc(100vh - 152px);
+    background: linear-gradient( #2e8b57 0%, #0d2b1a 100%);
+}
