@@ -32,6 +32,11 @@ function basic() {
     let fields = [];
 
     function startGame() {
+        if (gameField.hasChildNodes()) {
+            gameField.removeChild(gameField.childNodes[0]);
+            gameField.removeChild(gameField.childNodes[1]);
+        }
+
 
         //a mezok tartoja
         const fieldWrapper = document.createElement('div');
@@ -251,9 +256,14 @@ function basic() {
     function restartBtn() {
         let restart = document.createElement('button');
         restart.classList.add('restart_btn');
-        restart.innerText = 'new game?';
+        restart.innerText = 'restart';
         gameField.appendChild(restart);
         restart.addEventListener('click', basic);
+        let quiteGame = document.createElement('button');
+        quiteGame.classList.add('restart_btn');
+        quiteGame.innerHTML = 'quite';
+        gameField.appendChild(quiteGame);
+        quiteGame.addEventListener('click', quit);
 
     }
 
@@ -266,11 +276,15 @@ function basic() {
             display.innerHTML = 'GAME OVER';
             levelInfo.innerHTML = `You made ${player.stepCounter} moves`;
 
-            gameField.innerHTML = '';
+            // gameField.innerHTML = '';
             playInProgres = false;
             restartBtn();
             // }
         }, 3000);
+    }
+
+    function quit() {
+        window.location.href = "https://www.google.com";
     }
 
 };

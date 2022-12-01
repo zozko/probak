@@ -1,6 +1,7 @@
 :root {
     --field_color: #1c7041;
-    --player_color: rgb(45, 140, 218);
+    --player_color: #2d8cda;
+    --danger_color: #8b44d2;
 }
 
 *,
@@ -95,27 +96,37 @@ body {
 }
 
 .danger_zone {
-    background-color: coral;
+    background-color: var(--danger_color);
 }
 
 .restart_btn {
     position: relative;
+    display: inline-block;
     top: 100px;
     left: 50%;
     width: 200px;
+    margin-right: 20px;
     background-color: yellow;
     line-height: 2.5rem;
     font-size: 2.5rem;
     box-shadow: 0 3px 7px rgba(255, 255, 0, 0.632);
     text-align: center;
     cursor: pointer;
-    transform: translateX(-50%);
+    transform: translateX(calc( -50% - 110px));
     /*margin-inline: auto;
     */
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
+    -webkit-transform: translateX();
+    -moz-transform: translateX(calc( -50% - 110px));
+    -ms-transform: translateX(calc( -50% - 110px));
+    -o-transform: translateX(calc( -50% - 110px));
+    -webkit-transform: translateX(calc( -50% - 110px));
+}
+
+.restart_btn:last-child {
+    background-color: black;
+    color: yellow;
+    box-shadow: 0 3px 7px rgba(28, 28, 0, 0.632);
+    text-align: center;
 }
 
 .boooom {
