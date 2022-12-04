@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .output {
+            position: absolute;
+            top: 10px;
+            width: 50%;
+            min-height: 25%;
+            left: 25%;
+            border: 1px solid #555;
+            background-color: #CCC;
+        }
+        
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: whitesmoke;
+            padding: 2px 5px;
+            cursor: pointer;
+        }
+        
+        .message_area {
+            /* position: relative; */
+            text-align: center;
+            margin-top: 25px;
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        .message {
+            cursor: pointer;
+            margin: 5px;
+            border: 1px solid #222;
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="output hide">
+        <div class="close">close</div>
+        <div class="message_area">ez az uzenet</div>
+    </div>
+
+    <div class="message" data-msg="helloka nyaloka">clik #1</div>
+    <div class="message" data-msg="nyomkodjal csak picit">clik #2</div>
+    <div class="message" data-msg="faxa nem?">clik #3</div>
+
+
+    <script>
+        const messageArea = document.querySelector('.message_area');
+        const output = document.querySelector('.output');
+        const msg = document.querySelectorAll('.message');
+        const cls = document.querySelector('.close');
+
+        // msg.forEach(messageBtn => {
+        //     messageBtn.addEventListener('click', (ev) => {
+
+        //         console.log(this.innerHTML);
+        //     });
+        // });
+
+        for (let i = 0; i < msg.length; i++) {
+            msg[i].addEventListener('click', function() {
+
+                output.classList.toggle('hide');
+                let txt = msg[i].getAttribute('data-msg');
+                messageArea.innerText = txt;
+            });
+        }
+
+        cls.addEventListener('click', () => {
+            output.classList.toggle('hide');
+        });
+    </script>
+</body>
+
+</html>
