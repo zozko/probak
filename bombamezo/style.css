@@ -72,6 +72,11 @@ body {
     height: 38px;
     border: 1px solid #444;
     background-color: var(--player_color);
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
 }
 
 .display_info_window {
