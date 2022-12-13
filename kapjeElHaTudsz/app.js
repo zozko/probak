@@ -21,7 +21,7 @@ let player = {
 }
 
 let mouseSettings = {
-    speed: 2,
+    speed: 10,
     way: 0,
     steps: 0,
     posiX: 100,
@@ -104,18 +104,20 @@ function mouseMoverFunk() {
     if (playSettings.running) {
         gameArea.addEventListener('click', hitCounter);
 
-
+        console.log('a sebesseg: ', mouseSettings.speed);
         // console.log('BOX ', boxPos.x, boxPos.y);
-        console.log('Az eger x:', mouseSettings.posiX, '     y:', mouseSettings.posiY);
-        console.log('sebesseg/irany :', mouseSettings.speed, mouseSettings.way);
-        console.log('LEPES :', mouseSettings.steps);
+        // console.log('Az eger x:', mouseSettings.posiX, '     y:', mouseSettings.posiY);
+        // console.log('sebesseg/irany :', mouseSettings.speed, mouseSettings.way);
+        // console.log('LEPES :', mouseSettings.steps);
         mouseSettings.posiX += mouseSettings.speed;
         mouseSettings.posiY += mouseSettings.speed;
 
         if (mouseSettings.steps < mouseSettings.counter) {
             mouseSettings.counter = 0;
+            // let nSpeed = Math.floor(Math.random() * 10 + 2);
             mouseSettings.steps = setSteps();
             mouseSettings.way = setWay();
+            // mouseSettings.speed = nSpeed;
         } else {
             mouseSettings.counter++;
         };
@@ -154,18 +156,34 @@ function mouseMoverFunk() {
 
 
 
-        console.log('POSI-X', mouseSettings.posiX, '  vx BOX.X', boxPos.left);
-        if ((mouseSettings.posiX + boxPos.left) >= boxPos.left + 600 || (mouseSettings.posiX + boxPos.left) <= boxPos.left) {
-            // console.log('kilogott oldalra...');
-            mouseSettings.way = setWay();
+        if ((mouseSettings.posiX + boxPos.left) >= boxPos.left + 500 || (mouseSettings.posiX + boxPos.left) <= boxPos.left) {
+            console.log('POSI-X', mouseSettings.posiX, '  vx BOX.X', boxPos.left);
+            console.log('kilogott oldalra...');
+            if ((mouseSettings.posiX + boxPos.left) >= boxPos.left + 500) {
+                mouseSettings.posiX = boxPos.left - (100 + mouseSettings.speed);
+            }
 
+            if ((mouseSettings.posiX + boxPos.left) <= boxPos.left) {
+                mouseSettings.posiX = boxPos.left + (100 + mouseSettings.speed);
+            }
+            // if (mouseSettings.way === 0 || mouseSettings.way === 1) mouseSettings.way = setWay();
+
+            mouseSettings.way = setWay();
         }
 
 
-        console.log('POSI-Y', mouseSettings.posiY, '  vx BOX.Y', boxPos.top);
         if ((mouseSettings.posiY + boxPos.top) >= boxPos.top + 500 || (mouseSettings.posiY + boxPos.top) <= boxPos.top) {
-            // console.log('kilogott fent/lent');
+            console.log('POSI-Y', mouseSettings.posiY, '  vx BOX.Y', boxPos.top);
+            console.log('kilogott fent/lent');
+            if ((mouseSettings.posiY + boxPos.top) >= boxPos.left + 500) {
+                mouseSettings.posiY = boxPos.top - (100 + mouseSettings.speed);
+            }
+
+            if ((mouseSettings.posiY + boxPos.top) <= boxPos.left) {
+                mouseSettings.posiY = boxPos.top + (100 + mouseSettings.speed);
+            }
             mouseSettings.way = setWay();
+            // if (mouseSettings.way === 2 || mouseSettings.way === 3) mouseSettings.way = setWay();
         }
 
 
@@ -181,18 +199,19 @@ function mouseMoverFunk() {
 
 //mennyit lepjen az adott iranyba
 function setSteps() {
-    return Math.floor(Math.random() * 50 + 130);
+    return Math.floor(Math.random() * 150 + 50);
 };
 
 //milyen iranyba menjen
 function setWay() {
+    mouseSettings.speed = Math.floor(Math.random() * 10 + 5);
     //0 = le;  1 = fel;  2 = jobbra; 3 = balra
 
     let szorzo = Math.floor(Math.random() * 4);
     if (szorzo === 0 || szorzo === 2) {
-        mouseSettings.speed = 1;
+        // mouseSettings.speed = 1;
     } else {
-        mouseSettings.speed = -1;
+        mouseSettings.speed = mouseSettings.speed * -1;
     }
     return szorzo;
 }
@@ -200,10 +219,10 @@ function setWay() {
 
 function mouseSetter(e) {
     // console.log(e);
-    console.log(boxPos.x, boxPos.y);
+    // console.log(boxPos.x, boxPos.y);
     player.X = e.clientX - boxPos.x;
     player.Y = e.clientY - boxPos.y;
-    console.log('x:', player.X, '  y:', player.Y);
+    // console.log('x:', player.X, '  y:', player.Y);
 
 };
 
