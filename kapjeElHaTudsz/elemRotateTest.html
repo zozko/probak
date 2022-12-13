@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .rot {
+            position: relative;
+            top: 100px;
+            left: 200px;
+            width: 30px;
+            height: 50px;
+            border: 2px solid blue;
+            transition: all 1s ease;
+            border-top: 5px solid brown;
+            border-left: 3px solid brown;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="rot"></div>
+
+
+    <script>
+        let szog = 0;
+        const rotatEl = document.querySelector('.rot');
+        let elKoord = rotatEl.getBoundingClientRect();
+        //X = left ;   Y = top
+        // console.log('alap koordinatak balra:', elKoord.x, '  le: ', elKoord.y);
+
+        setInterval(() => {
+            szog += 30;
+            rotatEl.style.transform = `rotate(${szog}deg)`;
+            elKoord = rotatEl.getBoundingClientRect();
+            rotatEl.style.borderTopColor = `#${Math.random().toString(16).substr(-6)}`
+            rotatEl.style.borderLeftColor = 'red';
+            console.log(elKoord);
+            console.log('alap koordinatak balra:', elKoord.x, '  le: ', elKoord.y);
+            console.log('alap koordinatak balra:', elKoord.left, ' le : ', elKoord.top);
+
+
+        }, 5000);
+    </script>
+</body>
+
+</html>

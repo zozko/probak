@@ -84,22 +84,16 @@ body {
 .start_stop:active {}
 
 .mouse {
-    position: absolute;
+    display: inline-block;
+    position: relative;
     width: 100px;
     height: 100px;
+    top: 0;
+    left: 0;
     background-color: transparent;
     transition: all .2s ease;
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
     -ms-transition: all .2s ease;
     -o-transition: all .2s ease;
-}
-
-.mouse:hover {
-    border-radius: 50% 50%;
-    background-color: rgba(255, 0, 0, 0.71);
-    -webkit-border-radius: 50% 50%;
-    -moz-border-radius: 50% 50%;
-    -ms-border-radius: 50% 50%;
-    -o-border-radius: 50% 50%;
 }

@@ -21,7 +21,7 @@ let player = {
 }
 
 let mouseSettings = {
-    speed: 10,
+    speed: 0,
     way: 0,
     steps: 0,
     posiX: 100,
@@ -57,16 +57,14 @@ function game() {
 
         let mouseKoord = mouse.getBoundingClientRect();
 
-
-
         mouseSettings.posiX = mouseKoord.left - boxPos.left;
         mouseSettings.posiY = mouseKoord.top - boxPos.top;
-
-
-        mouseSettings.way = setWay();
-        mouseSettings.steps = setSteps();
-        mouseMoverFunk();
     }
+
+
+    mouseSettings.way = setWay();
+    mouseSettings.steps = setSteps();
+    mouseMoverFunk();
 
     // window.requestAnimationFrame(mouseMoverFunk);
 
@@ -96,7 +94,7 @@ function cntnue() {
 
 function mouseMoverFunk() {
 
-    console.log('faszaju futok');
+    // console.log('faszaju futok');
     // console.log('lepesek szama = ', mouseSettings.steps);
     // console.log(mousPosition);
 
@@ -104,7 +102,7 @@ function mouseMoverFunk() {
     if (playSettings.running) {
         gameArea.addEventListener('click', hitCounter);
 
-        console.log('a sebesseg: ', mouseSettings.speed);
+        // console.log('a sebesseg: ', mouseSettings.speed);
         // console.log('BOX ', boxPos.x, boxPos.y);
         // console.log('Az eger x:', mouseSettings.posiX, '     y:', mouseSettings.posiY);
         // console.log('sebesseg/irany :', mouseSettings.speed, mouseSettings.way);
@@ -114,15 +112,16 @@ function mouseMoverFunk() {
 
         if (mouseSettings.steps < mouseSettings.counter) {
             mouseSettings.counter = 0;
-            // let nSpeed = Math.floor(Math.random() * 10 + 2);
+            let nSpeed = Math.floor(Math.random() * 10 + 2);
             mouseSettings.steps = setSteps();
             mouseSettings.way = setWay();
-            // mouseSettings.speed = nSpeed;
+            mouseSettings.speed = nSpeed;
         } else {
             mouseSettings.counter++;
         };
 
         // jobbra
+
         if (mouseSettings.way == 0) {
             // console.log('jobbra');
             mouse.style.transform = 'rotate(270deg)';
@@ -150,15 +149,13 @@ function mouseMoverFunk() {
             mouse.style.transform = 'rotate(180deg)';
             mouse.style.top = mouseSettings.posiY + 'px';
         }
-        // mouse.style.left = mouseSettings.posiY + 'px';
-
 
 
 
 
         if ((mouseSettings.posiX + boxPos.left) >= boxPos.left + 500 || (mouseSettings.posiX + boxPos.left) <= boxPos.left) {
-            console.log('POSI-X', mouseSettings.posiX, '  vx BOX.X', boxPos.left);
-            console.log('kilogott oldalra...');
+            // console.log('POSI-X', mouseSettings.posiX, '  vx BOX.X', boxPos.left);
+            // console.log('kilogott oldalra...');
             if ((mouseSettings.posiX + boxPos.left) >= boxPos.left + 500) {
                 mouseSettings.posiX = boxPos.left - (100 + mouseSettings.speed);
             }
@@ -173,18 +170,20 @@ function mouseMoverFunk() {
 
 
         if ((mouseSettings.posiY + boxPos.top) >= boxPos.top + 500 || (mouseSettings.posiY + boxPos.top) <= boxPos.top) {
-            console.log('POSI-Y', mouseSettings.posiY, '  vx BOX.Y', boxPos.top);
-            console.log('kilogott fent/lent');
+            // console.log('POSI-Y', mouseSettings.posiY, '  vx BOX.Y', boxPos.top);
+            // console.log('kilogott fent/lent');
             if ((mouseSettings.posiY + boxPos.top) >= boxPos.left + 500) {
                 mouseSettings.posiY = boxPos.top - (100 + mouseSettings.speed);
             }
 
             if ((mouseSettings.posiY + boxPos.top) <= boxPos.left) {
-                mouseSettings.posiY = boxPos.top + (100 + mouseSettings.speed);
+                mouseSettings.posiY = boxPos.top + (100 + (mouseSettings.speed * -1));
             }
             mouseSettings.way = setWay();
             // if (mouseSettings.way === 2 || mouseSettings.way === 3) mouseSettings.way = setWay();
         }
+
+
 
 
         window.requestAnimationFrame(mouseMoverFunk);
@@ -199,12 +198,12 @@ function mouseMoverFunk() {
 
 //mennyit lepjen az adott iranyba
 function setSteps() {
-    return Math.floor(Math.random() * 150 + 50);
+    return Math.floor(Math.random() * 150 + 25);
 };
 
 //milyen iranyba menjen
 function setWay() {
-    mouseSettings.speed = Math.floor(Math.random() * 10 + 5);
+    mouseSettings.speed = Math.floor(Math.random() * 3 + 1);
     //0 = le;  1 = fel;  2 = jobbra; 3 = balra
 
     let szorzo = Math.floor(Math.random() * 4);
@@ -227,18 +226,21 @@ function mouseSetter(e) {
 };
 
 
-function hitCounter() {
+function hitCounter(e) {
+
+    mouseSetter(e);
     kijelzo.playerHit--;
     playerHits.innerText = `you have ${kijelzo.playerHit} hits left`;
 
-    console.log('Player x:y', player.X, player.Y);
-    console.log('mouse x, y,', mouseSettings.posiX, mouseSettings.posiY);
-    if (player.X >= mouseSettings.posiX && player.X <= mouseSettings.posiX + 100 && player.Y >= mouseSettings.posiY && player.Y <= mouseSettings.posiY + 100) {
+    console.log('KURZOR x:y', player.X, player.Y);
+    console.log('EGER x: y,', mouseSettings.posiX, mouseSettings.posiY);
+
+    if (player.X >= mouseSettings.posiX && player.X <= (mouseSettings.posiX + 100) && player.Y >= mouseSettings.posiY && player.Y <= (mouseSettings.posiY + 100)) {
         kijelzo.mouseLive--;
         mLive.innerText = `mouse have ${kijelzo.mouseLive} lifes`;
         console.log('%cYou Hit The Mouse', 'color:yellow');
     } else {
-        console.log('you miss the mouse!');
+        console.log('%cyou miss the mouse!', 'color:red');
     }
 
 }
