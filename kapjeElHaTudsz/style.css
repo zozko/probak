@@ -23,7 +23,7 @@ body {
     background-color: rgb(90, 56, 2);
     cursor: -webkit-grab;
     border: 4px solid rgb(48, 8, 8);
-    cursor: grab;
+    cursor: url(mouse/HMMR.png) 15 15, pointer;
     overflow: hidden;
 }
 
@@ -85,15 +85,22 @@ body {
 
 .mouse {
     display: inline-block;
-    position: relative;
-    width: 100px;
-    height: 100px;
+    position: absolute;
+    max-width: 100px;
+    max-height: 100px;
     top: 0;
     left: 0;
+    /*border: 1px solid white;
+    */
     background-color: transparent;
-    transition: all .2s ease;
-    -webkit-transition: all .2s ease;
-    -moz-transition: all .2s ease;
-    -ms-transition: all .2s ease;
-    -o-transition: all .2s ease;
+    transition: all .1s ease;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
 }
+
+
+/* .mouse:hover {
+    background-color: red;
+} */
