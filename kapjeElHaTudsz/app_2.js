@@ -188,11 +188,11 @@ function mouseMoverFunk() {
         gamePad.running = false;
         if (eger.live <= 0 && egercsapo.hits > 0) {
             //nyertel
-            playerHits.innerText = `YOU WIN ${egercsapo.hits} : 0`;
+            playerHits.innerText = `YOU WON ${egercsapo.hits} : 0`;
         };
         if (eger.live > 0 && egercsapo.hits <= 0) {
             //vesztettel
-            playerHits.innerText = `MOUSE WIN ${eger.live} : 0`;
+            playerHits.innerText = `THE MOUSE WON ${eger.live} : 0`;
         };
         //nullzni a dolgokat
         stratStopBtn.classList.remove('stop');
